@@ -1,0 +1,4 @@
+<?php
+    echo "Api test";
+
+?>
