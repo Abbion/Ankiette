@@ -1,8 +1,9 @@
-FROM node:13.12.0-alpine
+FROM node:14.19.0-alpine
 
 WORKDIR /usr/app
 
 COPY app/package*.json ./
+RUN apk add --no-cache libc6-compat
 
 RUN npm install
 

@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - .:/app/
+      - ./api:/app/
     links:
       - php
 
@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: Docker/php/Dockerfile
     volumes:
-      - .:/app/
+      - ./api:/app/
     
   app:
     build:
@@ -26,7 +26,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./app/:/app
+      - ./app/:/usr/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
