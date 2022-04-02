@@ -10,7 +10,7 @@ class TestApiConnection extends Component {
   }
 
   test() {
-      fetch('http://localhost:8080/index.php', {
+      fetch('http://localhost:8080/test', {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ class TestApiConnection extends Component {
           if (response.status === 200) {
               console.log('connected')
           } else {
-              console.log('not coneected')
+              console.log('not conected')
           }
       })
   }
