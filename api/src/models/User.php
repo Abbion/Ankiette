@@ -2,18 +2,27 @@
 
 class User {
     private $email;
-    private $username;
     private $password;
+    private $name;
+    private $surname;
+    private $picture;
 
-    public function __construct(string $email, string $username, string $password) {
+    const IMAGE_PATH = "public/img/profiles/";
+
+    public function __construct(string $email, string $password, string $name, string $surname, string $picture) {
+
         $this->email = $email;
-        $this->username = $username;
-        $this->password = $password;
+        $this->password = $password;    //always hashed in object
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->picture = $picture;
     }
 
     public function toJson(): array {
         $json["email"] = $this->email;
-        $json["username"] = $this->username;
+        $json["name"] = $this->name;
+        $json["surname"] = $this->surname;
+        $json["picture"] = "http://$_SERVER[HTTP_HOST]/".self::IMAGE_PATH.$this->picture;
 
         return $json;
     }
@@ -28,16 +37,6 @@ class User {
         $this->email = $email;
     }
 
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username)
-    {
-        $this->username = $username;
-    }
-
     public function getPassword(): string
     {
         return $this->password;
@@ -47,6 +46,37 @@ class User {
     {
         $this->password = $password;
     }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getSurname(): string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname)
+    {
+        $this->surname = $surname;
+    }
+
+    public function getPicture(): string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture)
+    {
+        $this->picture = $picture;
+    }
+
 
 
 }

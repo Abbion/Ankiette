@@ -17,10 +17,10 @@ class SecurityController extends AppController {
         header('Access-Control-Allow-Headers: Content-Type');
         header('Content-type: application/json');
 
-        //username: user
-        //password: 12345
-
         $postData = file_get_contents("php://input");
+
+        //email:    mail@mail.com
+        //passwd:   12345
 
         if(!$this->isPost() || empty($postData)) {
             http_response_code(400);
@@ -29,20 +29,15 @@ class SecurityController extends AppController {
         else {
             $request = json_decode($postData);
 
-            $username = $request->username;
+            $email = $request->email;
             $password = $request->password;
 
-            $user = $this->userRepository->getUser($username);
+            $user = $this->userRepository->getUser($email);
 
-            if(!$user) {
+            if(!$user || !password_verify($password, $user->getPassword())) {
                 http_response_code(404);
-                echo json_encode("Podany użytkownik nie istnieje");
-            }
-            else if(!password_verify($password, $user->getPassword())) {
-                http_response_code(403);
-                echo json_encode("Wprowadzono nieprawidłowe hasło");
-            }
-            else {
+                echo json_encode("Wrong email or password.");
+            } else {
                 http_response_code(200);
                 echo json_encode($user->toJson());
             }
