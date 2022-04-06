@@ -7,6 +7,10 @@ $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('', 'DefaultController');
 Routing::get('test', 'DefaultController');
+
 Routing::get('login', 'SecurityController');
+
+Routing::get('sendCode', 'RecoveryController');
+Routing::get('recoverAccount', 'RecoveryController');
 
 Routing::run($path);

@@ -19,5 +19,4 @@ class DefaultController extends AppController
         http_response_code(200);
         echo json_encode("test");
     }
-
 }

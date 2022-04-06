@@ -32,14 +32,21 @@ class SecurityController extends AppController {
             $email = $request->email;
             $password = $request->password;
 
-            $user = $this->userRepository->getUser($email);
+            if(empty($email) || empty($password)) {
 
-            if(!$user || !password_verify($password, $user->getPassword())) {
-                http_response_code(404);
-                echo json_encode("Wrong email or password.");
+                http_response_code(400);
+                echo json_encode("Bad request");
+
             } else {
-                http_response_code(200);
-                echo json_encode($user->toJson());
+                $user = $this->userRepository->getUser($email);
+
+                if(!$user || !password_verify($password, $user->getPassword())) {
+                    http_response_code(404);
+                    echo json_encode("Wrong email or password.");
+                } else {
+                    http_response_code(200);
+                    echo json_encode($user->toJson());
+                }
             }
         }
     }
