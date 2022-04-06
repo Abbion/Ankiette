@@ -14,11 +14,6 @@ class AppController
         return $this->request === 'POST';
     }
 
-    protected function isPut(): bool
-    {
-        return $this->request === 'PUT';
-    }
-
     protected function isGet(): bool
     {
         return $this->request === 'GET';

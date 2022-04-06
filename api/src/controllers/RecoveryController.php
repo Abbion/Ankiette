@@ -58,8 +58,6 @@ class RecoveryController extends AppController {
                     }
                 }
             }
-
-
         }
     }
 
@@ -70,7 +68,7 @@ class RecoveryController extends AppController {
 
         $postData = file_get_contents("php://input");
 
-        if(!$this->isPut() || empty($postData)) {
+        if(!$this->isPost() || empty($postData)) {
 
             http_response_code(400);
             echo json_encode("Bad request");
