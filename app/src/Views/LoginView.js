@@ -3,7 +3,14 @@ import '../Css/LoginView.css'
 const LoginView = () =>
 {
     return <div className = "LoginView">
-            <p1>Hello</p1>
+            <div className = "LeftSide">
+                <div className = "CatchPhrase">
+                    Tick your data in one place with Ankiette
+                </div>
+            </div>
+            <div className = "RightSide">
+
+            </div>
         </div>
 }
 
