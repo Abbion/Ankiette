@@ -2,3 +2,5 @@
 .vscode
 config.php
 emailConfig.php
+vendor
+composer.lock
