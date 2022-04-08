@@ -20,7 +20,7 @@ class SecurityController extends AppController {
         $postData = file_get_contents("php://input");
 
         //email:    mail@mail.com
-        //passwd:   12345
+        //password:   12345
 
         if(!$this->isPost() || empty($postData)) {
             http_response_code(400);
@@ -32,8 +32,8 @@ class SecurityController extends AppController {
             $email = $request->email;
             $password = $request->password;
 
-            if(empty($email) || empty($password)) {
-
+            if(empty($email) || empty($password))
+                 {
                 http_response_code(400);
                 echo json_encode("Bad request");
 
@@ -50,4 +50,89 @@ class SecurityController extends AppController {
             }
         }
     }
+
+    public function register(){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Content-Type');
+        header('Content-type: application/json');
+
+        $postData = file_get_contents("php://input");
+        var_dump($postData);
+        // Required:
+        //  name:    "jakub"
+        //  surname:   "usyk"
+        //  email:   "mail@mail.com"
+        //  password:   "123456789"
+
+
+        $request = json_decode($postData);
+        $name = trim($request->name);
+        $surname = trim($request->surname);
+        $email = trim($request->email);
+        $password = trim($request->password);
+
+
+
+        if(empty($name) || empty($surname)  || empty($email) || empty($password)) {
+
+            http_response_code(400);
+            echo json_encode("Bad a");
+            die();
+        }
+
+
+//        if(IntlChar::isblank($name) || IntlChar::isblank($surname) || IntlChar::isblank($email) || IntlChar::isblank($password)){
+//            http_response_code(400);
+//            echo json_encode("Bad b");
+//            die();
+//        }
+
+        if(!ctype_alpha($name) || !ctype_alpha($surname)){
+            http_response_code(400);
+            echo json_encode("Bad c");
+            die();
+        }
+
+
+        $request = json_decode($postData);
+        $name = trim($request->name);
+        $surname = trim($request->surname);
+        $email = trim($request->email);
+        $password = trim($request->password);
+
+        $this->validatePassword($password);
+        $password= password_hash($password, PASSWORD_DEFAULT);
+
+        if(!$this->isEmailCorrect($email)){
+            http_response_code(400);
+            echo json_encode("Bad d");
+            die();
+        }
+
+        $picture = "empty for now";
+        $user = new User($email, $password,$name, $surname, $picture);
+
+        $retval = $this->userRepository->createUser($user);
+
+
+
+    }
+
+    private function isEmailCorrect($email):bool{
+        $pattern = "*@*";
+        if(preg_match($pattern, $email) == 1) return true;
+        return false;
+    }
+
+    private function validatePassword($password){
+        // For now we do not know if the length has some meaning in this case so we added some
+
+        if(strlen($password) < 8){
+            http_response_code(400);
+            echo json_encode("Bad e");
+            die();
+        }
+
+    }
+
 }
