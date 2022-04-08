@@ -30,4 +30,11 @@ services:
       - /usr/app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-    
+
+  composer:
+    restart: 'no'
+    container_name: composer
+    image: "composer"
+    command: install --no-suggest
+    volumes:
+      - ./api/email:/app
