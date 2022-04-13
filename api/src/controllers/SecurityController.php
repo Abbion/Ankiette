@@ -1,18 +1,21 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__.'/../models/User.php';
-require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../repository/UserRepository.php';
 
-class SecurityController extends AppController {
+class SecurityController extends AppController
+{
     private $userRepository;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->userRepository = new UserRepository();
     }
 
-    public function login() {
+    public function login()
+    {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Headers: Content-Type');
         header('Content-type: application/json');
@@ -22,25 +25,23 @@ class SecurityController extends AppController {
         //email:    mail@mail.com
         //password:   12345
 
-        if(!$this->isPost() || empty($postData)) {
+        if (!$this->isPost() || empty($postData)) {
             http_response_code(400);
             echo json_encode("Bad request");
-        }
-        else {
+        } else {
             $request = json_decode($postData);
 
             $email = $request->email;
             $password = $request->password;
 
-            if(empty($email) || empty($password))
-                 {
+            if (empty($email) || empty($password)) {
                 http_response_code(400);
                 echo json_encode("Bad request");
 
             } else {
                 $user = $this->userRepository->getUser($email);
 
-                if(!$user || !password_verify($password, $user->getPassword())) {
+                if (!$user || !password_verify($password, $user->getPassword())) {
                     http_response_code(404);
                     echo json_encode("Wrong email or password.");
                 } else {
@@ -51,7 +52,8 @@ class SecurityController extends AppController {
         }
     }
 
-    public function register(){
+    public function register()
+    {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Headers: Content-Type');
         header('Content-type: application/json');
@@ -69,67 +71,70 @@ class SecurityController extends AppController {
         $name = trim($request->name);
         $surname = trim($request->surname);
         $email = trim($request->email);
-        $password = trim($request->password);
+        $password = str_replace(' ', '', $request->password);
 
-
-
-        if(empty($name) || empty($surname)  || empty($email) || empty($password)) {
+        if (empty($name) || empty($surname) || empty($email) || empty($password)) {
 
             http_response_code(400);
-            echo json_encode("Bad a");
+            echo json_encode("Bad request");
             die();
         }
 
 
-//        if(IntlChar::isblank($name) || IntlChar::isblank($surname) || IntlChar::isblank($email) || IntlChar::isblank($password)){
-//            http_response_code(400);
-//            echo json_encode("Bad b");
-//            die();
-//        }
-
-        if(!ctype_alpha($name) || !ctype_alpha($surname)){
+        if (!ctype_alpha($name) || !ctype_alpha($surname)) {
             http_response_code(400);
-            echo json_encode("Bad c");
+            echo json_encode("Bad name or surname");
             die();
         }
-
-
-        $request = json_decode($postData);
-        $name = trim($request->name);
-        $surname = trim($request->surname);
-        $email = trim($request->email);
-        $password = trim($request->password);
 
         $this->validatePassword($password);
-        $password= password_hash($password, PASSWORD_DEFAULT);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
-        if(!$this->isEmailCorrect($email)){
+        if (!$this->isEmailCorrect($email)) {
             http_response_code(400);
-            echo json_encode("Bad d");
+            echo json_encode("Wrong email");
+            die();
+        }
+
+        if ($this->isEmailInUse($email)) {
+            http_response_code(400);
+            echo json_encode("Email in use");
             die();
         }
 
         $picture = "empty for now";
-        $user = new User($email, $password,$name, $surname, $picture);
+        $user = new User($email, $password, $name, $surname, $picture);
 
-        $retval = $this->userRepository->createUser($user);
+        $this->userRepository->createUser($user);
 
+        http_response_code(200);
+        echo json_encode("User added.");
 
 
     }
 
-    private function isEmailCorrect($email):bool{
-        $pattern = "*@*";
-        if(preg_match($pattern, $email) == 1) return true;
+    private function isEmailInUse($email): bool
+    {
+        if ($this->userRepository->getUser($email) !== null) {
+            return true;
+        }
         return false;
     }
 
-    private function validatePassword($password){
+    private function isEmailCorrect($email): bool
+    {
+        $pattern = "*@*";
+        if (preg_match($pattern, $email) == 1) return true;
+        return false;
+    }
+
+    private function validatePassword($password)
+    {
         // For now we do not know if the length has some meaning in this case so we added some
 
-        if(strlen($password) < 8){
+        if (strlen($password) < 8) {
             http_response_code(400);
-            echo json_encode("Bad e");
+            echo json_encode("Password too short");
             die();
         }
 

@@ -1,12 +1,14 @@
 <?php
 
 require_once 'Repository.php';
-require_once __DIR__.'/../models/User.php';
+require_once __DIR__ . '/../models/User.php';
 
 // id_roles = 1 , name = "user"
-class UserRepository extends Repository {
+class UserRepository extends Repository
+{
 
-    public function getUser(string $email) {
+    public function getUser(string $email)
+    {
 
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM users u, users_details ud
@@ -17,7 +19,7 @@ class UserRepository extends Repository {
         $stmt->execute();
 
         $userArray = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($userArray == false) {
+        if ($userArray == false) {
             return null;
         }
 
@@ -50,7 +52,8 @@ class UserRepository extends Repository {
         ]);
     }
 
-    private function addUserDetails(string $name, string $surname){
+    private function addUserDetails(string $name, string $surname)
+    {
         $stmt = $this->database->connect()->prepare('
             INSERT INTO users_details("name", "surname")
             VALUES (?, ?)
@@ -62,16 +65,19 @@ class UserRepository extends Repository {
             $surname
         ]);
 
+
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['id'];
     }
 
 
-    private  function  getRole(){
+    private function getRole()
+    {
         return 1;
     }
 
-    private  function  getEnabled(){
+    private function getEnabled()
+    {
         return true;
     }
 }
