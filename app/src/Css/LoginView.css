@@ -36,6 +36,48 @@
     background-color: transparent;
     height: 100vh;
     width: 50vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.InputPanel{
+    background-color: #f8f8f8e3;
+    height: 75%;
+    width: 60%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 60px;
+    backdrop-filter: blur(6px);
+    filter: drop-shadow(10px 10px 10px #000000bd)
+}
+
+.Logo{
+    width: 100%;
+    height: 100%;
+}
+
+.LoginInput{
+    background-color: chartreuse;
+    width: 100%;
+    height: 100%;
+}
+
+.LogRegButtons{
+    background-color: darkgreen;
+    width: 100%;
+    height: 100%;
+}
+
+.RecoverButton{
+    background-color: deeppink;
+    width: 100%;
+    height: 100%;
 }
 
 @media only screen and (max-width: 600px){

@@ -1,4 +1,5 @@
 import '../Css/LoginView.css'
+import Logo from './../Graphics/Logo/Logo';
 
 const LoginView = () =>
 {
@@ -9,7 +10,20 @@ const LoginView = () =>
                 </div>
             </div>
             <div className = "RightSide">
+                <div className="InputPanel">
+                    <div className="Logo">
+                        <Logo/>
+                    </div>
+                    <div className="LoginInput">
 
+                    </div>
+                    <div className="LogRegButtons">
+
+                    </div>
+                    <div className="RecoverButton">
+
+                    </div>
+                </div>
             </div>
         </div>
 }
