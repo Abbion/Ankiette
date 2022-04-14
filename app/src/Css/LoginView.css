@@ -44,7 +44,7 @@
 
 .InputPanel{
     background-color: #f8f8f8e3;
-    height: 75%;
+    height: 70%;
     width: 60%;
 
     display: flex;
@@ -60,24 +60,83 @@
 .Logo{
     width: 100%;
     height: 100%;
+
+    margin-top: 3em;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+svg{
+    width: 75%;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+.LogoName{
+    font-size: 58px;
+    text-align: center;
+    font-family: 'Tajawal', sans-serif;
+
+    letter-spacing: 0.2em;
 }
 
 .LoginInput{
-    background-color: chartreuse;
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 75%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.InputText{
+    padding-left: 0.3em;
+    font-size: 24px;
+    font-family: 'Tajawal', sans-serif;
+
+    color: #000A16;
+}
+
+.Input{
+    margin-bottom: 1em;
+    border-radius: 2em;
+    height: 1.75em;
+
+    padding-left: 1em;
+
+    border:1px solid #787878
 }
 
 .LogRegButtons{
-    background-color: darkgreen;
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 20%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.C_button{
+    width: 45%;
+    height: 2em;
+
+    border-radius: 1em;
+    font-family: 'Tajawal', sans-serif;
+
+    border:1px solid #787878
 }
 
 .RecoverButton{
-    background-color: deeppink;
     width: 100%;
-    height: 100%;
+    height: 40%;
+
+    padding-top: 1em;
+
+    display: flex;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 600px){
