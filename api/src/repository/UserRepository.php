@@ -79,5 +79,32 @@ class UserRepository extends Repository
     private function getEnabled()
     {
         return true;
+    public function updatePassword(string $email, string $newPassword) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users set hash=? WHERE email=?
+        ');
+
+        $stmt->execute([$newPassword, $email]);
+    }
+
+    public function updateUserData(string $email, string $name, string $surname) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users_details set name=?, surname=?
+            FROM users u 
+            WHERE u.id_users_details=users_details.id 
+                AND u.email=?
+        ');
+
+        $stmt->execute([$name, $surname, $email]);
+    }
+
+    public function updateUserPicture(string $email, string $pictureName) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users_details set picture=?
+            FROM users u 
+            WHERE u.id_users_details=users_details.id 
+                AND u.email=?
+        ');
+        $stmt->execute([$pictureName, $email]);
     }
 }
