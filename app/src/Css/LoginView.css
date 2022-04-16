@@ -25,7 +25,7 @@
     height: auto;
     width: 60%;
 
-    font-size: 80px;
+    font-size: 5vw;
     text-align: center;
     font-family: 'Tajawal', sans-serif;
     
@@ -44,8 +44,10 @@
 
 .InputPanel{
     background-color: #f8f8f8e3;
-    height: 70%;
+    height: 75%;
     width: 60%;
+    min-height: 350px;
+    min-width: 350px;
 
     display: flex;
     justify-content: center;
@@ -59,10 +61,11 @@
 
 .Logo{
     width: 100%;
-    height: 100%;
-
-    margin-top: 3em;
+    height: 40%;
+    min-height: 120px;
     
+    padding-top: 10%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,21 +74,25 @@
 
 svg{
     width: 75%;
+    height: 75%;
     height: auto;
-    margin-bottom: 1em;
+    margin-bottom: 7%;
 }
 
 .LogoName{
-    font-size: 58px;
+    font-size: 280%;
     text-align: center;
     font-family: 'Tajawal', sans-serif;
 
     letter-spacing: 0.2em;
+    line-height: 50%;
 }
 
 .LoginInput{
     width: 75%;
-    height: 75%;
+    height: 25%;
+
+    padding-top: 4%;
 
     display: flex;
     flex-direction: column;
@@ -93,7 +100,7 @@ svg{
 
 .InputText{
     padding-left: 0.3em;
-    font-size: 24px;
+    font-size: 100%;
     font-family: 'Tajawal', sans-serif;
 
     color: #000A16;
@@ -102,7 +109,8 @@ svg{
 .Input{
     margin-bottom: 1em;
     border-radius: 2em;
-    height: 1.75em;
+    height: 15%;
+    min-height: 15px;
 
     padding-left: 1em;
 
@@ -111,7 +119,8 @@ svg{
 
 .LogRegButtons{
     width: 75%;
-    height: 20%;
+    height: 10%;
+    min-height: 45px;
 
     display: flex;
     flex-direction: row;
@@ -121,7 +130,7 @@ svg{
 
 .C_button{
     width: 45%;
-    height: 2em;
+    height: 48%;
 
     border-radius: 1em;
     font-family: 'Tajawal', sans-serif;
@@ -131,7 +140,8 @@ svg{
 
 .RecoverButton{
     width: 100%;
-    height: 40%;
+    height: 10%;
+    min-height: 45px;
 
     padding-top: 1em;
 
