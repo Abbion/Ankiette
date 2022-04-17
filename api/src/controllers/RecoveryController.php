@@ -32,7 +32,7 @@ class RecoveryController extends AppController {
 
         } else {
             $request = json_decode($postData);
-            $email = $request->email;
+            $email = trim($request->email);
 
             if(empty($email)) {
 
@@ -76,7 +76,7 @@ class RecoveryController extends AppController {
         } else {
 
             $request = json_decode($postData);
-            $code = $request->recoveryCode;
+            $code = trim($request->recoveryCode);
 
             if(empty($code)) {
 
