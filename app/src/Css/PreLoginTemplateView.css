@@ -27,7 +27,7 @@
 
     font-size: 5vw;
     text-align: center;
-    font-family: 'Tajawal', sans-serif;
+    font-weight: 100;
     
     transform: rotate(18.26deg) translate(0, calc(-50vh + 200px));
 }

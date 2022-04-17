@@ -1,5 +1,4 @@
 import '../Css/LoginContent.css'
-import Button from '../Components/Button';
 import Logo from '../Graphics/Logo/Logo';
 
 const LoginContent = () =>
@@ -19,20 +18,26 @@ const LoginContent = () =>
     return  <div className="InputPanel">
                 <div className="Logo">
                 <Logo />
-                <p3 className="LogoName">ANKIETTE</p3>
+                <p className="LogoName">ANKIETTE</p>
                 </div>
                 <div className="LoginInput">
-                    <p5 className="InputText">Email</p5>
-                    <input className="Input"></input>
-                    <p5 className="InputText">Password</p5>
-                    <input className="Input"></input>
+                    <p className="InputText">Email</p>
+                    <input></input>
+                    <p className="InputText">Password</p>
+                    <input></input>
                 </div>
                 <div className="LogRegButtons">
-                    <Button bgColor='#F2F2F2' color='#000A16' text='Login' onClick={LoginClicked}/>
-                    <Button bgColor='#F2F2F2' color='#000A16' text='Register' onClick={RegisetClicked}/>
+                    <button>
+                        Login
+                    </button>
+                    <button>
+                        Register
+                    </button>
                 </div>
                 <div className="RecoverButton">
-                    <Button bgColor='#F2F2F2' color='#000A16' text='Recover account' onClick={RecoverAccountClicked}/>
+                    <button>
+                        Recover account
+                    </button>
                 </div>
             </div>
 }

@@ -44,7 +44,7 @@ const Logo = () =>
           fillOpacity="1"
           stroke="#000a16"
           strokeOpacity="1"
-          ariaLabel="ANKIETTE"
+          aria-label="ANKIETTE"
           fontFamily="GeosansLight"
           fontSize="12.7"
           fontStretch="normal"
