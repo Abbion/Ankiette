@@ -1,4 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
+import SignUpForm from "./Components/SignUpForm";
+import SignInForm from "./Components/SignInForm";
 
 import PreLoginTemplateView from './Views/PreLoginTemplateView'
 
