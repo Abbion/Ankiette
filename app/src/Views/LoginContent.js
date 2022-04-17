@@ -17,14 +17,14 @@ const LoginContent = () =>
 
     return  <div className="InputPanel">
                 <div className="Logo">
-                <Logo />
-                <p className="LogoName">ANKIETTE</p>
+                    <Logo />
+                    <p className="LogoName">ANKIETTE</p>
                 </div>
-                <div className="LoginInput">
+                <div className="LoginInputs">
                     <p className="InputText">Email</p>
                     <input></input>
                     <p className="InputText">Password</p>
-                    <input></input>
+                    <input type="password"></input>
                 </div>
                 <div className="LogRegButtons">
                     <button>
