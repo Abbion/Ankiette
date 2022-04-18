@@ -1,5 +1,6 @@
 import '../Css/PreLoginTemplateView.css'
-import LoginContent from './LoginContent'
+import LoginComponent from '../Components/LoginComponent'
+import RegisterComponent from '../Components/RegisterComponent'
 
 const PreLoginTemplateView = () =>
 {
@@ -10,7 +11,12 @@ const PreLoginTemplateView = () =>
                 </div>
             </div>
             <div className = "RightSide">
-                <LoginContent />
+                {
+                //<LoginComponent />
+                }
+                {
+                <RegisterComponent />
+                }
             </div>
         </div>
 }

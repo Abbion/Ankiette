@@ -1,4 +1,5 @@
-import '../Css/LoginContent.css'
+import '../Css/BasicComponents.css'
+import '../Css/LoginComponent.css'
 import Logo from '../Graphics/Logo/Logo';
 
 const LoginContent = () =>
@@ -15,27 +16,27 @@ const LoginContent = () =>
         console.log("Recover");
     }
 
-    return  <div className="InputPanel">
+    return  <div className="LoginInputPanel">
                 <div className="Logo">
                     <Logo />
                     <p className="LogoName">ANKIETTE</p>
                 </div>
                 <div className="LoginInputs">
-                    <p className="InputText">Email</p>
-                    <input></input>
-                    <p className="InputText">Password</p>
-                    <input type="password"></input>
+                    <label className="InputLabel">Email</label>
+                    <input className="Input" />
+                    <label className="InputLabel">Password</label>
+                    <input className="Input" type="password" />
                 </div>
                 <div className="LogRegButtons">
-                    <button>
+                    <button className="Button">
                         Login
                     </button>
-                    <button>
+                    <button className="Button">
                         Register
                     </button>
                 </div>
                 <div className="RecoverButton">
-                    <button>
+                    <button className="Button">
                         Recover account
                     </button>
                 </div>

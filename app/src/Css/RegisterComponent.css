@@ -1,0 +1,95 @@
+
+.RegisterInputPanel{
+    background-color: #f8f8f8e3;
+    height: 500px;
+    width: 470px;
+
+    max-height: 90%;
+    min-height: 50%;
+    min-width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 60px;
+    backdrop-filter: blur(6px);
+    filter: drop-shadow(10px 10px 10px #000000bd);
+
+    color: #000A16;
+}
+
+.RegisterInputPanel > .Logo{
+    display: none;
+}
+
+.RegisterInputPanel > .TabName{
+    width: 75%;
+    margin-bottom: 20px;
+}
+
+.RegisterInputPanel > .TabName > h1{
+    margin: 0;
+    font-weight: 100;
+}
+
+.RegisterInputs{
+    width: 75%;
+}
+
+.RegisterInputs > .Input{
+    margin-bottom: 10px;
+    margin-top: 2px;
+}
+
+.RegisterButton{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RegisterButton > .Button{
+    margin-top: 40px;
+    width: 60%;
+}
+
+@media only screen and (max-width: 600px){
+    .RegisterInputPanel{
+        background-color: transparent;
+        filter: none;
+    }
+
+    .RegisterInputPanel > .Logo{
+        width: 30%;
+        display: block;
+        margin: 20px;
+    }
+
+    .RegisterInputPanel > .Logo > svg{
+        width: 100%;
+        height: auto;
+    }
+
+    .RegisterInputPanel > .Logo > .LogoName{
+        margin: 0;
+
+        font-size: 25px;
+        font-weight: 100;
+    
+        letter-spacing: 0.65vw;
+    } 
+
+    .RegisterInputPanel > .TabName{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        width: 75%;
+    }
+
+    .RegisterInputPanel > .TabName > h1{
+        font-size: 44px;
+    }
+}
