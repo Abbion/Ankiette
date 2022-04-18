@@ -1,0 +1,29 @@
+.Input{
+    width: 100%;
+    height: 22px;
+
+    padding: 0px 5px;
+    font-weight: 300;
+    
+    border-radius: 20px;
+    border:1px solid #000A16
+}
+
+.InputLabel{
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.Button{
+    height: 24px;
+
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    border:1px solid #000A16;
+
+    font-weight: 100;
+}
+
+.Button:hover{
+    background-color: #dddddd;
+}

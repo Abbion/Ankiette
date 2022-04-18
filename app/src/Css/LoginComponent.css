@@ -1,5 +1,6 @@
 
-.InputPanel{
+.LoginInputPanel{
+    overflow-y: auto;
     background-color: #f8f8f8e3;
     height: 600px;
     width: 470px;
@@ -20,7 +21,7 @@
     color: #000A16;
 }
 
-.Logo{
+.LoginInputPanel > .Logo{
     height: 200px;
     width: 80%;
 
@@ -33,12 +34,12 @@
 
 }
 
-.Logo > svg{
+.LoginInputPanel > .Logo > svg{
     width: 100%;
     height: auto;
 }
 
-.LogoName{
+.LoginInputPanel > .Logo > .LogoName{
     margin: 0;
 
     font-size: 55px;
@@ -52,24 +53,9 @@
     width: 75%;
 }
 
-.InputText{
-    margin: 0;
-    margin-top: 10px;
-    margin-bottom: 4px;
-
-    font-size: 18px;
-    font-weight: 100;
-}
-
-input{
-    width: 100%;
-    height: 22px;
-
-    padding: 0px 5px;
-    font-weight: 300;
-    
-    border-radius: 20px;
-    border:1px solid #000A16
+.LoginInputs > .Input{
+    margin-bottom: 20px;
+    margin-top: 2px;
 }
 
 .LogRegButtons{
@@ -82,15 +68,8 @@ input{
     justify-content: space-between;
 }
 
-.LogRegButtons > button{
+.LogRegButtons > .Button{
     width: 42%;
-    height: 24px;
-    
-    background-color: #F2F2F2;
-    border-radius: 20px;
-    border:1px solid #000A16;
-
-    font-weight: 100;
 }
 
 .RecoverButton{
@@ -103,33 +82,22 @@ input{
     align-items: center;
 }
 
-.RecoverButton > button{
+.RecoverButton > .Button{
     width: 60%;
-    height: 24px;
-
-    background-color: #F2F2F2;
-    border-radius: 20px;
-    border:1px solid #000A16;
-
-    font-weight: 100;
-}
-
-button:hover{
-    background-color: #dddddd;
 }
 
 @media only screen and (max-width: 600px){
-    .InputPanel{
+    .LoginInputPanel{
         background-color: transparent;
         filter: none;
     }
 
-    .Logo{
+    .LoginInputPanel > .Logo{
         width: 65%;
         height: 250px;
     }
 
-    .LogoName{
+    .LoginInputPanel > .Logo > .LogoName{
         font-size: 62px;
     }
 
@@ -145,7 +113,7 @@ button:hover{
         flex-direction: column;
     }
 
-    .LogRegButtons > button{
+    .LogRegButtons > .Button{
         width: 60%;
     }
 
@@ -153,7 +121,7 @@ button:hover{
         width: 65%;
     }
 
-    .RecoverButton > button{
+    .RecoverButton > .Button{
         width: 60%;
     }
 }
