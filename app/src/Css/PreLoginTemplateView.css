@@ -1,0 +1,63 @@
+.PreLoginTemplateView {
+    background-image: url("../../public/Graphics/Login/LoginBg.png");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.LeftSide{
+    background-color: #F2F2F2;
+    height: 200vh;
+    width: 55vw;
+
+    transform: rotate(-18.26deg) translate(0, -200px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CatchPhrase{
+    height: auto;
+    width: 60%;
+
+    font-size: 5vw;
+    text-align: center;
+    font-weight: 100;
+    
+    transform: rotate(18.26deg) translate(0, calc(-50vh + 200px));
+}
+
+.RightSide{
+    background-color: transparent;
+    height: 100vh;
+    width: 50vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 600px){
+    .PreLoginTemplateView{
+        background-image: none;
+        background-color: #F2F2F2;
+
+        overflow:auto;
+    }
+
+    .LeftSide{
+        display: none;
+    }
+
+    .RightSide{
+        width: 100vw;
+        height: 90vh;
+        min-height: 400px;
+    }
+}
