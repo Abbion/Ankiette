@@ -11,12 +11,7 @@ const PreLoginTemplateView = () =>
                 </div>
             </div>
             <div className = "RightSide">
-                {
-                //<LoginComponent />
-                }
-                {
-                <RegisterComponent />
-                }
+                <LoginComponent />
             </div>
         </div>
 }
