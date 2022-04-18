@@ -1,0 +1,94 @@
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2F2F2;
+    border-radius: 44px;
+    width: 32vw;
+    height: auto;
+    max-height: 90%;
+    min-height: 50%;
+    padding: 2rem 3rem;
+    border-radius: 55px;
+    backdrop-filter: blur(6px);
+    filter: drop-shadow(10px 10px 15px #00000093);
+    font-family: 'Adam', sans-serif;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
+    
+}
+
+.form * {
+    font-family: 'Adam', sans-serif;
+    font-weight: 700;
+}
+
+.logo {
+    height: auto;
+    display: flex;
+    margin: 5vh 0 7vh 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    width: 100%;
+    height: auto;
+    margin: -4vh 0;
+
+    
+}
+form {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+
+h2 {
+    font-size: 3rem;                                    
+    letter-spacing: 1.2rem;
+    margin: 0;
+}
+
+.C_button {
+    border:solid 2px #787878;
+    /* background-color: #F2F2F2; */
+    background-color: white;
+    line-height: 2rem;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0 3vw;
+    font-size: 1.5rem;
+    margin: 1vh 0;
+    cursor: pointer;
+    transition: color 0.5s, transform 0.2s, background-color 0.5s;
+
+    
+}
+
+.C_button:hover {
+    background-color: #787878;
+    color: #F2F2F2;
+}
+
+.buttons-login-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 2vh 0;
+}
+
+.captcha {
+    margin: 5vh 0;
+}
+

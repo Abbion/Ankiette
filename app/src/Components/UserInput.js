@@ -1,37 +1,43 @@
 import React from "react";
 import { useState } from "react";
+import PropTypes from 'prop-types'
+import "../Css/UserInput.css";
 
 
-const UserInput = (props) => {
-  const [focused, setFocused] = useState(false);
-  const handleFocus = (e) => {
-    setFocused(true);
-  };
+
+const UserInput = ({name, label, errorMessage, className, type, value, placeholder, onChange, pattern, required} ) => {
+    const [focused, setFocused] = useState(false);
+    const handleFocus = (e) => {
+        setFocused(true);
+    };
 
 
-  return (
-    <div className="input-container">
-      <label htmlFor={props.name}>{props.label}</label>
-      
-
-      <input
-        name={props.name}
-        type={props.type}
-        placeholder={props.placeholder}
-        value={props.value}
-        onChange={props.onChange}
-        pattern={props.pattern}
-        className={props.className}
-        required
-        onBlur={handleFocus}
-        onFocus={() =>
-          props.name === "confirmPassword" && setFocused(true)
-        }
-        focused={focused.toString()}
-      />
-      <span>{props.errorMessage}</span>
-    </div>
-  );
+    return (
+        <div className="input-container">
+            <label htmlFor={name}>{label}</label>
+            <input
+                name={name}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+                pattern={pattern}
+                className={className}
+                required={required}
+                onBlur={handleFocus}
+                onFocus={() =>
+                    name === "confirmPassword" && setFocused(true)
+                }
+                focused={focused.toString()}
+            />
+            <span>{errorMessage}</span>
+        </div>
+    );
 };
+
+UserInput.defaultProps = {
+    className: "input",
+
+}
 
 export default UserInput;
