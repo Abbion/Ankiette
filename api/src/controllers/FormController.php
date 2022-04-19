@@ -30,11 +30,16 @@ class FormController extends AppController {
 
         $request = json_decode($postData);
 
+        if(empty($request)) {
+            http_response_code(400);
+            echo json_encode("Bad request");
+            die();
+        }
+
         $email = trim($request->email);
         $title = trim($request->title);
-
-        $startDate = date("Y-m-d H:i:s", strtotime($request->startDate));
-        $endDate = date("Y-m-d H:i:s", strtotime($request->endDate));
+        $startDate = $request->startDate;
+        $endDate = $request->endDate;
 
         if(empty($email) || empty($title) || empty($startDate) || empty($endDate)) {
             http_response_code(400);
@@ -42,10 +47,13 @@ class FormController extends AppController {
             die();
         }
 
+        $startDate = date("Y-m-d H:i:s", strtotime($startDate));
+        $endDate = date("Y-m-d H:i:s", strtotime($endDate));
+
         $user = $this->userRepository->getUser($email);
 
         if(!$user) {
-            http_response_code(400);
+            http_response_code(404);
             echo json_encode("User does not exist");
             die();
         }
@@ -64,7 +72,8 @@ class FormController extends AppController {
 
         $this->formRepository->addForm($user, $form);
         http_response_code(200);
-        echo json_encode($code);
+        $response['code'] = $code;
+        echo json_encode($response);
     }
 
     private function generateCode(): string {
