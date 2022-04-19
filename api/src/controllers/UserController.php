@@ -83,7 +83,6 @@ class UserController extends AppController
             die();
         }
 
-        $this->validatePassword($password);
 
         if($newPassword) {
             $this->validatePassword($newPassword);
