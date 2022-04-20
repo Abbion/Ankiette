@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import UserInput from "./UserInput";
-import Button from "./Button";
-
 import "../Css/UserInput.css";
 import "../Css/Form.css";
 
@@ -78,7 +76,6 @@ const SignInForm = () => {
           <button className="C_button" type="submit">Login</button>
         </div>
       </form>
-      {/* <button className="C_button">Recover account</button> */}
       <button
         className="C_button"
         type="button"
