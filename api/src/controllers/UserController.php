@@ -83,8 +83,6 @@ class UserController extends AppController
             die();
         }
 
-        $this->validatePassword($password);
-
         if($newPassword) {
             $this->validatePassword($newPassword);
             $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
@@ -167,10 +165,4 @@ class UserController extends AppController
         return true;
     }
 
-
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> bd25ecf (updating user details & uploading profile picture: completed)
