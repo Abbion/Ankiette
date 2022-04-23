@@ -21,7 +21,7 @@ class QuestionController extends AppController {
         $formCode = trim($request->formCode);
 
         if(empty($formCode)) {
-            http_response_code(400);
+            http_response_code(404);
             echo json_encode("Empty form code");
             die();
         }
