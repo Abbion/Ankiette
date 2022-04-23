@@ -5,6 +5,7 @@ require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/RecoveryController.php';
 require_once 'src/controllers/UserController.php';
 require_once 'src/controllers/FormController.php';
+require_once 'src/controllers/QuestionController.php';
 
 class Routing
 {

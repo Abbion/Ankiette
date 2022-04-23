@@ -20,4 +20,6 @@ Routing::post('setProfilePicture', 'userController');
 
 Routing::post('addForm', 'FormController');
 
+Routing::post('addQuestions', 'QuestionController');
+
 Routing::run($path);
