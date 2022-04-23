@@ -21,13 +21,13 @@ class QuestionController extends AppController {
         $formCode = trim($request->formCode);
 
         if(empty($formCode)) {
-            http_response_code(404);
+            http_response_code(400);
             echo json_encode("Empty form code");
             die();
         }
 
         if($this->formRepository->codeUnique($formCode)) {
-            http_response_code(400);
+            http_response_code(404);
             echo json_encode("Form of such code does not exist");
             die();
         }
