@@ -79,6 +79,8 @@ class UserRepository extends Repository
     private function getEnabled()
     {
         return true;
+    }
+
     public function updatePassword(string $email, string $newPassword) {
         $stmt = $this->database->connect()->prepare('
             UPDATE users set hash=? WHERE email=?
