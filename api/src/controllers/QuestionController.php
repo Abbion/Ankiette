@@ -49,7 +49,7 @@ class QuestionController extends AppController {
                 die();
             }
 
-            $content = $body->content;
+            $content = trim($body->content);
             $required = $body->required;
 
             if(empty($content) || is_null($required)) {
