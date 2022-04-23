@@ -34,7 +34,7 @@ class QuestionRepository extends Repository {
 
                 $stmt->execute([
                     $questionID,
-                    $answer
+                    trim($answer)
                 ]);
             }
         }
