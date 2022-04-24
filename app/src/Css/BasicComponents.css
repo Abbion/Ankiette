@@ -15,9 +15,10 @@
 
 .Button{
     font-family: 'Adam';
-    font-size: 20px;
+    font-size: 28px;
 
-    height: 24px;
+    height: 36px;
+    width: 276px;
 
     background-color: #F2F2F2;
     border-radius: 20px;
