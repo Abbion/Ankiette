@@ -1,4 +1,6 @@
 body {
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Adam";
+    src: local("Adam-Medium"),
+        url("./Fonts/Adam-Medium.ttf") fromat("truetype");
 }
