@@ -103,4 +103,33 @@ class FormController extends AppController {
 
         return $code;
     }
+
+    public function getAllForms(){
+
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Content-Type');
+        header('Content-type: application/json');
+
+        $postData = file_get_contents("php://input");
+
+        if(!$this->isPost() || empty($postData)) {
+            http_response_code(400);
+            echo json_encode("Bad request");
+            die();
+        }
+
+        $request = json_decode($postData);
+        $email = trim($request->email);
+
+        $all = $this->formRepository->getAll($email);
+
+        if($all == NULL){
+            http_response_code(404);
+            echo json_encode("User does not exist");
+            die();
+        }
+
+        http_response_code(200);
+        echo json_encode($all,0,3);
+    }
 }

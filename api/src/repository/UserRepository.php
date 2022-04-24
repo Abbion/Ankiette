@@ -81,7 +81,8 @@ class UserRepository extends Repository
         return true;
     }
 
-    public function updatePassword(string $email, string $newPassword) {
+    public function updatePassword(string $email, string $newPassword) 
+    {
         $stmt = $this->database->connect()->prepare('
             UPDATE users set hash=? WHERE email=?
         ');
@@ -89,7 +90,8 @@ class UserRepository extends Repository
         $stmt->execute([$newPassword, $email]);
     }
 
-    public function updateUserData(string $email, string $name, string $surname) {
+    public function updateUserData(string $email, string $name, string $surname)
+    {
         $stmt = $this->database->connect()->prepare('
             UPDATE users_details set name=?, surname=?
             FROM users u 
@@ -100,7 +102,8 @@ class UserRepository extends Repository
         $stmt->execute([$name, $surname, $email]);
     }
 
-    public function updateUserPicture(string $email, string $pictureName) {
+    public function updateUserPicture(string $email, string $pictureName)
+    {
         $stmt = $this->database->connect()->prepare('
             UPDATE users_details set picture=?
             FROM users u 
