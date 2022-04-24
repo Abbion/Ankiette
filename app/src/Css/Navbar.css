@@ -1,0 +1,36 @@
+.NavbarItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 1920px;
+    height: 124px;
+
+    background: #F2F2F2;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 64px;
+    text-align: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 600px){
+    .NavbarItems {
+        position: relative;
+    }
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 500px;
+        position: absolute;
+        top:80px;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+}
