@@ -19,6 +19,7 @@ Routing::post('setUserDetails', 'userController');
 Routing::post('setProfilePicture', 'userController');
 
 Routing::post('addForm', 'FormController');
+Routing::post('getAllForms', 'FormController');
 
 Routing::post('addQuestions', 'QuestionController');
 

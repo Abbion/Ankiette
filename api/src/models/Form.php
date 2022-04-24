@@ -1,10 +1,10 @@
 <?php
 
 class Form {
-    private $title;
-    private $startDate;
-    private $endDate;
-    private $code;
+    public $title;
+    public  $startDate;
+    public  $endDate;
+    public  $code;
 
 
     public function __construct($title, $startDate, $endDate, $code) {
