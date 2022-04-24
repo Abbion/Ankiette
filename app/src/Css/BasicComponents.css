@@ -63,13 +63,14 @@
 }
 
 .Button{
+    font-family: 'Adam';
+    font-size: 20px;
+
     height: 24px;
     cursor: pointer;
     background-color: #F2F2F2;
     border-radius: 20px;
     border:1px solid #000A16;
-
-    font-weight: 100;
 }
 
 .Button:hover{
