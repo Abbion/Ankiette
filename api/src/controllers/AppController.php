@@ -17,7 +17,12 @@ class AppController
     protected function getRequest($type) {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Headers: Content-Type');
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS');
         header('Content-type: application/json');
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            echo "options";
+            die();
+        }
 
         $data = file_get_contents("php://input");
 

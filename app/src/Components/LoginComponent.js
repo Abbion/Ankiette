@@ -6,6 +6,20 @@ const LoginContent = () =>
 {
     function LoginClicked(){
         console.log("LogIn");
+
+        const data = {
+            email: "mail@mail.pl",
+            password: "1q2w3e4r"
+        }
+
+        fetch("http://localhost:8080/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+            .then(data => console.log(data));
     }
 
     function RegisetClicked(){
@@ -28,7 +42,7 @@ const LoginContent = () =>
                     <input className="Input" type="password" />
                 </div>
                 <div className="LogRegButtons">
-                    <button className="Button">
+                    <button className="Button" onClick={LoginClicked}>
                         Login
                     </button>
                     <button className="Button">
