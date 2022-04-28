@@ -16,7 +16,7 @@ const RegisterSuccessfulComponent = () => {
         <div className="TabName">
             <h1>Registration</h1>
         </div>
-        <div class="SuccessText">
+        <div className="SuccessText">
             <h1>Your account has been successfuly created.</h1>
         </div>
         <CircleGreenTick />
