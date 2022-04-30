@@ -89,15 +89,21 @@ class FormController extends AppController {
         $request = json_decode($postData);
         $email = trim($request->email);
 
-        $all = $this->formRepository->getAll($email);
+        $allForms = $this->formRepository->getAll($email);
+        $allEncodedForms = [];
 
-        if($all == NULL){
+        if($allForms == NULL){
             http_response_code(404);
-            echo json_encode("User does not exist");
+            echo json_encode("No forms found for the given email address");
             die();
         }
 
+        foreach ($allForms as $form) {
+            array_push($allEncodedForms, $form->toJson());
+        }
+
         http_response_code(200);
-        echo json_encode($all,0,3);
+        echo json_encode($allEncodedForms, 0, 3);
+//        echo json_encode($all,0,3);
     }
 }
