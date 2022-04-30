@@ -2,6 +2,7 @@ import '../Css/PreLoginTemplateView.css'
 import LoginComponent from '../Components/LoginComponent'
 import RegisterComponent from '../Components/RegisterComponent'
 import RegisterSuccessfulComponent from '../Components/RegisterSuccessfulComponent'
+import AccountRecoveryComponent from '../Components/AccountRecoveryComponent'
 
 const PreLoginTemplateView = () =>
 {
