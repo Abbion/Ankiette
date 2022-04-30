@@ -1,10 +1,10 @@
 <?php
 
 class Form {
-    public $title;
-    public  $startDate;
-    public  $endDate;
-    public  $code;
+    private $title;
+    private  $startDate;
+    private  $endDate;
+    private  $code;
 
 
     public function __construct($title, $startDate, $endDate, $code) {
@@ -12,6 +12,15 @@ class Form {
         $this->startDate = $startDate;
         $this->endDate = $endDate;
         $this->code = $code;
+    }
+
+    public function toJson(): array {
+        $json["title"] = $this->title;
+        $json["startDate"] = $this->startDate;
+        $json["endDate"] = $this->endDate;
+        $json["code"] = $this->code;
+
+        return $json;
     }
 
     public function getTitle()
@@ -34,6 +43,7 @@ class Form {
         $this->startDate = $startDate;
     }
 
+
     public function getEndDate()
     {
         return $this->endDate;
@@ -53,6 +63,4 @@ class Form {
     {
         $this->code = $code;
     }
-
-
 }
