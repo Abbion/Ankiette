@@ -6,17 +6,46 @@
     font-weight: 300;
     
     border-radius: 20px;
+    
     border:1px solid #000A16
+}
+
+.Input:focus {
+    background-color: #dddddd;
+    color: black;
+    outline-color: #787878;
+}
+
+.Input:invalid[focused="true"] {
+    border:solid 2px red;
+
+}
+
+
+span {
+    font-size: 10px;
+    color: red;
+    
+    text-align: right;
+    margin: 0px 10px;
+    display: none;
+}
+
+.Input:invalid[focused="true"] + span {
+    display: block;
+
 }
 
 .InputLabel{
     font-size: 18px;
     font-weight: 100;
+    margin-top: 10px;
+    display: inline-block;
 }
 
 .Button{
     height: 24px;
-
+    cursor: pointer;
     background-color: #F2F2F2;
     border-radius: 20px;
     border:1px solid #000A16;

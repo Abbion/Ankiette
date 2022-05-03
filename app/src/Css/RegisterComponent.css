@@ -1,7 +1,7 @@
 
 .RegisterInputPanel{
     background-color: #f8f8f8e3;
-    height: 500px;
+    height: 600px;
     width: 470px;
 
     max-height: 90%;
@@ -39,7 +39,7 @@
 }
 
 .RegisterInputs > .Input{
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     margin-top: 2px;
 }
 

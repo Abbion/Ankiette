@@ -28,7 +28,7 @@
     font-size: 5vw;
     text-align: center;
     font-weight: 100;
-    
+    font-family: 'Adam', sans-serif;
     transform: rotate(18.26deg) translate(0, calc(-50vh + 200px));
 }
 
