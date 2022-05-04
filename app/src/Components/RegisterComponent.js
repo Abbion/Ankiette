@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import "../Css/BasicComponents.css";
 import "../Css/RegisterComponent.css";
-import Logo from "../Graphics/Logo/Logo";
 
 const RegisterComponent = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +9,8 @@ const RegisterComponent = () => {
   const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [responseError, setResponseError] = useState("");
+
 
   const [focusedEmail, setFocusedEmail] = useState(false);
   const [focusedPassword, setFocusedPassword] = useState(false);
@@ -64,6 +65,27 @@ const RegisterComponent = () => {
       password: password
     };
 
+
+    let responseStatus = 0;
+    
+    fetch("http://localhost:8080/register", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userRegisterData)
+        }).then(response => {
+          responseStatus = response.status;
+          return response.json();
+        })
+          .then(data => {
+            if(responseStatus == 200) {
+              console.log(data);
+            } else setResponseError(data);
+            return data;
+          });
+    
+
     setEmail("");
     setName("");
     setSurname("");
@@ -75,19 +97,16 @@ const RegisterComponent = () => {
     setFocusedName(false);
     setFocusedSurname(false);
     setFocusedConfirmPassword(false);
+    setResponseError("");
 
 
-    console.log(userRegisterData);
   };
 
   return (
     <div className="RegisterInputPanel">
-      <div className="Logo">
-        <Logo />
-        <p className="LogoName">ANKIETTE</p>
-      </div>
       <div className="TabName">
         <h1>Registration</h1>
+        <p className="ResponseError">{responseError}</p>
       </div>
       <form
         className="RegisterInputs"
@@ -108,7 +127,7 @@ const RegisterComponent = () => {
           focused={focusedEmail.toString()}
           required
         />
-        <span>{errorMessages.emailError}</span>
+        <span className="InputError">{errorMessages.emailError}</span>
         <label className="InputLabel" htmlFor="">
           Name
         </label>
@@ -123,7 +142,7 @@ const RegisterComponent = () => {
           focused={focusedName.toString()}
           required
         />
-        <span>{errorMessages.nameError}</span>
+        <span className="InputError">{errorMessages.nameError}</span>
         <label className="InputLabel" htmlFor="">
           Surname
         </label>
@@ -138,7 +157,7 @@ const RegisterComponent = () => {
           focused={focusedSurname.toString()}
           required
         />
-        <span>{errorMessages.surnameError}</span>
+        <span className="InputError">{errorMessages.surnameError}</span>
         <label className="InputLabel" htmlFor="">
           Password
         </label>
@@ -154,7 +173,7 @@ const RegisterComponent = () => {
           focused={focusedPassword.toString()}
           required
         />
-        <span>{errorMessages.passwordError}</span>
+        <span className="InputError">{errorMessages.passwordError}</span>
         <label className="InputLabel" htmlFor="">
           Repeat password
         </label>
@@ -170,7 +189,7 @@ const RegisterComponent = () => {
           focused={focusedConfirmPassword.toString()}
           required
         />
-        <span>{errorMessages.confirmPasswordError}</span>
+        <span className="InputError">{errorMessages.confirmPasswordError}</span>
       </form>
       <div className="RegisterButton">
         <button className="Button" type="submit" form="registerForm">

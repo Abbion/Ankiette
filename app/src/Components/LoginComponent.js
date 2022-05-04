@@ -9,6 +9,8 @@ const LoginContent = () => {
   const [password, setPassword] = useState("");
   const [focusedEmail, setFocusedEmail] = useState(false);
   const [focusedPassword, setFocusedPassword] = useState(false);
+  const [responseError, setResponseError] = useState("");
+
   const focusHandler = (func) => {
     func(true);
   };
@@ -31,10 +33,35 @@ const LoginContent = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     const userLoginData = {
       email: email,
       password: password
     };
+    
+    let responseStatus = 0;
+    
+    fetch("http://localhost:8080/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userLoginData)
+        }).then(response => {
+          responseStatus = response.status;
+          return response.json();
+        })
+          .then(data => {
+            if(responseStatus == 200) {
+              console.log(data);
+              return data;
+            } else setResponseError(data);
+          });
+    
+      
+    
+
+    
 
     
 
@@ -42,6 +69,7 @@ const LoginContent = () => {
     setPassword("");
     setFocusedEmail(false);
     setFocusedPassword(false);
+    setResponseError("");
 
     // console.log(userLoginData);
   };
@@ -59,8 +87,10 @@ const LoginContent = () => {
       <div className="Logo">
         <Logo />
         <p className="LogoName">ANKIETTE</p>
+        <p className="ResponseError">{responseError}</p>
       </div>
       <form className="LoginInputs" id="loginForm" onSubmit={submitHandler}>
+        
         <label className="InputLabel" htmlFor="email">
           Email
         </label>
@@ -75,7 +105,7 @@ const LoginContent = () => {
           focused={focusedEmail.toString()}
           required
         ></input>
-        <span>{errorMessages.emailError}</span>
+        <span className="InputError">{errorMessages.emailError}</span>
 
         <label className="InputLabel" htmlFor="password">
           Password
@@ -92,7 +122,7 @@ const LoginContent = () => {
           focused={focusedPassword.toString()}
           required
         ></input>
-        <span className="ErrorMessage">{errorMessages.passwordError}</span>
+        <span className="InputError">{errorMessages.passwordError}</span>
       </form>
       <div className="LogRegButtons">
         <button className="Button" type="submit" form="loginForm">

@@ -22,7 +22,7 @@
 }
 
 
-span {
+.InputError {
     font-size: 10px;
     color: red;
     
@@ -31,7 +31,18 @@ span {
     display: none;
 }
 
-.Input:invalid[focused="true"] + span {
+.ResponseError {
+    font-size: 10px;
+    color: red;
+    
+    text-align: center;
+    margin: 0;
+    display: inline-block;
+}
+
+
+
+.Input:invalid[focused="true"] + .InputError {
     display: block;
 
 }

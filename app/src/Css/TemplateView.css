@@ -1,4 +1,4 @@
-.PreLoginTemplateView {
+.TemplateView {
     background-image: url("../../public/Graphics/Login/LoginBg.png");
     background-size: cover;
     width: 100vw;
@@ -44,7 +44,7 @@
 
 
 @media only screen and (max-width: 600px){
-    .PreLoginTemplateView{
+    .TemplateView{
         background-image: none;
         background-color: #F2F2F2;
 
