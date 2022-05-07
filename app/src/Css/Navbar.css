@@ -87,6 +87,16 @@
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         opacity: 1;
         transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.8 rem;
+        cursor: pointer;
     }
 
     .menu-icon {
