@@ -19,7 +19,7 @@ class Navbar extends Component {
                 </ul>
                 <div className="menu-icon" onClick={this.handleClick}>
                     <img src={this.state.clicked ? MenuXmark : MenuBars} 
-                    alt={this.state.clicked ? "MenuXmark" : "MenuBars"} width={40}></img>
+                    alt={this.state.clicked ? "MenuXmark" : "MenuBars"} width={50}></img>
                 </div>
             </nav>
         )
