@@ -4,33 +4,75 @@
     align-items: center;
 
     position: absolute;
-    width: 1920px;
-    height: 124px;
+    width: 100vw;
+    height: 30vh;
+    max-height: 124px;
+    min-height: 80px;
 
     background: #F2F2F2;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
 }
 
+.Button {
+    width: calc(45px + 12vw);
+    font-size: calc(10px + 0.88vw);
+}
+
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 64px;
+    grid-gap: calc(16px + 2vw);
     text-align: center;
     justify-content: center;
+    list-style: none;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.menu-bars {
+    width: 20px;
+    height: 20px;
+}
+
+.menu-xmark {
+    width: 20px;
+    height: 20px;
 }
 
 @media only screen and (max-width: 600px){
     .NavbarItems {
         position: relative;
+        height: 60px;
     }
+
     .nav-menu {
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 500px;
         position: absolute;
-        top:80px;
+        top: 60px;
+        right: -100%;
         opacity: 1;
         transition: all 0.5s ease;
+    }
+
+    .nav-menu.active {
+        background: #F2F2F2;
+        right: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.8 rem;
+        cursor: pointer;
     }
 }

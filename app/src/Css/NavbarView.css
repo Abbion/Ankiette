@@ -1,4 +1,5 @@
 .NavbarView {
+    position: relative;
     background-image: url("../../public/Graphics/Login/LoginBg.png");
     background-size: cover;
     width: 100vw;
@@ -7,4 +8,11 @@
     display: flex;
     flex-direction: row;
     overflow: hidden;
+}
+
+.Navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
 }
