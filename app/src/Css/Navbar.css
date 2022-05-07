@@ -1,7 +1,10 @@
 .NavbarItems {
     display: flex;
     position: absolute;
+<<<<<<< HEAD
     top: 0;
+=======
+>>>>>>> 9ccd124 (Navbar attempt #3)
 
     width: 100vw;
     height: 30vh;
@@ -39,20 +42,32 @@
 @media (max-width: 600px) {
     .NavbarItems {
         position: relative;
+<<<<<<< HEAD
         top: 0;
         height: 90px;
+=======
+        height: 60px;
+>>>>>>> 9ccd124 (Navbar attempt #3)
         z-index: 1;
     }
 
     .Button {
+<<<<<<< HEAD
         width: 50vw;
         font-size: 28px;
+=======
+        width: 40vw;
+        font-size: 24px;
+>>>>>>> 9ccd124 (Navbar attempt #3)
     }
 
     .nav-menu {
         display: flex;
         flex-direction: column;
+<<<<<<< HEAD
         row-gap: 50px;
+=======
+>>>>>>> 9ccd124 (Navbar attempt #3)
         position: absolute;
 
         width: 100%;
@@ -87,7 +102,6 @@
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
         opacity: 1;
         transition: all 0.5s ease;
-        z-index: 1;
     }
 
     .menu-icon {
