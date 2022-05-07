@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { MenuItems } from "./MenuItems"
 import '../Css/Navbar.css'
+import MenuBars from "../Graphics/Icons/MenuBars.png"
+import MenuXmark from "../Graphics/Icons/MenuXmark.png"
 
 class Navbar extends Component {
     state = {clicked: false }
@@ -16,7 +18,8 @@ class Navbar extends Component {
                     {MenuItems.map((button, index) => React.cloneElement(button, {key: index}))}
                 </ul>
                 <div className="menu-icon" onClick={this.handleClick}>
-                    <img src={this.state.clicked ? "../Svg/MenuBars.svg" : "../../public/Graphics/Icon/MenuXmark.png"}></img>
+                    <img src={this.state.clicked ? MenuXmark : MenuBars} 
+                    alt={this.state.clicked ? "MenuXmark" : "MenuBars"} width={40}></img>
                 </div>
             </nav>
         )
