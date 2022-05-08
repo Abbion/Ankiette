@@ -39,4 +39,75 @@ class QuestionRepository extends Repository {
             }
         }
     }
+
+    public function getQuestions($formCode) {
+
+        $connection = $this->database->connect();
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT q.* FROM questions q
+            JOIN forms f on q.id_forms = f.id_forms
+            WHERE f.code = :code
+            ORDER BY q.id_questions
+        ');
+
+        $stmt->bindParam(':code', $formCode);
+        $stmt->execute();
+
+        $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $questions = [];
+
+        if($array != false) {
+            foreach ($array as $element) {
+                if($element['question_content'] !== null) {
+                    $question = $this->createQuestionInstance($element);
+                    $questions[] = $question;
+                }
+            }
+        }
+
+        return $questions;
+    }
+
+    private function createQuestionInstance($element): Question {
+
+        $question = new Question(
+            $element['id_type'],
+            $element['question_content'],
+            $element['required']
+        );
+
+        if($question->getType() == 1 || $question->getType() == 2) {
+            $question->setAnswers($this->getAvailableAnswers($element['id_questions']));
+        }
+
+        return $question;
+    }
+
+    private function getAvailableAnswers($id): array {
+
+        $connection = $this->database->connect();
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM available_answers
+            WHERE id_question = :id
+            ORDER BY id_available_answers
+        ');
+
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $answers = [];
+
+        if($array != false) {
+            foreach ($array as $element) {
+                if($element['answer'] !== null) {
+                    $answers[] = $element['answer'];
+                }
+            }
+        }
+
+        return $answers;
+    }
 }

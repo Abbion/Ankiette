@@ -14,6 +14,24 @@ class Question {
         $this->answers = $answers;
     }
 
+    public function toJSON(): array {
+        $json = [];
+
+        $body = [];
+        $body['content'] = $this->content;
+        $body['required'] = $this->required;
+
+        if($this->answers != null) {
+            $body['answers'] = $this->answers;
+        }
+
+        $json['type'] = $this->type;
+        $json['body'] = $body;
+
+        return $json;
+
+    }
+
     public function getType()
     {
         return $this->type;
