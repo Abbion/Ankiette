@@ -1,13 +1,10 @@
 import '../Css/TemplateView.css'
-import LoginComponent from '../Components/LoginComponent'
 import RegisterComponent from '../Components/RegisterComponent'
-import AccountRecoveryComponent from '../Components/AccountRecoveryComponent'
-import RegisterSuccessfulComponent from '../Components/RegisterSuccessfulComponent'
 
 import { ReactSession } from 'react-client-session';
 import {Navigate} from 'react-router-dom';
 
-const PreLoginTemplateView = () =>
+const RegisterView = () =>
 {
     if(ReactSession.get("isAuthenticated")) {
         return <Navigate to={"/home"} />
@@ -19,9 +16,9 @@ const PreLoginTemplateView = () =>
                 </div>
             </div>
             <div className = "RightSide">
-                <LoginComponent />
+                <RegisterComponent />
             </div>
         </div>
 }
 
-export default PreLoginTemplateView;
+export default RegisterView;

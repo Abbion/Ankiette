@@ -67,3 +67,8 @@
 .Button:hover{
     background-color: #dddddd;
 }
+
+.ReCAPTCHA{
+    margin-top: 15px;
+    display: block;
+}
