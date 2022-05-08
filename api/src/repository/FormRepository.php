@@ -51,4 +51,22 @@ class FormRepository extends Repository {
             $user->getEmail()
         ]);
     }
+
+    public function existsAndOwner(string $email, string $code) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM forms f 
+            JOIN users u ON u.id = f.id_user 
+            WHERE u.email = :email AND f.code = :code
+        ');
+
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+
+        $form = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($form == false) {
+            return false;
+        } else return true;
+    }
 }

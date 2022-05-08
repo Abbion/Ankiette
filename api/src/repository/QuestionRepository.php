@@ -42,8 +42,6 @@ class QuestionRepository extends Repository {
 
     public function getQuestions($formCode) {
 
-        $connection = $this->database->connect();
-
         $stmt = $this->database->connect()->prepare('
             SELECT q.* FROM questions q
             JOIN forms f on q.id_forms = f.id_forms
@@ -77,16 +75,19 @@ class QuestionRepository extends Repository {
             $element['required']
         );
 
-        if($question->getType() == 1 || $question->getType() == 2) {
-            $question->setAnswers($this->getAvailableAnswers($element['id_questions']));
+        switch($question->getType()) {
+            case 1:
+            case 2:
+                $question->setAnswers($this->getAvailableAnswers($element['id_questions']));
+                break;
         }
+
+        $question->setId($element['id_questions']);
 
         return $question;
     }
 
     private function getAvailableAnswers($id): array {
-
-        $connection = $this->database->connect();
 
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM available_answers
@@ -109,32 +110,5 @@ class QuestionRepository extends Repository {
         }
 
         return $answers;
-    }
-
-    public function getIDs(string $code): array {
-        $connection = $this->database->connect();
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT q.id_questions FROM questions q
-            JOIN forms f on q.id_forms = f.id_forms
-            WHERE f.code = :code
-            ORDER BY id_questions
-        ');
-
-        $stmt->bindParam(':code', $code);
-        $stmt->execute();
-
-        $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $id = [];
-
-        if($array != false) {
-            foreach ($array as $element) {
-                if($element['id_questions'] !== null) {
-                    $id[] = $element['id_questions'];
-                }
-            }
-        }
-
-        return $id;
     }
 }

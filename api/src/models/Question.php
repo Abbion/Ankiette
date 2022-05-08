@@ -5,6 +5,7 @@ class Question {
     private $content;
     private $required;
     private $answers;
+    private $id;
 
     public function __construct($type, $content, $required, $answers = null)
     {
@@ -72,5 +73,13 @@ class Question {
         $this->answers = $answers;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 }
