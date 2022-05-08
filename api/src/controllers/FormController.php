@@ -81,7 +81,7 @@ class FormController extends AppController {
         }
 
         if(empty($json)) {
-            http_response_code(400);
+            http_response_code(404);
             echo json_encode("Form does not exist");
             die();
         }
