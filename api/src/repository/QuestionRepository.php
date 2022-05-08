@@ -110,4 +110,31 @@ class QuestionRepository extends Repository {
 
         return $answers;
     }
+
+    public function getIDs(string $code): array {
+        $connection = $this->database->connect();
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT q.id_questions FROM questions q
+            JOIN forms f on q.id_forms = f.id_forms
+            WHERE f.code = :code
+            ORDER BY id_questions
+        ');
+
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+
+        $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $id = [];
+
+        if($array != false) {
+            foreach ($array as $element) {
+                if($element['id_questions'] !== null) {
+                    $id[] = $element['id_questions'];
+                }
+            }
+        }
+
+        return $id;
+    }
 }
