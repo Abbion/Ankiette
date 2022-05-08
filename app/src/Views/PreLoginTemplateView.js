@@ -1,8 +1,11 @@
 import '../Css/TemplateView.css'
+import LoginComponent from '../Components/LoginComponent'
 import RegisterComponent from '../Components/RegisterComponent'
+import AccountRecoveryComponent from '../Components/AccountRecoveryComponent'
+import RegisterSuccessfulComponent from '../Components/RegisterSuccessfulComponent'
 
 
-const RegisterView = () =>
+const PreLoginTemplateView = () =>
 {
     return <div className = "TemplateView">
             <div className = "LeftSide">
@@ -11,9 +14,9 @@ const RegisterView = () =>
                 </div>
             </div>
             <div className = "RightSide">
-                <RegisterComponent />
+                <LoginComponent />
             </div>
         </div>
 }
 
-export default RegisterView;
+export default PreLoginTemplateView;
