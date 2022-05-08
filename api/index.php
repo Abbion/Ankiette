@@ -11,7 +11,7 @@ Routing::get('test', 'DefaultController');
 Routing::get('login', 'SecurityController'); // dlaczego get????
 Routing::post('register', 'SecurityController');
 
-Routing::get('sendCode', 'RecoveryController');
+Routing::post('sendCode', 'RecoveryController');
 Routing::get('recoverAccount', 'RecoveryController');
 
 Routing::get('getUserDetails', 'userController');

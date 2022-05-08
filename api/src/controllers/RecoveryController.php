@@ -20,7 +20,7 @@ class RecoveryController extends AppController {
 
     public function sendCode() {
 
-        $request = $this->getRequest('GET');
+        $request = $this->getRequest('POST');
         $email = trim($request->email);
 
         if(empty($email)) {

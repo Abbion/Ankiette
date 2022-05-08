@@ -40,7 +40,15 @@
     display: inline-block;
 }
 
+.Info:empty {
+    display: none;
+}
 
+.Info {
+    font-size: 10px;
+    color: green;
+    margin: 8px;
+}
 
 .Input:invalid[focused="true"] + .InputError {
     display: block;
@@ -69,6 +77,6 @@
 }
 
 .ReCAPTCHA{
-    margin-top: 15px;
+    margin-top: 10px;
     display: block;
 }

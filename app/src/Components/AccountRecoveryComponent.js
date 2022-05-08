@@ -11,8 +11,15 @@ const AccountRecoveryComponent = () => {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
-    const [code, setCode] = useState("");
+    const [recoveryCode, setRecoveryCode] = useState("");
+    const [tempPassword, setTempPassword] = useState("");
+    const [emailSentInfo, setEmailSentInfo] = useState("");
     const [responseError, setResponseError] = useState("");
+
+    const infoMessages = {
+        emailSent: "Check your email.",
+        tempPassword: "Your temporary password is: ",
+    }
 
     const emailHandler = (e) => {
         setEmail(e.target.value);
@@ -20,8 +27,8 @@ const AccountRecoveryComponent = () => {
     }
 
     const codeHandler = (e) => {
-        setCode(e.target.value);
-        console.log(code);
+        setRecoveryCode(e.target.value);
+        console.log(recoveryCode);
     }
 
     const sendCodeHandler = (e) => {
@@ -34,7 +41,7 @@ const AccountRecoveryComponent = () => {
         let responseStatus = 0;
 
         fetch("http://localhost:8080/sendCode", {
-            method: "GET",
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -46,12 +53,47 @@ const AccountRecoveryComponent = () => {
             .then(data => {
                 if(responseStatus === 200) {
                     console.log(data);
+                    setEmailSentInfo(infoMessages.emailSent);
                     return data;
                 }else setResponseError(data);
             })
         setEmail("");
         setResponseError("");
     };
+
+    const recoverAccountHandler = (e) => {
+        //e.preventDefault();
+
+        const requestData = {
+            recoveryCode: recoveryCode,
+        };
+
+        let responseStatus = 0;
+
+        fetch("http://localhost:8080/recoverAccount", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        }).then(response => {
+            responseStatus = response.status;
+            return response.json();
+        })
+            .then(data => {
+                if(responseStatus === 200) {
+                    console.log(data);
+                    setTempPassword(infoMessages.tempPassword + data.tmpPassword);
+                    return data;
+                }else {
+                    setResponseError(data);
+                    setTempPassword("Wrong code.");
+                }
+            });
+
+        setRecoveryCode("");
+        setResponseError("");
+    }
 
     return <div className="AccountRecoveryPanel">
         <div className="Logo">
@@ -75,22 +117,25 @@ const AccountRecoveryComponent = () => {
                 required
             />
         </div>
-        <button className="Button">Send code</button>
+        <button className="Button" onClick={sendCodeHandler}>Send code</button>
+        <span className="Info">{emailSentInfo}</span>
         <div className="InputField">
             <label className="InputLabel">8 digit code</label>
             <input
                 className="Input"
                 name="code"
                 type="code"
-                value={code}
+                value={recoveryCode}
                 onChange={codeHandler}
+                required
             />
         </div>
         <ReCAPTCHA
             sitekey={"6Lfbjs8fAAAAABVVOJa5zQnAg8-yhB4u5-MUbpdG"}
             className="ReCAPTCHA"
         />
-        <button className="Button">Recover account</button>
+        <span className="Info">{tempPassword}</span>
+        <button className="Button" onClick={() => {recoverAccountHandler()}}>Recover account</button>
     </div>
 }
 

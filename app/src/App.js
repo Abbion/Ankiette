@@ -9,16 +9,6 @@ import RegisterSuccessfulView from "./Views/RegisterSuccessfulView";
 import AccountRecoveryView from "./Views/AccountRecoveryView";
 
 
-//class App extends Component {
-//  render() {
-//    return <div style={{margin: 0}} className="App">
-//        {/* <LoginView /> */}
-//        <RegisterView/>
-//
-//    </div>
-//  };
-//}
-
 const PrivateRoute = () => {
     const isAuthenticated = ReactSession.get("isAuthenticated");
     return (isAuthenticated) ? <Outlet/> : <Navigate to={"/login"} />;
