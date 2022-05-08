@@ -23,4 +23,6 @@ Routing::post('getForm', 'FormController');
 
 Routing::post('addQuestions', 'QuestionController');
 
+Routing::post('addAnswers', 'AnswersController');
+
 Routing::run($path);
