@@ -63,7 +63,7 @@ class FormController extends AppController {
     }
 
     public function getForm() {
-        $request = $this->getRequest('GET');
+        $request = $this->getRequest('POST');
 
         $code = trim($request->code);
 
