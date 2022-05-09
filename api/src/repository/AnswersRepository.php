@@ -39,7 +39,7 @@ class AnswersRepository extends Repository {
             WHERE ga.id_question = :id AND ga.given_answer IN 
                 (SELECT aa.answer FROM available_answers aa WHERE aa.id_question = :id)
             GROUP BY ga.given_answer
-            ORDER BY ga.given_answer;
+            ORDER BY count(ga.id_given_answers) DESC;
         ');
 
         $stmt->bindParam(':id', $id);
@@ -49,30 +49,17 @@ class AnswersRepository extends Repository {
         $givenAnswers = [];
 
         if($array != false) {
-            foreach ($answers as $availableAnswer) {
-                $flag = true;
+            foreach ($array as $givenAnswer) {
 
-                foreach ($array as $givenAnswer) {
-                    $tmp = [];
-
-                    if($availableAnswer == $givenAnswer['given_answer']) {
-                        $flag = false;
-                        $tmp[] = $availableAnswer;
-                        $tmp[] = $givenAnswer['amount'];
-
-                        $givenAnswers[] = $tmp;
-                        $array = array_diff($array, $givenAnswer);
-                        break;
-                    }
-                }
-
-                if($flag) {
-                    $tmp[] = $availableAnswer;
-                    $tmp[] = 0;
-
-                    $givenAnswers[] = $tmp;
+                if($givenAnswer != null) {
+                    $givenAnswers[] = [$givenAnswer['given_answer'], $givenAnswer['amount']];
+                    $answers = array_diff($answers, [$givenAnswer['given_answer']]);
                 }
             }
+        }
+
+        foreach ($answers as $answer) {
+            $givenAnswers[] = [$answer, 0];
         }
 
         return $givenAnswers;
