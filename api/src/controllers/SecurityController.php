@@ -14,60 +14,34 @@ class SecurityController extends AppController
         $this->userRepository = new UserRepository();
     }
 
-    public function login()
-    {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
+    public function login() {
 
-        $postData = file_get_contents("php://input");
+        $request = $this->getRequest('POST');
 
-        //email:    mail@mail.com
-        //password:   12345
+        $email = $request->email;
+        $password = $request->password;
 
-        if (!$this->isPost() || empty($postData)) {
+        if (empty($email) || empty($password)) {
             http_response_code(400);
             echo json_encode("Bad request");
+
         } else {
-            $request = json_decode($postData);
+            $user = $this->userRepository->getUser($email);
 
-            $email = $request->email;
-            $password = $request->password;
-
-            if (empty($email) || empty($password)) {
-                http_response_code(400);
-                echo json_encode("Bad request");
-
+            if (!$user || !password_verify($password, $user->getPassword())) {
+                http_response_code(404);
+                echo json_encode("Wrong email or password.");
             } else {
-                $user = $this->userRepository->getUser($email);
-
-                if (!$user || !password_verify($password, $user->getPassword())) {
-                    http_response_code(404);
-                    echo json_encode("Wrong email or password.");
-                } else {
-                    http_response_code(200);
-                    echo json_encode($user->toJson());
-                }
+                http_response_code(200);
+                echo json_encode($user->toJson());
             }
         }
     }
 
-    public function register()
-    {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
+    public function register() {
 
-        $postData = file_get_contents("php://input");
-        var_dump($postData);
-        // Required:
-        //  name:    "jakub"
-        //  surname:   "usyk"
-        //  email:   "mail@mail.com"
-        //  password:   "123456789"
+        $request = $this->getRequest('POST');
 
-
-        $request = json_decode($postData);
         $name = trim($request->name);
         $surname = trim($request->surname);
         $email = trim($request->email);
@@ -79,7 +53,6 @@ class SecurityController extends AppController
             echo json_encode("Bad request");
             die();
         }
-
 
         if (!ctype_alpha($name) || !ctype_alpha($surname)) {
             http_response_code(400);
@@ -109,8 +82,6 @@ class SecurityController extends AppController
 
         http_response_code(200);
         echo json_encode("User added.");
-
-
     }
 
     private function isEmailInUse($email): bool

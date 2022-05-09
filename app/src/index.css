@@ -1,6 +1,12 @@
 body {
-    margin: 0;
-    font-family: "Adam";
-    src: local("Adam-Medium"),
-        url("./Fonts/Adam-Medium.ttf") fromat("truetype");
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }

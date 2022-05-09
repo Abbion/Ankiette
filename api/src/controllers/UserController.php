@@ -17,21 +17,9 @@ class UserController extends AppController
         $this->userRepository = new UserRepository();
     }
 
-    public function getUserDetails()
-    {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
+    public function getUserDetails() {
 
-        $postData = file_get_contents("php://input");
-
-        if(!$this->isGet() || empty($postData)) {
-            http_response_code(400);
-            echo json_encode("Bad request");
-            die();
-        }
-
-        $request = json_decode($postData);
+        $request = $this->getRequest('GET');
         $email = $request->email;
 
         $user = $this->userRepository->getUser($email);
@@ -44,20 +32,10 @@ class UserController extends AppController
         }
     }
 
-    public function setUserDetails()
-    {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
+    public function setUserDetails() {
 
-        $postData = file_get_contents("php://input");
-        if(!$this->isPost() || empty($postData)) {
-            http_response_code(400);
-            echo json_encode("Bad request");
-            die();
-        }
+        $request = $this->getRequest('POST');
 
-        $request = json_decode($postData);
         $name = trim($request->name);
         $surname = trim($request->surname);
         $email = trim($request->email);

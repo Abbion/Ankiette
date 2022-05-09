@@ -1,7 +1,7 @@
-
-.RegisterInputPanel{
+.RegisterSuccessfulPanel{
+    overflow-y: auto;
     background-color: #f8f8f8e3;
-    height: 600px;
+    height: 550px;
     width: 470px;
 
     max-height: 90%;
@@ -20,68 +20,69 @@
     color: #000A16;
 }
 
-.RegisterInputPanel > .Logo{
+.RegisterSuccessfulPanel > .Logo{
     display: none;
 }
 
-.RegisterInputPanel > .TabName{
+.RegisterSuccessfulPanel > .TabName{
     width: 75%;
     margin-bottom: 20px;
 }
 
-.RegisterInputPanel > .TabName > h1{
+.RegisterSuccessfulPanel > .TabName > h1{
+    font-size: 45px;
     margin: 0;
     font-weight: 100;
 }
 
-.RegisterInputs{
+.RegisterSuccessfulPanel > .SuccessText{
     width: 75%;
+    text-align: center;
 }
 
-.RegisterInputs > .Input{
-    /* margin-bottom: 10px; */
-    margin-top: 2px;
+.RegisterSuccessfulPanel > .SuccessText > h1{
+    font-weight: 100;
 }
 
-.RegisterButton{
+.LoginNowButton{
     width: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.RegisterButton > .Button{
+.LoginNowButton > .Button{
     margin-top: 40px;
     width: 60%;
 }
 
 @media only screen and (max-width: 600px){
-    .RegisterInputPanel{
+    .RegisterSuccessfulPanel{
         background-color: transparent;
         filter: none;
     }
 
-    .RegisterInputPanel > .Logo{
+    .RegisterSuccessfulPanel > .Logo{
         width: 30%;
         display: block;
         margin: 20px;
     }
 
-    .RegisterInputPanel > .Logo > svg{
+    .RegisterSuccessfulPanel > .Logo > svg{
         width: 100%;
         height: auto;
     }
 
-    .RegisterInputPanel > .Logo > .LogoName{
+    .RegisterSuccessfulPanel > .Logo > .LogoName{
         margin: 0;
 
         font-size: 25px;
         font-weight: 100;
     
         letter-spacing: 0.65vw;
-    } 
+    }
 
-    .RegisterInputPanel > .TabName{
+    .RegisterSuccessfulPanel > .TabName{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -89,7 +90,7 @@
         width: 75%;
     }
 
-    .RegisterInputPanel > .TabName > h1{
+    .RegisterSuccessfulPanel > .TabName > h1{
         font-size: 44px;
     }
 }

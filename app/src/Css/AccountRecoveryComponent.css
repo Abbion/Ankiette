@@ -1,7 +1,7 @@
-
-.RegisterInputPanel{
+.AccountRecoveryPanel{
+    overflow-y: auto;
     background-color: #f8f8f8e3;
-    height: 600px;
+    height: 550px;
     width: 470px;
 
     max-height: 90%;
@@ -20,68 +20,74 @@
     color: #000A16;
 }
 
-.RegisterInputPanel > .Logo{
+.AccountRecoveryPanel > .Logo{
     display: none;
 }
 
-.RegisterInputPanel > .TabName{
+.AccountRecoveryPanel > .TabName{
     width: 75%;
     margin-bottom: 20px;
 }
 
-.RegisterInputPanel > .TabName > h1{
+.AccountRecoveryPanel > .TabName > h1{
+    font-size: 45px;
     margin: 0;
     font-weight: 100;
 }
 
-.RegisterInputs{
+.AccountRecoveryPanel > .RecoveryInstruction{
+    width: 75%;
+    text-align: start;
+}
+
+.AccountRecoveryPanel > .RecoveryInstruction > h1{
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.AccountRecoveryPanel > .InputField{
+    margin-top: 20px;
     width: 75%;
 }
 
-.RegisterInputs > .Input{
-    /* margin-bottom: 10px; */
+.AccountRecoveryPanel > .Input{
+    width: 75%;
+    margin-bottom: 10px;
     margin-top: 2px;
 }
 
-.RegisterButton{
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.RegisterButton > .Button{
-    margin-top: 40px;
-    width: 60%;
+.AccountRecoveryPanel > .Button{
+    margin-top: 20px;
+    width: 50%;
 }
 
 @media only screen and (max-width: 600px){
-    .RegisterInputPanel{
+    .AccountRecoveryPanel{
         background-color: transparent;
         filter: none;
     }
 
-    .RegisterInputPanel > .Logo{
+    .AccountRecoveryPanel > .Logo{
         width: 30%;
         display: block;
         margin: 20px;
     }
 
-    .RegisterInputPanel > .Logo > svg{
+    .AccountRecoveryPanel > .Logo > svg{
         width: 100%;
         height: auto;
     }
 
-    .RegisterInputPanel > .Logo > .LogoName{
+    .AccountRecoveryPanel > .Logo > .LogoName{
         margin: 0;
 
         font-size: 25px;
         font-weight: 100;
     
         letter-spacing: 0.65vw;
-    } 
+    }
 
-    .RegisterInputPanel > .TabName{
+    .AccountRecoveryPanel > .TabName{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -89,7 +95,7 @@
         width: 75%;
     }
 
-    .RegisterInputPanel > .TabName > h1{
+    .AccountRecoveryPanel > .TabName > h1{
         font-size: 44px;
     }
 }

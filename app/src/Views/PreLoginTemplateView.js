@@ -1,10 +1,13 @@
-import '../Css/PreLoginTemplateView.css'
+import '../Css/TemplateView.css'
 import LoginComponent from '../Components/LoginComponent'
 import RegisterComponent from '../Components/RegisterComponent'
+import AccountRecoveryComponent from '../Components/AccountRecoveryComponent'
+import RegisterSuccessfulComponent from '../Components/RegisterSuccessfulComponent'
+
 
 const PreLoginTemplateView = () =>
 {
-    return <div className = "PreLoginTemplateView">
+    return <div className = "TemplateView">
             <div className = "LeftSide">
                 <div className = "CatchPhrase">
                     Tick your data in one place with Ankiette
@@ -16,4 +19,4 @@ const PreLoginTemplateView = () =>
         </div>
 }
 
-export default PreLoginTemplateView
+export default PreLoginTemplateView;

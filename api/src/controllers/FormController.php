@@ -16,25 +16,7 @@ class FormController extends AppController {
     }
 
     public function addForm() {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
-
-        $postData = file_get_contents("php://input");
-
-        if(!$this->isPost() || empty($postData)) {
-            http_response_code(400);
-            echo json_encode("Bad request");
-            die();
-        }
-
-        $request = json_decode($postData);
-
-        if(empty($request)) {
-            http_response_code(400);
-            echo json_encode("Bad request");
-            die();
-        }
+        $request = $this->getRequest('POST');
 
         $email = trim($request->email);
         $title = trim($request->title);

@@ -19,84 +19,59 @@ class RecoveryController extends AppController {
     }
 
     public function sendCode() {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
 
-        $postData = file_get_contents("php://input");
+        $request = $this->getRequest('GET');
+        $email = trim($request->email);
 
-        if(!$this->isGet() || empty($postData)) {
+        if(empty($email)) {
 
             http_response_code(400);
             echo json_encode("Bad request");
 
         } else {
-            $request = json_decode($postData);
-            $email = trim($request->email);
 
-            if(empty($email)) {
+            $user = $this->userRepository->getUser($email);
 
-                http_response_code(400);
-                echo json_encode("Bad request");
-
+            if(!$user) {
+                http_response_code(404);
+                echo json_encode("Wrong email.");
             } else {
+                $code = $this->generateCode($user);
 
-                $user = $this->userRepository->getUser($email);
-
-                if(!$user) {
-                    http_response_code(404);
-                    echo json_encode("Wrong email.");
+                if($this->emailServer->sendRecoveryMail($user->getEmail(), $code)) {
+                    http_response_code(200);
+                    echo json_encode("Email sent.");
                 } else {
-                    $code = $this->generateCode($user);
-
-                    if($this->emailServer->sendRecoveryMail($user->getEmail(), $code)) {
-                        http_response_code(200);
-                        echo json_encode("Email sent.");
-                    } else {
-                        http_response_code(500);
-                        echo json_encode("Email could not be send.");
-                    }
+                    http_response_code(500);
+                    echo json_encode("Email could not be send.");
                 }
             }
         }
     }
 
     public function recoverAccount() {
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
 
-        $postData = file_get_contents("php://input");
+        $request = $this->getRequest('POST');
+        $code = trim($request->recoveryCode);
 
-        if(!$this->isPost() || empty($postData)) {
+        if(empty($code)) {
 
             http_response_code(400);
             echo json_encode("Bad request");
 
         } else {
 
-            $request = json_decode($postData);
-            $code = trim($request->recoveryCode);
+            $user = $this->recoveryRepository->getUserByCode($code);
 
-            if(empty($code)) {
-
-                http_response_code(400);
-                echo json_encode("Bad request");
-
+            if(!$user) {
+                http_response_code(404);
+                echo json_encode("Wrong recovery code.");
             } else {
+                $tmpPassword['tmpPassword'] = $this->generateTmpPassword($user->getEmail());
+                $this->recoveryRepository->setUsedRecovery($user->getEmail(), $code);
 
-                $user = $this->recoveryRepository->getUserByCode($code);
-
-                if(!$user) {
-                    http_response_code(404);
-                    echo json_encode("Wrong recovery code.");
-                } else {
-                    $tmpPassword['tmpPassword'] = $this->generateTmpPassword($user->getEmail());
-                    $this->recoveryRepository->setUsedRecovery($user->getEmail(), $code);
-
-                    http_response_code(200);
-                    echo json_encode($tmpPassword);
-                }
+                http_response_code(200);
+                echo json_encode($tmpPassword);
             }
         }
     }
