@@ -19,11 +19,11 @@ Routing::post('setUserDetails', 'userController');
 Routing::post('setProfilePicture', 'userController');
 
 Routing::post('addForm', 'FormController');
-Routing::get('getForm', 'FormController');
+Routing::post('getForm', 'FormController');
 
 Routing::post('addQuestions', 'QuestionController');
 
 Routing::post('addAnswers', 'AnswersController');
-Routing::get('getAnswers', 'AnswersController');
+Routing::post('getAnswers', 'AnswersController');
 
 Routing::run($path);

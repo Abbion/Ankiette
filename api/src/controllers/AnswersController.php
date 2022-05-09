@@ -69,7 +69,7 @@ class AnswersController extends AppController {
     }
 
     public function getAnswers() {
-        $request = $this->getRequest('GET');
+        $request = $this->getRequest('POST');
 
         $email = trim($request->email);
         $code = trim($request->formCode);
