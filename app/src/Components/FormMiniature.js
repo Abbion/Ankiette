@@ -3,23 +3,20 @@ import '../Css/Home.css'
 
 const FormMiniature = () =>
 {
-    var gen = require('random-seed').create();
+    
 
     function getStripes(FormID){
         var stripes = [];
+        
+        var gen = require('random-seed');
         var rand = gen(FormID);
         
         var stripeCount = rand(3) + 4;
-        
-        console.log(stripeCount);
-        console.log(Math.random());
-        console.log(Math.random());
-        console.log(Math.random());
 
         for(var i = 0; i < stripeCount; i++)
         {
             stripes.push(
-                <div className='FormMiniatureStripe' key={i}>
+                <div className='FormMiniatureStripe' key={i} style={{width: rand(77) + 60}}>
                     
                 </div>
             );
@@ -28,8 +25,13 @@ const FormMiniature = () =>
         return stripes;
     }
 
-    return  <div className="FormMiniature">
-        {getStripes(2)}
+    return  <div className="FormMiniatureComponent">
+        <div className="FormMiniature">
+            {getStripes(2)}
+        </div>
+        <div className="Title">
+            Name 1
+        </div>
     </div>
 }
 

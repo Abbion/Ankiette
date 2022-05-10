@@ -8,6 +8,15 @@
     height: 100px;
 }
 
+.FormMiniatureComponent{
+    width: 180px;
+    height: 286px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .FormMiniature{
     background-color: #F2F2F2;
 
@@ -29,4 +38,12 @@
     
     margin-top: 19px;
     margin-left: 22px;
+}
+
+.FormMiniatureComponent > .Title{
+    text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
