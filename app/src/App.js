@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import {BrowserRouter, Route, Routes, Navigate, Outlet} from "react-router-dom";
+import React from 'react';
+import {BrowserRouter, Route, Routes, Navigate, Outlet} from 'react-router-dom';
 import {ReactSession} from 'react-client-session';
 
-import LoginView from './Views/LoginView'
+import LoginView from './Views/LoginView';
 import RegisterView from "./Views/RegisterView";
-import HomeView from "./Views/HomeView";
-import RegisterSuccessfulView from "./Views/RegisterSuccessfulView";
-import AccountRecoveryView from "./Views/AccountRecoveryView";
+import HomeView from './Views/HomeView';
+import RegisterSuccessfulView from './Views/RegisterSuccessfulView';
+import AccountRecoveryView from './Views/AccountRecoveryView';
 
 
 const PrivateRoute = () => {

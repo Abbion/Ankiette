@@ -1,10 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React from 'react';
+import { useState } from 'react';
 
-import ReCAPTCHA from 'react-google-recaptcha'
+import ReCAPTCHA from 'react-google-recaptcha';
 
-import "../Css/BasicComponents.css";
-import "../Css/RegisterComponent.css";
+import '../Css/BasicComponents.css';
+import '../Css/RegisterComponent.css';
 
 import {useNavigate} from 'react-router-dom';
 import { ReactSession } from 'react-client-session';

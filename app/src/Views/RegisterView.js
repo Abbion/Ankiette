@@ -1,5 +1,5 @@
-import '../Css/TemplateView.css'
-import RegisterComponent from '../Components/RegisterComponent'
+import '../Css/TemplateView.css';
+import RegisterComponent from '../Components/RegisterComponent';
 
 import { ReactSession } from 'react-client-session';
 import {Navigate} from 'react-router-dom';

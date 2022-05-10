@@ -1,8 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import "../Css/BasicComponents.css";
-import "../Css/LoginComponent.css";
-import Logo from "../Graphics/Logo/Logo";
+import React from 'react';
+import { useState } from 'react';
+import '../Css/BasicComponents.css';
+import '../Css/LoginComponent.css';
+import Logo from '../Graphics/Logo/Logo';
 
 import { ReactSession } from 'react-client-session';
 import {useNavigate} from 'react-router-dom';

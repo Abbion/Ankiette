@@ -1,5 +1,5 @@
-import '../Css/TemplateView.css'
-import "../Css/BasicComponents.css";
+import '../Css/TemplateView.css';
+import '../Css/BasicComponents.css';
 
 import { ReactSession } from 'react-client-session';
 import {useNavigate} from 'react-router-dom';

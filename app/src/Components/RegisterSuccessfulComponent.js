@@ -1,7 +1,7 @@
-import '../Css/RegisterSuccessfulComponent.css'
-import '../Css/BasicComponents.css'
-import Logo from '../Graphics/Logo/Logo'
-import CircleGreenTick from '../Graphics/Icons/CircleGreenTick'
+import '../Css/RegisterSuccessfulComponent.css';
+import '../Css/BasicComponents.css';
+import Logo from '../Graphics/Logo/Logo';
+import CircleGreenTick from '../Graphics/Icons/CircleGreenTick';
 
 import {useNavigate} from 'react-router-dom';
 import { ReactSession } from 'react-client-session';

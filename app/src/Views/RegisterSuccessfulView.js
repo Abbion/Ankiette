@@ -1,5 +1,5 @@
-import '../Css/TemplateView.css'
-import RegisterSuccessfulComponent from "../Components/RegisterSuccessfulComponent";
+import '../Css/TemplateView.css';
+import RegisterSuccessfulComponent from '../Components/RegisterSuccessfulComponent';
 
 const RegisterSuccessfulView = () =>
 {

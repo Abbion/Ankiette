@@ -1,5 +1,5 @@
-import '../Css/TemplateView.css'
-import AccountRecoveryComponent from "../Components/AccountRecoveryComponent";
+import '../Css/TemplateView.css';
+import AccountRecoveryComponent from '../Components/AccountRecoveryComponent';
 
 import { ReactSession } from 'react-client-session';
 import {Navigate} from 'react-router-dom';

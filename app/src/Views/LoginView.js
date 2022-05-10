@@ -1,5 +1,5 @@
-import '../Css/TemplateView.css'
-import LoginComponent from '../Components/LoginComponent'
+import '../Css/TemplateView.css';
+import LoginComponent from '../Components/LoginComponent';
 
 
 const LoginView = () =>

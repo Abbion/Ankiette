@@ -1,10 +1,10 @@
-import '../Css/AccountRecoveryComponent.css'
-import '../Css/BasicComponents.css'
-import Logo from '../Graphics/Logo/Logo'
+import '../Css/AccountRecoveryComponent.css';
+import '../Css/BasicComponents.css';
+import Logo from '../Graphics/Logo/Logo';
 
 import { ReactSession } from 'react-client-session';
 import {useNavigate} from 'react-router-dom';
-import ReCAPTCHA from 'react-google-recaptcha'
+import ReCAPTCHA from 'react-google-recaptcha';
 import {useState} from "react";
 
 const AccountRecoveryComponent = () => {
