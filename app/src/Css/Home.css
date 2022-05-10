@@ -1,0 +1,32 @@
+.PostLoginTemplateView{
+    background-color: #F2F2F2;
+    height: 100vh;
+}
+
+.NavBar{
+    background-color:wheat;
+    height: 100px;
+}
+
+.FormMiniature{
+    background-color: #F2F2F2;
+
+    width: 180px;
+    height: 256px;
+
+    filter: drop-shadow(0 0 8px #00000080);
+    border-radius: 29px;
+    padding-top: 13px;
+}
+
+.FormMiniatureStripe{
+    background-color: #0C232F;
+
+    width: 136px;
+    height: 10px;
+
+    border-radius: 5px;
+    
+    margin-top: 19px;
+    margin-left: 22px;
+}

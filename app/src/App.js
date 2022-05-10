@@ -10,6 +10,7 @@ import AccountRecoveryView from './Views/AccountRecoveryView';
 import UserProfileComponent from "./Components/UserProfileComponent";
 import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
+import Home from './Views/Home';
 
 
 const PrivateRoute = () => {
@@ -18,9 +19,14 @@ const PrivateRoute = () => {
 }
 
 function App() {
-    ReactSession.setStoreType('localStorage');
-    console.log(ReactSession.get("isAuthenticated"));
+    //ReactSession.setStoreType('localStorage');
+    //console.log(ReactSession.get("isAuthenticated"));
 
+    return(        
+        <Home/>
+    )
+
+    /*
     return (
         <BrowserRouter>
             <div className="App" style={{margin: 0}}>
@@ -49,6 +55,7 @@ function App() {
             </div>
         </BrowserRouter>
     )
+    */
 }
 
 export default App;

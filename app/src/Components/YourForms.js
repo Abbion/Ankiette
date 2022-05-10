@@ -1,4 +1,5 @@
 import '../Css/BasicComponents.css'
+import FormMiniature from './FormMiniature'
 
 const YourFormsContent = () =>
 {
@@ -27,13 +28,15 @@ const YourFormsContent = () =>
                     <option>all</option>
                     <option>open</option>
                     <option>closed</option>
+                    <option>participated</option>
+                    <option>created</option>
                 </select>
             </div>
 
          </div>
 
-         <div className="CreatedForms">
-            
+         <div className="Forms">
+            <FormMiniature/>
          </div>
 
     </div>
