@@ -1,5 +1,6 @@
 import '../Css/TemplateView.css';
 import LoginComponent from '../Components/LoginComponent';
+import Navbar from '../Components/Navbar';
 
 
 const LoginView = () =>
