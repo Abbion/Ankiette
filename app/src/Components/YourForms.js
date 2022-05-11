@@ -10,7 +10,7 @@ const YourFormsContent = () =>
             
             <div className="OrderBy">
                 <div className="FormsInfoText">Order by</div>
-                <select>
+                <select className="Select">
                     <option>name</option>
                     <option>date</option>
                     <option>participants</option>
@@ -19,12 +19,12 @@ const YourFormsContent = () =>
 
             <div className="Search">
                 <div className="FormsInfoText">Search</div>
-                <input type="text"/>
+                <input type="text" className="Input"/>
             </div>
 
             <div className="Filter">
                 <div className="FormsInfoText">Search</div>
-                <select>
+                <select className="Select">
                     <option>all</option>
                     <option>open</option>
                     <option>closed</option>
@@ -32,13 +32,25 @@ const YourFormsContent = () =>
                     <option>created</option>
                 </select>
             </div>
-
          </div>
+        
+        <div className="SeparationLine">
+
+        </div>
 
          <div className="Forms">
-            <FormMiniature/>
+             <div className="FormsGrid">
+                <FormMiniature/>
+                <FormMiniature/>
+                <FormMiniature/>
+                <FormMiniature/>
+                <FormMiniature/>
+            </div>
          </div>
-
+        
+        <div className="Footer">
+            
+        </div>
     </div>
 }
 

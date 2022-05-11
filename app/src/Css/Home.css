@@ -1,11 +1,36 @@
-.PostLoginTemplateView{
+.Home{
+    width: 100%;
+    height: 100%;
     background-color: #F2F2F2;
-    height: 100vh;
 }
 
-.NavBar{
-    background-color:wheat;
-    height: 100px;
+.YourFromsContent{
+    margin: 0 16.25%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.FormsInfoAndFilters{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.FormsInfoAndFilters > h1{
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 36px;
+} 
+
+.FormsInfoAndFilters > div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+.FormsInfoAndFilters > div > div{
+    margin-right: 0.5em;
 }
 
 .FormMiniatureComponent{
@@ -46,4 +71,40 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.SeparationLine{
+    width: 100%;
+    height: 2px;
+
+    background-color: #E9E9E9;
+
+    margin-bottom: 2.5em;
+}
+
+.Forms{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.FormsGrid{
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 62px;
+    grid-template-rows: repeat(auto-fill, 320px);
+}
+
+.Footer{
+    width: 100%;
+    height: 4em;
+    bottom: 100vh;
+}
+
+@media (max-width: 600px) {
+    .FormsInfoAndFilters{
+        display: flex;
+        flex-direction: column;
+    }
 }

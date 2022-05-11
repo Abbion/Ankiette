@@ -1,10 +1,11 @@
 import '../Css/Home.css'
 import  YourForms from '../Components/YourForms'
+import Navbar from '../Components/Navbar'
 
 const Home = () =>
 {
     return <div className = "Home">
-        <div className="NavBar">NavBar</div>
+        <Navbar/>
         <YourForms/>
     </div>
 }
