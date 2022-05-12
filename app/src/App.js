@@ -8,6 +8,7 @@ import HomeView from './Views/HomeView';
 import RegisterSuccessfulView from './Views/RegisterSuccessfulView';
 import AccountRecoveryView from './Views/AccountRecoveryView';
 import UserProfileComponent from "./Components/UserProfileComponent";
+import NewFormComponent from "./Components/NewFormComponent";
 
 
 const PrivateRoute = () => {
@@ -38,6 +39,10 @@ function App() {
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/account' element={<UserProfileComponent/>} />
                     </Route>
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                        <Route exact path='/newForm' element={<NewFormComponent/>}/>
+                    </Route>
+
                 </Routes>
             </div>
         </BrowserRouter>

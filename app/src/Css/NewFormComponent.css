@@ -1,0 +1,122 @@
+.NewFormPanel {
+    background-color: #f8f8f8e3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 60px;
+    backdrop-filter: blur(6px);
+    filter: drop-shadow(10px 10px 10px #000000bd);
+
+    color: #000A16;
+
+    overflow: hidden;
+    white-space: nowrap;
+
+    width: 60%;
+
+}
+
+.NewFormForm {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-size: 2em;
+    margin: 1.5em;
+    overflow: hidden;
+
+}
+
+.NewFormNameContainer {
+    width: 100%;
+}
+
+.Row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0px;
+    font-weight: lighter;
+    width: 100%;
+}
+
+.Row label {
+    margin-right: 2em;
+}
+
+.Row input {
+    font-size: 1em;
+    font-weight: lighter;
+}
+
+
+.NewFormPanel input {
+    font-size: 1em;
+    font-family: Roboto;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.NewFormPanel input.NewFormName {
+    outline: none;
+
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: inherit;
+    font-size: 1.1em;
+    font-weight: normal;
+    width: 50%;
+}
+
+.ExpiryDateInput::-webkit-calendar-picker-indicator {
+    filter: invert(50%);
+    margin-left: 35px;
+}
+
+.ExpiryTimeInput::-webkit-calendar-picker-indicator {
+    filter: invert(50%);
+    margin-left: 35px;
+}
+
+.ExpiryDateInput::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+.ExpiryTimeInput::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+
+.Comment {
+    font-size: 0.6em;
+    font-weight: lighter;
+    color: #000A16;
+    margin-top: 3em;
+    margin-right: 0px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ConfirmButton {
+    color: #FFFFFF;
+    width: 40%;
+    height: auto;
+    line-height: 1.6em;
+    font-size: 0.7em;
+    font-weight: lighter;
+    border: none;
+    background: #77E178;
+    border-radius: 32px;
+}
+
+.ConfirmButton:hover {
+    cursor: pointer;
+    background: #77E178;
+    opacity: 80%;
+}
