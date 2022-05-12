@@ -1,0 +1,128 @@
+.ProfilePanel{
+    overflow-y: auto;
+    background-color: #f8f8f8e3;
+    height: 80vh;
+    width: 75vw;
+    margin-top: 3vh;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+
+    border-radius: 60px;
+    backdrop-filter: blur(6px);
+    filter: drop-shadow(10px 10px 10px #000000bd);
+
+    color: #000A16;
+}
+
+.SectionName{
+    font-family: 'Adam', 'sans-serif';
+    font-size: xx-large;
+}
+
+.ProfilePanel > .AccountInfoPanel{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 4vw;
+}
+
+.ProfilePanel > .AccountInfoPanel > .ProfilePicture{
+    width: 128px;
+    height: 128px;
+    margin-bottom: 2vh;
+    border-radius: 64px;
+    border: 4px solid #77E178;
+}
+
+.ProfilePanel > .AccountInfoPanel > .AccountDetailText{
+    font-family: 'Adam', 'sans-serif';
+    font-size: large;
+}
+
+.ProfilePanel > .ChangeDetailsPanel{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.ProfilePanel > .ChangeDetailsPanel > .ApplyChangesInfoText {
+    font-family: 'Adam', 'sans-serif';
+    font-size: medium;
+    margin-bottom: 0;
+}
+
+.ProfilePanel > .ChangeDetailsPanel > .Button{
+    margin-top: 2vh;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.ProfilePanel > .LogoutPanel{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-right: 4vw;
+    margin-left: 4vw;
+}
+
+.ProfilePanel > .LogoutPanel > .Logout{
+    height: 32px;
+    cursor: pointer;
+    border-style: none;
+    background-color: #FF5342;
+    border-radius: 20px;
+    color: white;
+    font-weight: 100;
+}
+
+.ProfilePanel > .LogoutPanel > .Logout:hover{
+    background-color: #ff2f1d;
+}
+
+@media only screen and (max-width: 600px){
+    .ProfilePanel{
+        background-color: transparent;
+        border-radius: 0;
+        filter: none;
+
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding-top: 1vh;
+        padding-left: 8vw;
+        padding-right: 8vw;
+
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ProfilePanel > .AccountInfoPanel{
+        margin: 0;
+    }
+
+    .ProfilePanel > .ChangeDetailsPanel{
+        margin: 0;
+    }
+
+    .ProfilePanel > .ChangeDetailsPanel > .SectionName{
+        margin-top: 6vh;
+    }
+
+    .ProfilePanel > .LogoutPanel{
+        margin: 0;
+        width: 84vw;
+    }
+
+    .ProfilePanel > .LogoutPanel > .SectionName{
+        visibility: hidden;
+    }
+}
