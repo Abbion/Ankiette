@@ -1,10 +1,15 @@
+body, root, .App, .Home {
+    height: 100vh;
+}
+
 .NewFormPanel {
+
     background-color: #f8f8f8e3;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    margin: 4em auto 0px auto;
+
+    justify-content: flex-start;
+    align-items: flex-start;
 
     border-radius: 60px;
     backdrop-filter: blur(6px);
@@ -46,7 +51,7 @@
 }
 
 .Row label {
-    margin-right: 2em;
+    margin-right: 10%;
 }
 
 .Row input {
@@ -72,6 +77,10 @@
     font-size: 1.1em;
     font-weight: normal;
     width: 50%;
+}
+
+.Row input {
+    margin-right: 5%;
 }
 
 .ExpiryDateInput::-webkit-calendar-picker-indicator {
@@ -119,4 +128,61 @@
     cursor: pointer;
     background: #77E178;
     opacity: 80%;
+}
+
+@media (max-width: 600px) {
+    .NewFormPanel {
+        background-color: transparent;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+    }
+    .NewFormForm {
+        width: 100%;
+        margin: 2em 0;
+    }
+
+    .Row {
+        align-items: center;
+        justify-content: flex-start;
+        margin: 2em 0em !important;
+        font-size: 30px;
+        padding: 0em 1em;
+    }
+
+    .NewFormName {
+        width: 100%;
+    }
+
+    .Row input {
+        margin-right: 0;
+    }
+
+    .Row:nth-last-child(2) {
+        font-size: 28px;
+        justify-content: center;
+        position: absolute;
+        bottom: 3em;
+    }
+
+    .Row:last-child {
+        justify-content: center;
+        position: absolute;
+        bottom: 1em;
+    }
+
+    .ExpiryDateInput::-webkit-calendar-picker-indicator {
+        margin-left: -55px;
+    }
+
+    .ExpiryTimeInput::-webkit-calendar-picker-indicator {
+        filter: invert(50%);
+        margin-left: -10px;
+    }
+
+    .Comment {
+        margin-right: 0.5em !important;
+    }
+
+
 }
