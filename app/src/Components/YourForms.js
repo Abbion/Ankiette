@@ -45,6 +45,9 @@ const YourFormsContent = () =>
                 <FormMiniature/>
                 <FormMiniature/>
                 <FormMiniature/>
+                <FormMiniature/>
+                <FormMiniature/>
+                <FormMiniature/>
             </div>
          </div>
         
