@@ -33,12 +33,32 @@
     margin-left: 4vw;
 }
 
-.ProfilePanel > .AccountInfoPanel > .ProfilePicture{
+.ProfilePanel > .AccountInfoPanel > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ProfilePanel > .AccountInfoPanel > form > button {
+    width: 50%;
+    margin-bottom: 15px;
+}
+
+.ProfilePanel > .AccountInfoPanel > form > label > .ProfilePicture{
     width: 128px;
     height: 128px;
     margin-bottom: 2vh;
     border-radius: 64px;
     border: 4px solid #77E178;
+    object-fit: cover;
+}
+
+.ProfilePanel > .AccountInfoPanel > form > label:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.ProfilePanel > .AccountInfoPanel > form > #picture {
+    display: none;
 }
 
 .ProfilePanel > .AccountInfoPanel > .AccountDetailText{
@@ -46,20 +66,20 @@
     font-size: large;
 }
 
-.ProfilePanel > .ChangeDetailsPanel{
+.ChangeDetailsPanel{
     flex: 4;
     display: flex;
     flex-direction: column;
     justify-content: left;
 }
 
-.ProfilePanel > .ChangeDetailsPanel > .ApplyChangesInfoText {
+.ChangeDetailsPanel > .ApplyChangesInfoText {
     font-family: 'Adam', 'sans-serif';
     font-size: medium;
     margin-bottom: 0;
 }
 
-.ProfilePanel > .ChangeDetailsPanel > .Button{
+.ChangeDetailsPanel > .Button{
     margin-top: 2vh;
     margin-left: 15%;
     margin-right: 15%;
@@ -109,11 +129,11 @@
         margin: 0;
     }
 
-    .ProfilePanel > .ChangeDetailsPanel{
+    .ChangeDetailsPanel{
         margin: 0;
     }
 
-    .ProfilePanel > .ChangeDetailsPanel > .SectionName{
+    .ChangeDetailsPanel > .SectionName{
         margin-top: 6vh;
     }
 
