@@ -19,7 +19,7 @@ class UserController extends AppController
 
     public function getUserDetails() {
 
-        $request = $this->getRequest('GET');
+        $request = $this->getRequest('POST');
         $email = $request->email;
 
         $user = $this->userRepository->getUser($email);
@@ -81,8 +81,8 @@ class UserController extends AppController
 
     public function setProfilePicture() {
         header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: multipart/form-data');
+        //header('Access-Control-Allow-Headers: Content-Type');
+        //header('Content-type: multipart/form-data');
 
         if(!$this->isPost()) {
             http_response_code(400);
@@ -100,6 +100,7 @@ class UserController extends AppController
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['picture']['name']
             );
         } else {
+            echo json_encode("Something went wrong");
             die();
         }
 

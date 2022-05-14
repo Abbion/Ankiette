@@ -14,7 +14,7 @@ Routing::post('register', 'SecurityController');
 Routing::post('sendCode', 'RecoveryController');
 Routing::get('recoverAccount', 'RecoveryController');
 
-Routing::get('getUserDetails', 'userController');
+Routing::post('getUserDetails', 'userController');
 Routing::post('setUserDetails', 'userController');
 Routing::post('setProfilePicture', 'userController');
 
