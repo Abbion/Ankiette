@@ -35,7 +35,6 @@ const UserProfileComponent = () => {
     const[password, setPassword] = useState("");
     const[newPassword, setNewPassword] = useState("");
     const[confirmNewPassword, setConfirmNewPassword] = useState("");
-
     const [responseError, setResponseError] = useState("");
 
     const logOutHandler = () => {
@@ -101,8 +100,15 @@ const UserProfileComponent = () => {
         }).then(user =>  {
             ReactSession.set("name", user.name);
             ReactSession.set("surname", user.surname);
+            setName("");
+            setSurname("");
+            setNewPassword("");
+            setConfirmNewPassword("");
+            setPassword("");
             navigate("/account");
         });
+
+
     }
 
     const nameHandler = (e) => {
