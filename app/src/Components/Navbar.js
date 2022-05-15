@@ -3,23 +3,47 @@ import '../Css/Navbar.css'
 import MenuBars from "../Graphics/Icons/MenuBars.png"
 import MenuXmark from "../Graphics/Icons/MenuXmark.png"
 
+import {useNavigate} from 'react-router-dom';
+
 const Navbar = () => {
+    const navigate = useNavigate();
+
     const [clicked, setState] = useState(false);
+    
+    const createFormHandler = (e) => {
+        e.preventDefault();
+        navigate('/newForm');
+    }
+
+    const yourFormsHandler = (e) => {
+        e.preventDefault();
+        navigate('/home');
+    }
+
+    const reportsHandler = (e) => {
+        e.preventDefault();
+        //TODO: navigate to reports
+    }
+
+    const accountHandler = (e) => {
+        e.preventDefault();
+        //TODO: navigate to account
+    }
 
     return(
         <div className = "NavbarBase">
             <nav className="NavbarItems">
                 <ul className={clicked == true ? "NavMenuActive" : "NavMenu"}>
-                    <button className="NavbarButton">
+                    <button className="NavbarButton" onClick={yourFormsHandler}>
                         Your forms
                     </button>
-                    <button className="NavbarButton">
+                    <button className="NavbarButton" onClick={createFormHandler}>
                         Create new form
                     </button>
-                    <button className="NavbarButton">
+                    <button className="NavbarButton" onClick={reportsHandler}>
                         Reports
                     </button>
-                    <button className="NavbarButton">
+                    <button className="NavbarButton" onClick={accountHandler}>
                         Account
                     </button>
                     <button className="LogoutButton">
