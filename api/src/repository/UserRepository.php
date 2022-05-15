@@ -46,7 +46,7 @@ class UserRepository extends Repository
             $id_users_details,
             $id_role,
             true,
-            date('d-m-y'),
+            date('Y-m-d'),
             $user->getEmail(),
             $user->getPassword()
         ]);
