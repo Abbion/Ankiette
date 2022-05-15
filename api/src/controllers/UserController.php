@@ -3,10 +3,12 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../repository/FormRepository.php';
 
 class UserController extends AppController
 {
     private $userRepository;
+    private $formRepository;
 
     const MAX_FILE_SIZE = 2048*2048;
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
@@ -15,6 +17,7 @@ class UserController extends AppController
     public function __construct() {
         parent::__construct();
         $this->userRepository = new UserRepository();
+        $this->formRepository = new FormRepository();
     }
 
     public function getUserDetails() {
@@ -28,7 +31,10 @@ class UserController extends AppController
             echo json_encode("User not found");
         } else {
             http_response_code(200);
-            echo json_encode($user->toJson());
+            $json = $user->toJson();
+            $json["created"] = $this->formRepository->getCreatedCount($user->getEmail());
+            $json["attended"] = $this->formRepository->getAttendedCount($user->getEmail());
+            echo json_encode($json);
         }
     }
 
