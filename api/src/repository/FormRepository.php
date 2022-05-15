@@ -44,7 +44,7 @@ class FormRepository extends Repository
     public function addAttendance(string $code, User $user) {
 
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users_forms(id_forms, id_users, added_at) 
+            INSERT INTO users_forms(id_forms, id_users, attended_at) 
             VALUES ((SELECT id_forms FROM forms WHERE code = ?),
                     (SELECT id FROM users WHERE email = ?), now());
         ');
@@ -55,7 +55,7 @@ class FormRepository extends Repository
         ]);
     }
 
-    public function existsAndOwner(string $email, string $code) {
+    public function existsAndOwner(string $email, string $code): bool {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM forms f 
             JOIN users u ON u.id = f.id_user 
@@ -73,8 +73,7 @@ class FormRepository extends Repository
         } else return true;
     }
     
-    public function getAll(string $email)
-    {
+    public function getAll(string $email) {
         $stmt = $this->database->connect()->prepare('
                     SELECT DISTINCT id_forms,title,start_date,end_date,code from (
             (SELECT forms.*,email
@@ -108,6 +107,43 @@ class FormRepository extends Repository
         }
 
         return $forms;
+    }
+
+    public function getCreatedCount(string $email) {
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT count(f.code) count FROM forms f 
+            JOIN users u ON u.id = f.id_user 
+            WHERE u.email = :email
+            GROUP BY u.email;
+        ');
+
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $form = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($form == false) {
+            return 0;
+        } else return $form["count"];
+    }
+
+    public function getAttendedCount(string $email) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT count(attended_at) count FROM users_forms uf 
+            JOIN users u ON u.id = uf.id_users
+            WHERE u.email = :email
+            GROUP BY u.email;
+        ');
+
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $form = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($form == false) {
+            return 0;
+        } else return $form["count"];
     }
 
 }
