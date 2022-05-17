@@ -7,7 +7,7 @@ import RegisterView from "./Views/RegisterView";
 import HomeView from './Views/HomeView';
 import RegisterSuccessfulView from './Views/RegisterSuccessfulView';
 import AccountRecoveryView from './Views/AccountRecoveryView';
-import UserProfileComponent from "./Components/UserProfileComponent";
+import AccountView from './Views/AccountView';
 import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
 
@@ -38,7 +38,7 @@ function App() {
                     </Route>
 
                     <Route exact path='/' element={<PrivateRoute/>}>
-                        <Route exact path='/account' element={<UserProfileComponent/>} />
+                        <Route exact path='/account' element={<AccountView/>} />
                     </Route>
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/newForm' element={<NewFormComponent/>}/>

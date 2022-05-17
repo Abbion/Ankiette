@@ -1,8 +1,9 @@
 .ProfilePanel{
     overflow-y: auto;
-    background-color: #f8f8f8e3;
+    background-color: #f2f2f2;
     height: 80vh;
     width: 75vw;
+    max-width: 1300px;
     margin-top: 3vh;
     margin-left: 12vw;
     margin-right: 12vw;
@@ -18,6 +19,7 @@
     filter: drop-shadow(10px 10px 10px #000000bd);
 
     color: #000A16;
+    overflow: hidden;
 }
 
 .SectionName{
@@ -71,6 +73,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
+    gap: 7px;
 }
 
 .ChangeDetailsPanel > .ApplyChangesInfoText {
