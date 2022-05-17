@@ -1,0 +1,41 @@
+.FormReportsListPanel{
+    width: 75vw;
+    margin-top: 3vh;
+    margin-left: 12vw;
+    margin-right: 12vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.FormReportsListPanel > .FormReportsContainer{
+    width: max-content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow-y: auto;
+}
+
+.FormReportsListPanel > .PageName{
+    visibility: collapse;
+}
+
+@media only screen and (max-width: 600px){
+    .FormReportsListPanel{
+        width: 100vw;
+        height: fit-content;
+        margin: 0;
+    }
+
+    .FormReportsListPanel > .PageName{
+        visibility: visible;
+        margin-left: 7vw;
+        margin-top: 4vh;
+
+        font-family: 'Adam', 'sans-serif';
+        font-size: xx-large;
+    }
+}
