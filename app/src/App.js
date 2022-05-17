@@ -10,7 +10,6 @@ import AccountRecoveryView from './Views/AccountRecoveryView';
 import UserProfileComponent from "./Components/UserProfileComponent";
 import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
-import Home from './Views/Home';
 
 
 const PrivateRoute = () => {
