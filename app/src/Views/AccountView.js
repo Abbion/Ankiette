@@ -6,7 +6,9 @@ const AccountView = () =>
 {
     return <div className = "AccountView">
         <Navbar/>
+        <div>
         <UserProfileComponent/>
+        </div>
     </div>
 }
 

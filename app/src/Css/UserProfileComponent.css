@@ -1,8 +1,8 @@
 .ProfilePanel{
     overflow-y: auto;
-    background-color: #f2f2f2;
-    height: 80vh;
+    background-color: #f8f8f8e3;
     width: 75vw;
+    min-height: 550px;
     max-width: 1300px;
     margin-top: 3vh;
     margin-left: 12vw;
@@ -19,7 +19,6 @@
     filter: drop-shadow(10px 10px 10px #000000bd);
 
     color: #000A16;
-    overflow: hidden;
 }
 
 .SectionName{
@@ -73,7 +72,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    gap: 7px;
+    gap: 8px;
 }
 
 .ChangeDetailsPanel > .ApplyChangesInfoText {
@@ -117,8 +116,7 @@
         border-radius: 0;
         filter: none;
 
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
         margin: 0;
         padding-top: 1vh;
         padding-left: 8vw;
@@ -126,6 +124,7 @@
 
         flex-direction: column;
         align-items: flex-start;
+        overflow-x: hidden;
     }
 
     .ProfilePanel > .AccountInfoPanel{
@@ -137,7 +136,7 @@
     }
 
     .ChangeDetailsPanel > .SectionName{
-        margin-top: 6vh;
+        margin-top: 2em;
     }
 
     .ProfilePanel > .LogoutPanel{
