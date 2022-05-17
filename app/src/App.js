@@ -19,14 +19,9 @@ const PrivateRoute = () => {
 }
 
 function App() {
-    //ReactSession.setStoreType('localStorage');
-    //console.log(ReactSession.get("isAuthenticated"));
+    ReactSession.setStoreType('localStorage');
+    console.log(ReactSession.get("isAuthenticated"));
 
-    return(        
-        <Home/>
-    )
-
-    /*
     return (
         <BrowserRouter>
             <div className="App" style={{margin: 0}}>
@@ -55,7 +50,6 @@ function App() {
             </div>
         </BrowserRouter>
     )
-    */
 }
 
 export default App;

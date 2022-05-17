@@ -1,13 +1,13 @@
-import '../Css/TemplateView.css';
-import '../Css/BasicComponents.css';
-
-import Navbar from "../Components/Navbar";
+import '../Css/HomeView.css'
+import  YourForms from '../Components/YourForms'
+import Navbar from '../Components/Navbar'
 
 const HomeView = () =>
 {
-    return <div className = "Home">
+    return <div className = "HomeView">
         <Navbar/>
+        <YourForms/>
     </div>
 }
 
-export default HomeView;
+export default HomeView

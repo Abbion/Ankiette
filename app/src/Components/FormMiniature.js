@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import '../Css/BasicComponents.css'
-import '../Css/Home.css'
+import '../Css/HomeView.css'
 
 const FormMiniature = (props) =>
 {
