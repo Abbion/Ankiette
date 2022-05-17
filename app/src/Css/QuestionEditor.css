@@ -1,0 +1,59 @@
+.QuestionEditorContainer{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.QuestionInput{
+    width: 100%;
+
+    font-family: 'Adam', 'sans-serif';
+    font-size: xx-large;
+}
+
+.QuestionEditorContainer > .EditedQuestionsList{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.QuestionEditorContainer > .EditedQuestionsList > .QuestionItem{
+    width: 100%;
+    margin-top: 16px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.QuestionEditorContainer > .EditedQuestionsList > .QuestionItem > .RadioButton{
+    scale: 2;
+    margin-right: 16px;
+}
+
+.QuestionEditorContainer > .AddNewAnswerButton{
+    margin-top: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: x-large;
+    padding-left: 32px;
+    padding-right: 32px;
+    font-family: 'Adam', 'sans-serif';
+    background-color: #f8f8f8e3;
+    border: 1px solid black;
+    border-radius: 20px;
+    color: black;
+}
+
+.QuestionEditorContainer > .AddNewAnswerButton:hover{
+    background-color: #909090e3;
+}
+
+@media only screen and (max-width: 600px){
+    .QuestionInput{
+        font-size: x-large;
+    }
+}
