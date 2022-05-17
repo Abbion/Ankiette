@@ -1,0 +1,185 @@
+.HomeView{
+    width: 100%;
+    height: 100%;
+    background-color: #F2F2F2;
+    overflow-y: hidden;
+}
+
+.YourFromsContent{
+    margin: 0 16.25%;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.FormsInfoAndFilters{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.FormsInfoAndFilters > h1{
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 36px;
+} 
+
+.FormsInfoAndFilters > div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+.FormsInfoAndFilters > div > div{
+    margin-right: 0.5em;
+}
+
+.FormMiniatureComponent{
+    width: 180px;
+    height: 286px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.FormMiniature{
+    background-color: #F2F2F2;
+
+    width: 180px;
+    height: 256px;
+
+    filter: drop-shadow(0 0 8px #00000080);
+    border-radius: 29px;
+    padding-top: 13px;
+}
+
+.FormMiniatureStripe{
+    background-color: #0C232F;
+
+    width: 136px;
+    height: 10px;
+
+    border-radius: 5px;
+    
+    margin-top: 19px;
+    margin-left: 22px;
+}
+
+.FormMiniatureComponent > .Title{
+    text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.SeparationLine{
+    width: 100%;
+    height: 2px;
+
+    background-color: #E9E9E9;
+
+    margin-bottom: 2.5em;
+}
+
+.Forms{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.FormsGrid{
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 62px;
+    grid-row-gap: 32px;
+}
+
+@keyframes MenuApear {
+    from {opacity: 0.0;}
+    to { opacity: 1.0; }
+}
+
+.Menu{
+    position: absolute;
+    left: 5%;
+
+    width: 90%;
+    height: 90%;
+
+    background-color: #F2F2F2DD;
+    backdrop-filter: blur(4px);
+    
+    animation-name: MenuApear;
+    animation-duration: 0.4s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 32px;
+    cursor: auto;
+}
+
+
+.Menu > .Button{
+    width: 138px;
+    height: 24px;
+
+    border: 0;
+}
+
+.Footer{
+    width: 100%;
+    height: 4em;
+    bottom: 100vh;
+}
+
+@media (max-width: 600px) {
+    .FormsInfoAndFilters{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .YourFromsContent{
+        margin: 0 5%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .FormsInfoAndFilters > div{
+        margin-bottom: 1em;
+        display: flex;
+        flex-direction: row;
+        
+    }
+
+    .FormMiniatureComponent{
+        width: 144px;
+        height: 260px;
+    }
+    
+    .FormMiniature{    
+        width: 144px;
+        height: 229px;
+    }
+    
+    .FormMiniatureStripe{
+        height: 8px;
+    }
+
+    .FormsGrid{
+        grid-template-columns: repeat(auto-fill, 144px);
+    }
+
+    .Menu > .Button{
+        width: 120px;
+    }
+}
