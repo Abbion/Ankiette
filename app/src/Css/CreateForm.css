@@ -1,5 +1,116 @@
-.AddAndConfigm{
-    width: 100%;
-    height: 100%;
-    background-color: #F2F2F2;
+.AddQuestionComponent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 115px);
 }
+
+.AddAndConfigm{
+    margin-top: 1em;
+    width: 70%;
+    height: 100%;
+    max-width: 1400px;
+
+    max-height: 100%;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.FormName{
+    padding-left: 10%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+
+    align-self: flex-start;
+}
+
+.AddAndConfigm > button{
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    height: 40px;
+    width: 350px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+}
+
+.AddAndConfigm > button > h2{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 48px;
+    
+    padding-right: 0.3em;
+
+    color: #77E178;
+}
+
+.AddAndConfigm > button > h1{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+}
+
+.AddAndConfigm > .ConfirmButton{
+    margin-top: 1em;
+    margin-bottom: 5em;
+    width: 250px;
+    height: 30px;
+
+    background-color: #77E178;
+}
+
+.AddAndConfigm > .ConfirmInfo{
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+
+    text-align: center;
+    font-size: 22px;
+}
+
+.Questions{
+    width: 100%;
+    height: 400px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 2em;
+}
+
+.QTemplate{
+    width: 80%;
+    height: 200px;
+    background-color: cornflowerblue;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #787878;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid #787878;
+
+    background: #F2F2F2;
+    border-radius: 10px;
+  }
