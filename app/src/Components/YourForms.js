@@ -9,11 +9,13 @@ const YourFormsContent = () =>
 {
     const requestData = {email: ReactSession.get("email")}
     const [order, setOrder] = useState("");
+    const [searchBy, setSearchBy] = useState("");
 
     let [responseForms, setResponseForms] = useState([]);
+    let [shownForms, setShownForms] = useState([]);
+    //let [shownForms, setShownForms] = useState([]);
     let responseStatus = 0;
     useEffect(() => {
-
         fetch("http://localhost:8080/getAllForms", {
             method: "POST",
             headers: {
@@ -26,25 +28,51 @@ const YourFormsContent = () =>
         }).then(data => {
             if(responseStatus === 200) {
                 setResponseForms(data);
+                setShownForms(data);
                 return data;
             }
-        })
-    }, []);
+        });
 
+    }, []);
 
     const orderByHandler = (e) => {
         e.preventDefault();
-        console.log(e.target.value);
         switch (e.target.value) {
             case 'name' :
-                responseForms = responseForms.sort((a, b) => a.title.localeCompare(b.title));
+                setShownForms(shownForms.sort((a, b) => a.title.localeCompare(b.title)));
                 setOrder("name");
                 break;
             case 'date' :
-                responseForms = responseForms.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+                setShownForms(shownForms.sort((a, b) => new Date(a.startDate) - new Date(b.startDate)));
                 setOrder("date");
                 break;
         }
+    }
+
+    const searchByHandler = (e) => {
+        e.preventDefault();
+        switch (e.target.value) {
+            case 'all' :
+                setShownForms(responseForms);
+                setSearchBy("all");
+                break;
+            case 'open' :
+                setShownForms(responseForms.filter(form => new Date(form.startDate) < new Date() && new Date(form.endDate) > new Date()));
+                setSearchBy("open");
+                break;
+            case 'closed' :
+                setShownForms(responseForms.filter(form => new Date(form.startDate) > new Date() || new Date(form.endDate) < new Date()));
+                setSearchBy("closed");
+                break;
+            case 'created' :
+                setSearchBy("created");
+                break;
+        }
+    }
+
+    const searchHandler = (e) => {
+        e.preventDefault();
+        setShownForms(responseForms.filter(form => form.title.toLowerCase().includes(e.target.value)));
     }
 
     return  (<div className="YourFromsContent">
@@ -64,17 +92,17 @@ const YourFormsContent = () =>
 
             <div className="Search">
                 <div className="FormsInfoText">Search</div>
-                <input type="text" className="Input"/>
+                <input type="text" className="Input" onKeyUp={searchHandler}/>
             </div>
 
             <div className="Filter">
                 <div className="FormsInfoText">Search</div>
-                <select className="Select">
-                    <option>all</option>
-                    <option>open</option>
-                    <option>closed</option>
-                    <option>participated</option>
-                    <option>created</option>
+                <select className="Select" onChange={searchByHandler}>
+                    <option value="all">all</option>
+                    <option value="open">open</option>
+                    <option value="closed">closed</option>
+                    <option value="participated">participated</option>
+                    <option value="created">created</option>
                 </select>
             </div>
          </div>
@@ -86,7 +114,7 @@ const YourFormsContent = () =>
          <div className="Forms">
              <div className="FormsGrid">
                  {
-                     responseForms.sort((a, b) => a.title - b.title).map(form => {
+                     shownForms.map(form => {
                          return <FormMiniature key={form.code} name={form.title}/>
                      })
                  }
