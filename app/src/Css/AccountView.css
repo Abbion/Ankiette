@@ -4,4 +4,8 @@
 
     background-color: #F2F2F2;
     overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
