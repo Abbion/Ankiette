@@ -13,7 +13,7 @@ const YourFormsContent = () =>
 
     let [responseForms, setResponseForms] = useState([]);
     let [shownForms, setShownForms] = useState([]);
-    //let [shownForms, setShownForms] = useState([]);
+
     let responseStatus = 0;
     useEffect(() => {
         fetch("http://localhost:8080/getAllForms", {

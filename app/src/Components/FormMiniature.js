@@ -14,6 +14,7 @@ const FormMiniature = (props) =>
     });
 
     const [clicked, setClicked] = React.useState(false);
+    const [shareButton, setShareButton] = React.useState("Share");
 
     function getStripes(FormID){
         var stripes = [];
@@ -35,12 +36,18 @@ const FormMiniature = (props) =>
         return stripes;
     }
 
+    const handleShare = (e) => {
+        e.preventDefault();
+        setShareButton("Link copied!");
+        navigator.clipboard.writeText('http://localhost:3000/form/' + props.code);
+    }
+
     function getMenu(){
         if(clicked){
             return(
             <div className="Menu">
-                <button className="Button" style={{backgroundColor: '#77E178'}}>
-                    Share
+                <button className="Button" style={{backgroundColor: '#77E178'}} onClick={handleShare} value={shareButton}>
+                    {shareButton}
                 </button>
                 
                 <button className="Button" style={{border: '1px solid #787878'}}>
@@ -61,6 +68,7 @@ const FormMiniature = (props) =>
 
     function handleHoverOff(){
         setClicked(false);
+        setShareButton("Share");
     }
 
     return  <div className="FormMiniatureComponent">

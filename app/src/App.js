@@ -11,6 +11,7 @@ import AccountView from './Views/AccountView';
 import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
 
+import FormComponent from "./Components/FormComponent";
 
 const PrivateRoute = () => {
     const isAuthenticated = ReactSession.get("isAuthenticated");
@@ -29,7 +30,7 @@ function App() {
                     <Route exact path='/login' element={<LoginView/>} />
                     <Route exact path='/register' element={<RegisterView/>} />
                     <Route exact path='/recover' element={<AccountRecoveryView/>} />
-
+                    <Route path='/form/:formCode' element={<FormComponent/>}/>
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/registerSuccess' element={<RegisterSuccessfulView/>} />
                     </Route>
