@@ -5,6 +5,7 @@ class Question {
     private $content;
     private $required;
     private $answers;
+    private $id;
 
     public function __construct($type, $content, $required, $answers = null)
     {
@@ -12,6 +13,24 @@ class Question {
         $this->content = $content;
         $this->required = $required;
         $this->answers = $answers;
+    }
+
+    public function toJSON(): array {
+        $json = [];
+
+        $body = [];
+        $body['content'] = $this->content;
+        $body['required'] = $this->required;
+
+        if($this->answers != null) {
+            $body['answers'] = $this->answers;
+        }
+
+        $json['type'] = $this->type;
+        $json['body'] = $body;
+
+        return $json;
+
     }
 
     public function getType()
@@ -54,5 +73,13 @@ class Question {
         $this->answers = $answers;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 }

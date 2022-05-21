@@ -39,6 +39,16 @@
     display: inline-block;
 }
 
+.Info:empty {
+    display: none;
+}
+
+.Info {
+    font-size: 10px;
+    color: green;
+    margin: 8px;
+}
+
 .Input:invalid[focused="true"] + .InputError {
     display: block;
 
@@ -63,4 +73,9 @@
 
 .Button:hover{
     background-color: #dddddd;
+}
+
+.ReCAPTCHA{
+    margin-top: 10px;
+    display: block;
 }

@@ -1,10 +1,16 @@
-import React from "react";
-import { useState } from "react";
-import "../Css/BasicComponents.css";
-import "../Css/LoginComponent.css";
-import Logo from "../Graphics/Logo/Logo";
+import React from 'react';
+import { useState } from 'react';
+import '../Css/BasicComponents.css';
+import '../Css/LoginComponent.css';
+import Logo from '../Graphics/Logo/Logo';
+
+import { ReactSession } from 'react-client-session';
+import {useNavigate} from 'react-router-dom';
+
 
 const LoginContent = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [focusedEmail, setFocusedEmail] = useState(false);
@@ -20,7 +26,7 @@ const LoginContent = () => {
     passwordError: "Wrong password format!",
   };
   const inputPatterns = {
-    passwordPattern: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`,
+    passwordPattern: `.*`,
   };
 
   const emailHandler = (e) => {
@@ -52,18 +58,19 @@ const LoginContent = () => {
           return response.json();
         })
           .then(data => {
-            if(responseStatus == 200) {
+            if(responseStatus === 200) {
               console.log(data);
               return data;
             } else setResponseError(data);
+          })
+          .then(function (user) {
+            ReactSession.set("email", user.email);
+            ReactSession.set("name", user.name);
+            ReactSession.set("surname", user.surname);
+            ReactSession.set("picture", user.picture);
+            ReactSession.set("isAuthenticated", true);
+            navigate('/home');
           });
-    
-      
-    
-
-    
-
-    
 
     setEmail("");
     setPassword("");
@@ -76,10 +83,12 @@ const LoginContent = () => {
 
   const RecoverAccountHandler = () => {
     console.log("Rec");
+    navigate('/recover');
   };
 
   const RegisterHandler = () => {
     console.log("Regi");
+    navigate('/register');
   };
 
   return (
@@ -128,12 +137,12 @@ const LoginContent = () => {
         <button className="Button" type="submit" form="loginForm">
           Login
         </button>
-        <button className="Button" type="button">
+        <button className="Button" type="button" onClick={RegisterHandler}>
           Register
         </button>
       </div>
       <div className="RecoverButton">
-        <button className="Button">Recover account</button>
+        <button className="Button" onClick={RecoverAccountHandler}>Recover account</button>
       </div>
     </div>
   );

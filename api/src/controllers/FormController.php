@@ -2,17 +2,21 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Form.php';
+require_once __DIR__.'/../models/Question.php';
 require_once __DIR__.'/../repository/FormRepository.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../repository/QuestionRepository.php';
 
 class FormController extends AppController {
     private $formRepository;
     private $userRepository;
+    private $questionRepository;
 
     public function __construct() {
         parent::__construct();
         $this->formRepository = new FormRepository();
         $this->userRepository = new UserRepository();
+        $this->questionRepository = new QuestionRepository();
     }
 
     public function addForm() {
@@ -56,6 +60,34 @@ class FormController extends AppController {
         http_response_code(200);
         $response['code'] = $code;
         echo json_encode($response);
+    }
+
+    public function getForm() {
+        $request = $this->getRequest('POST');
+
+        $code = trim($request->code);
+
+        if(empty($code)) {
+            http_response_code(400);
+            echo json_encode("Bad request");
+            die();
+        }
+
+        $questions = $this->questionRepository->getQuestions($code);
+        $json = [];
+
+        foreach ($questions as $question) {
+            $json[] = $question->toJSON();
+        }
+
+        if(empty($json)) {
+            http_response_code(404);
+            echo json_encode("Form does not exist");
+            die();
+        }
+
+        http_response_code(200);
+        echo json_encode($json);
     }
 
     private function generateCode(): string {
