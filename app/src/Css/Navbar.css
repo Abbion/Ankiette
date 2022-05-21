@@ -2,7 +2,7 @@
     top: 0;
 
     width: 100vw;
-    height: 100px;
+    height: 124px;
 
     background: #F2F2F2;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
@@ -13,23 +13,22 @@
     position: absolute;
 
     width: 100vw;
-    height: 100px;
+    height: 124px;
 
     justify-content: center;
     list-style: none;
 }
 
 .NavbarButton {
-    height: 28px;
-    width: 180px;
+    height: 36px;
+    width: 276px;
     cursor: pointer;
-
+    background-color: #F2F2F2;
     border-radius: 20px;
     border: 1px solid #787878;
-
     font-family: "Roboto";
     font-weight: 300;
-    font-size: 20px;
+    font-size: 28px;
 }
 
 .NavbarButton:hover {
@@ -49,7 +48,7 @@
 .NavMenu {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 8%;
+    grid-gap: 64px;
     
     text-align: center;
     justify-content: center;
@@ -61,7 +60,7 @@
 .NavMenuActive {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-gap: 8%;
+    grid-gap: 64px;
     
     text-align: center;
     justify-content: center;
@@ -79,8 +78,8 @@
         top: 0;
         right: 0;
 
-        height: 0px;
-        width: 0px;
+        height: 90px;
+        width: 90px;
 
         background: #F2F2F2;
         box-shadow: none;
@@ -94,23 +93,26 @@
 
     .NavbarButton {
         height: 40px;
-        width: 280px;
+        width: 372px;
         cursor: pointer;
 
+        background-color: #F2F2F2;
         border: none;
         border-radius: 0%;
+
+        font-family: "Roboto";
+        font-weight: 300;
+        font-size: 28px;
     }
 
     .LogoutButton {
         display: block;
-        position: absolute;
+        position: relative;
+        bottom: -250px;
         cursor: pointer;
-        
-        bottom: 0;
-        margin-bottom: 40px;
 
-        height: 32px;
-        width: 220px;
+        height: 36px;
+        width: 276px;
 
         color: white;
         background-color: #FF5341;
@@ -119,7 +121,7 @@
 
         font-family: "Roboto";
         font-weight: 300;
-        font-size: 20px;
+        font-size: 28px;
     }
 
     .LogoutButton:hover {
@@ -130,10 +132,9 @@
         display: flex;
         flex-direction: column;
         row-gap: 50px;
-
         position: absolute;
 
-        width: 280px;
+        width: 372px;
         height: 100vh;
         right: -100%;
         top: 0;
@@ -153,16 +154,14 @@
         row-gap: 50px;
         position: absolute;
 
-        padding-top: 100px;
-
-        width: 280px;
+        width: 372px;
         height: 100vh;
         right: 0;
         top: 0;
         margin: 0;
         
         text-align: center;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
 
         opacity: 1;
@@ -177,15 +176,6 @@
         position: absolute;
         top: 20px;
         right: 20px;
-        cursor: pointer;
-    }
-
-    .menu-icon {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 1.8 rem;
         cursor: pointer;
     }
 }

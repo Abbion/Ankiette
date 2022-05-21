@@ -1,19 +1,11 @@
-import '../Css/RegisterSuccessfulComponent.css';
-import '../Css/BasicComponents.css';
-import Logo from '../Graphics/Logo/Logo';
-import CircleGreenTick from '../Graphics/Icons/CircleGreenTick';
-
-import {useNavigate} from 'react-router-dom';
-import { ReactSession } from 'react-client-session';
+import '../Css/RegisterSuccessfulComponent.css'
+import '../Css/BasicComponents.css'
+import Logo from '../Graphics/Logo/Logo'
+import CircleGreenTick from '../Graphics/Icons/CircleGreenTick'
 
 const RegisterSuccessfulComponent = () => {
-
-    const navigate = useNavigate();
-
     function LoginNowClicked() {
         console.log("LogIn Now");
-        ReactSession.set("isAuthenticated", false);
-        navigate("/");
     }
 
     return <div className="RegisterSuccessfulPanel">
@@ -29,7 +21,7 @@ const RegisterSuccessfulComponent = () => {
         </div>
         <CircleGreenTick />
         <div className="LoginNowButton">
-            <button className="Button" onClick={LoginNowClicked}>
+            <button className="Button">
                 Login now
             </button>
         </div>

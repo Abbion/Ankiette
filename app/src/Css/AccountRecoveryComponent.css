@@ -1,9 +1,10 @@
 .AccountRecoveryPanel{
-
+    overflow-y: auto;
     background-color: #f8f8f8e3;
+    height: 550px;
     width: 470px;
 
-    max-height: 100%;
+    max-height: 90%;
     min-height: 50%;
     min-width: 50%;
 
@@ -57,7 +58,6 @@
 
 .AccountRecoveryPanel > .Button{
     margin-top: 20px;
-    margin-bottom: 20px;
     width: 50%;
 }
 

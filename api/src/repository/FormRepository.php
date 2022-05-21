@@ -37,36 +37,4 @@ class FormRepository extends Repository {
             return true;
         } else return false;
     }
-
-    public function addAttendance(string $code, User $user) {
-
-        $stmt = $this->database->connect()->prepare('
-            INSERT INTO users_forms(id_forms, id_users, added_at) 
-            VALUES ((SELECT id_forms FROM forms WHERE code = ?),
-                    (SELECT id FROM users WHERE email = ?), now());
-        ');
-
-        $stmt->execute([
-            $code,
-            $user->getEmail()
-        ]);
-    }
-
-    public function existsAndOwner(string $email, string $code) {
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM forms f 
-            JOIN users u ON u.id = f.id_user 
-            WHERE u.email = :email AND f.code = :code
-        ');
-
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':code', $code);
-        $stmt->execute();
-
-        $form = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if($form == false) {
-            return false;
-        } else return true;
-    }
 }

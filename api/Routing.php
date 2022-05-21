@@ -6,7 +6,6 @@ require_once 'src/controllers/RecoveryController.php';
 require_once 'src/controllers/UserController.php';
 require_once 'src/controllers/FormController.php';
 require_once 'src/controllers/QuestionController.php';
-require_once 'src/controllers/AnswersController.php';
 
 class Routing
 {

@@ -11,7 +11,7 @@ Routing::get('test', 'DefaultController');
 Routing::get('login', 'SecurityController'); // dlaczego get????
 Routing::post('register', 'SecurityController');
 
-Routing::post('sendCode', 'RecoveryController');
+Routing::get('sendCode', 'RecoveryController');
 Routing::get('recoverAccount', 'RecoveryController');
 
 Routing::get('getUserDetails', 'userController');
@@ -19,11 +19,7 @@ Routing::post('setUserDetails', 'userController');
 Routing::post('setProfilePicture', 'userController');
 
 Routing::post('addForm', 'FormController');
-Routing::post('getForm', 'FormController');
 
 Routing::post('addQuestions', 'QuestionController');
-
-Routing::post('addAnswers', 'AnswersController');
-Routing::post('getAnswers', 'AnswersController');
 
 Routing::run($path);

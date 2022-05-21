@@ -1,17 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-
-import ReCAPTCHA from 'react-google-recaptcha';
-
-import '../Css/BasicComponents.css';
-import '../Css/RegisterComponent.css';
-
-import {useNavigate} from 'react-router-dom';
-import { ReactSession } from 'react-client-session';
+import React from "react";
+import { useState } from "react";
+import "../Css/BasicComponents.css";
+import "../Css/RegisterComponent.css";
 
 const RegisterComponent = () => {
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -36,7 +28,6 @@ const RegisterComponent = () => {
     surnameError: "Surname is required",
     passwordError: "Wrong password format!",
     confirmPasswordError: "Passwords don't match!",
-    captchaError: "reCAPTCHA is required",
   };
 
   const inputPatterns = {
@@ -64,10 +55,6 @@ const RegisterComponent = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const reCaptchaHandler = (e) => {
-    console.log('Captcha value:', e.value);
-  }
-
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -92,10 +79,8 @@ const RegisterComponent = () => {
           return response.json();
         })
           .then(data => {
-            if(responseStatus === 200) {
+            if(responseStatus == 200) {
               console.log(data);
-              ReactSession.set("isAuthenticated", true);
-              navigate('/registerSuccess');
             } else setResponseError(data);
             return data;
           });
@@ -113,6 +98,8 @@ const RegisterComponent = () => {
     setFocusedSurname(false);
     setFocusedConfirmPassword(false);
     setResponseError("");
+
+
   };
 
   return (
@@ -204,11 +191,6 @@ const RegisterComponent = () => {
         />
         <span className="InputError">{errorMessages.confirmPasswordError}</span>
       </form>
-      <ReCAPTCHA
-          sitekey={"6Lfbjs8fAAAAABVVOJa5zQnAg8-yhB4u5-MUbpdG"}
-          className="ReCAPTCHA"
-          onChange={reCaptchaHandler}
-      />
       <div className="RegisterButton">
         <button className="Button" type="submit" form="registerForm">
           Register
