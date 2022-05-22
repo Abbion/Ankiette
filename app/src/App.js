@@ -10,6 +10,8 @@ import AccountRecoveryView from './Views/AccountRecoveryView';
 import AccountView from './Views/AccountView';
 import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
+import ChosenReportDetailsView from './Views/ChosenReportDetailsView';
+import NavbarView from './Views/NavbarView';
 
 
 const PrivateRoute = () => {
@@ -45,9 +47,15 @@ function App() {
                         <Route exact path='/newForm' element={<NewFormView/>}/>
                     </Route>
 
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                        <Route exact path='/reportDetails' element={<ChosenReportDetailsView/>}/>
+                    </Route>
+
                 </Routes>
+                
             </div>
         </BrowserRouter>
+        
     )
 }
 

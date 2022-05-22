@@ -1,0 +1,69 @@
+h1 {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.ChosenReportDetailsView{
+    width: 100%;
+    height: 100%;
+    background-color: #F2F2F2;
+    overflow-y: hidden;
+}
+
+.ReportDetailsPanel {
+    margin: 0 16.25%;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.FormInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    width: 250px;
+    height: 630px;
+    margin-left: 60px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+.CSVButton {
+    margin-top: 20px;
+    width: 180px;
+    height: 28px;
+    
+    background: #77E178;
+    border-radius: 32px;
+    border: 1px solid #787878;
+
+    font-family: 'roboto';
+}
+
+.CSVButton:hover {
+    background: #50d752;
+}
+
+.QuestionsInfo {
+    display: flex;
+    flex-direction: column;
+
+    width: 1000px;
+    height: 800px;    
+    margin: 60px;
+
+    background: rgba(242, 242, 242, 0.95);
+    box-shadow: 4px 4px 40px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 56px;
+}
+
+.QuestionNumber {
+    font-size: 28px;
+}
+
+.QuestionDetails {
+    margin: 50px;
+    margin-bottom: 0;
+}
