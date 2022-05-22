@@ -80,7 +80,7 @@
 
 .Questions{
     width: 100%;
-    height: 400px;
+    height: auto;
     
     display: flex;
     flex-direction: column;

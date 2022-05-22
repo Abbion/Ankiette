@@ -4,16 +4,14 @@ import { useState } from 'react';
 
 const AddQuestionComponent = () =>
 {
-    const [questionArr, setQuestionArr] = useState(['1']);
+    const [questionArr, setQuestionArr] = useState([]);
+    const [key, setNewKey] = useState(0);
 
     function onAddQuestionClicked(){
         console.log("Add question");
 
-        setQuestionArr(prevState =>(
-            {
-                questionArr : [...prevState, '2']
-            }
-        ));
+        setQuestionArr(prevState => [...prevState, <div key={key} className="QTemplate"/> ]);
+        setNewKey(prevKey => prevKey + 1 );
         console.log(questionArr);
     }
 
