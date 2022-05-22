@@ -11,6 +11,8 @@ import AccountView from './Views/AccountView';
 import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
 
+import QuestionEditingCard from "./Components/QuestionEditingCard";
+
 
 const PrivateRoute = () => {
     const isAuthenticated = ReactSession.get("isAuthenticated");
@@ -44,6 +46,8 @@ function App() {
                         <Route exact path='/newForm' element={<NewFormComponent/>}/>
                         <Route exact path='/newForm' element={<NewFormView/>}/>
                     </Route>
+
+                    <Route exact path='questionEditingCard' element={<QuestionEditingCard/>}/>
 
                 </Routes>
             </div>

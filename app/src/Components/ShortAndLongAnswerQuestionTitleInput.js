@@ -2,7 +2,7 @@ import '../Css/QuestionEditor.css'
 
 const ShortAndLongAnswerQuestionTitleInput = () => {
     return(
-        <input className="QuestionInput"></input>
+        <textarea className="QuestionInput"></textarea>
     )
 }
 
