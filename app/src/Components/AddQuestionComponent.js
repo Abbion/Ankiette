@@ -1,19 +1,38 @@
-import '../Css/CreateForm.css'
-import '../Css/BasicComponents.css'
-import { useState } from 'react';
+import '../Css/CreateForm.css';
+import '../Css/BasicComponents.css';
+import { useEffect, useState } from 'react';
+import QuestionEditingCard from './QuestionEditingCard';
+
 
 const AddQuestionComponent = () =>
 {
     const [questionArr, setQuestionArr] = useState([]);
     const [key, setNewKey] = useState(0);
+    const [questionNumbers, setQuestionNumber] = useState([1]);
+    const [removeIndex, setRemoveIndes] = useState(-1);
 
     function onAddQuestionClicked(){
-        console.log("Add question");
-
-        setQuestionArr(prevState => [...prevState, <div key={key} className="QTemplate"/> ]);
+        setQuestionArr(prevState => [...prevState,
+                        <QuestionEditingCard 
+                        key={key} 
+                        number={questionNumbers[questionNumbers.length - 1]}
+                        RemoveQuestionFnc={ (delFunc) => onDeleteClicked(key) }/>,
+                    ]);
+        setQuestionNumber(prevState => [...prevState, prevState[questionNumbers.length - 1] + 1]);
         setNewKey(prevKey => prevKey + 1 );
-        console.log(questionArr);
     }
+
+    function onDeleteClicked(questionNumber){
+        setRemoveIndes(questionNumber);
+    }
+
+    useEffect(() => {
+
+        setQuestionArr((prevState) => prevState.filter((index) => {
+            return index.key != removeIndex;
+        }));
+
+    }, [removeIndex])
 
     return <div className = "AddQuestionComponent">
         <div className="AddAndConfigm">
