@@ -44,7 +44,7 @@ const FormMiniature = (props) =>
                 </button>
                 
                 <button className="Button" style={{border: '1px solid #787878'}}>
-                    Show Raport    
+                    Show Report
                 </button>
                 
                 <button className="Button" style={{backgroundColor: '#FF5341'}}>
@@ -66,10 +66,10 @@ const FormMiniature = (props) =>
     return  <div className="FormMiniatureComponent">
         <div className="FormMiniature" onClick={handleClick} onMouseLeave={handleHoverOff}>
             {getMenu()}
-            {getStripes(2)}
+            {getStripes(props.formCode)}
         </div>
         <div className="Title">
-            props.name
+            {props.name}
         </div>
     </div>
 }
