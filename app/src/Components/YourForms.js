@@ -32,7 +32,7 @@ const YourFormsContent = () =>
                 return data;
             }
         });
-
+        
     }, []);
 
     const orderByHandler = (e) => {
@@ -110,12 +110,11 @@ const YourFormsContent = () =>
         <div className="SeparationLine">
 
         </div>
-
          <div className="Forms">
              <div className="FormsGrid">
                  {
                      shownForms.map(form => {
-                         return <FormMiniature key={form.code} name={form.title}/>
+                         return <FormMiniature key={form.code} name={form.title} formCode={form.code}/>
                      })
                  }
             </div>

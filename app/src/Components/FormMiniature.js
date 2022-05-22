@@ -66,7 +66,7 @@ const FormMiniature = (props) =>
     return  <div className="FormMiniatureComponent">
         <div className="FormMiniature" onClick={handleClick} onMouseLeave={handleHoverOff}>
             {getMenu()}
-            {getStripes(2)}
+            {getStripes(props.formCode)}
         </div>
         <div className="Title">
             {props.name}
