@@ -2,12 +2,12 @@ import '../Css/CreateForm.css'
 import Navbar from '../Components/Navbar'
 import AddQuestionComponent from '../Components/AddQuestionComponent'
 
-const CreateForm = () =>
+const CreateFormView = () =>
 {
-    return <div className = "CreateForm">
+    return <div className = "CreateFormView">
         <Navbar/>
         <AddQuestionComponent/>
     </div>
 }
 
-export default CreateForm
+export default CreateFormView

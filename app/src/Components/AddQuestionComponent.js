@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import QuestionEditingCard from './QuestionEditingCard';
 
 
-const AddQuestionComponent = () =>
+const AddQuestionComponent = (props) =>
 {
     const [questionArr, setQuestionArr] = useState([]);
     const [key, setNewKey] = useState(0);
@@ -35,9 +35,9 @@ const AddQuestionComponent = () =>
     }, [removeIndex])
 
     return <div className = "AddQuestionComponent">
-        <div className="AddAndConfigm">
+        <div className="AddAndConfirm">
             <h1 className="FormName">
-                My new form
+                {props.formName}
             </h1>
 
             <div className="Questions">

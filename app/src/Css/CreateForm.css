@@ -3,9 +3,10 @@
     flex-direction: column;
     align-items: center;
     height: calc(100vh - 115px);
+    overflow-x: hidden;
 }
 
-.AddAndConfigm{
+.AddAndConfirm{
     margin-top: 1em;
     width: 70%;
     height: 100%;
@@ -30,7 +31,7 @@
     align-self: flex-start;
 }
 
-.AddAndConfigm > button{
+.AddAndConfirm > button{
     margin-top: 2em;
     margin-bottom: 2em;
 
@@ -45,7 +46,7 @@
     border-radius: 20px;
 }
 
-.AddAndConfigm > button > h2{
+.AddAndConfirm > button > h2{
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-size: 48px;
@@ -55,12 +56,12 @@
     color: #77E178;
 }
 
-.AddAndConfigm > button > h1{
+.AddAndConfirm > button > h1{
     font-family: "Roboto", sans-serif;
     font-weight: 300;
 }
 
-.AddAndConfigm > .ConfirmButton{
+.AddAndConfirm > .ConfirmButton{
     margin-top: 1em;
     margin-bottom: 5em;
     width: 250px;
@@ -69,7 +70,7 @@
     background-color: #77E178;
 }
 
-.AddAndConfigm > .ConfirmInfo{
+.AddAndConfirm > .ConfirmInfo{
 
     font-family: "Roboto", sans-serif;
     font-weight: 100;
@@ -95,7 +96,15 @@
     background-color: cornflowerblue;
 }
 
+@media only screen and (max-width: 600px){
+    .AddQuestionComponent{
+        height: 100vh;
+    }
 
+    .AddAndConfirm{
+        overflow-y:visible;
+    }
+}
 
 /* width */
 ::-webkit-scrollbar {

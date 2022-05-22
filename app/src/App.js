@@ -8,9 +8,8 @@ import HomeView from './Views/HomeView';
 import RegisterSuccessfulView from './Views/RegisterSuccessfulView';
 import AccountRecoveryView from './Views/AccountRecoveryView';
 import AccountView from './Views/AccountView';
-import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
-import CreateForm from './Views/CreateNewFormView';
+import CreateFormView from './Views/CreateNewFormView';
 
 import FormComponent from "./Components/FormComponent";
 
@@ -26,9 +25,6 @@ function App() {
     return (
         <BrowserRouter>
             <div className="App" style={{margin: 0}}>
-                <CreateForm/>
-                {
-                    /*
                 <Routes>
                     <Route exact path='/' element={<LoginView/>} />
                     <Route exact path='/login' element={<LoginView/>} />
@@ -46,13 +42,14 @@ function App() {
                         <Route exact path='/account' element={<AccountView/>} />
                     </Route>
                     <Route exact path='/' element={<PrivateRoute/>}>
-                        <Route exact path='/newForm' element={<NewFormComponent/>}/>
                         <Route exact path='/newForm' element={<NewFormView/>}/>
                     </Route>
 
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                        <Route exact path='/editForm' element={<CreateFormView/>}/>
+                    </Route>
+
                 </Routes>
-                */
-                }
             </div>
         </BrowserRouter>
     )
