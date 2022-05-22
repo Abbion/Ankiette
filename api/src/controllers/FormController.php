@@ -136,6 +136,29 @@ class FormController extends AppController {
 
         http_response_code(200);
         echo json_encode($allEncodedForms, 0, 3);
-//        echo json_encode($all,0,3);
+    }
+
+    public function removeForm(){
+        $request = $this->getRequest('POST');
+
+        $code = trim($request->formCode);
+        $email = trim($request->email);
+
+
+        if(empty($code) || empty($email)) {
+            http_response_code(400);
+            echo json_encode("Bad request");
+            die();
+        }
+
+        if(!$this->formRepository->existsAndOwner($email, $code)){
+            http_response_code(401);
+            echo json_encode("Unauthorized!");
+            die();
+        }
+
+        $code = $this->formRepository->removeForm($code);
+        http_response_code(200);
+        echo json_encode($code);
     }
 }
