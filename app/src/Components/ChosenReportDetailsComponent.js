@@ -1,4 +1,3 @@
-import '../Css/ChosenReportDetailsComponent.css';
 import '../Css/BasicComponents.css';
 
 import ChoicesAnswerComponent from './ChoicesAnswerComponent';
@@ -15,7 +14,6 @@ const ChosenReportDetailsComponent = () => {
     const [participateCount, setParticipateCount] = useState(28);
     const [finishCount, setfinishCount] = useState(23);
     const [questionsCount, setQuestionsCount] = useState(5);
-    let [questionNr, setQuestionNr] = useState(1);
 
     return(
         <div className="ReportDetailsPanel">
@@ -35,16 +33,16 @@ const ChosenReportDetailsComponent = () => {
             </div>
             <div className="QuestionsInfo">
                 <div className="QuestionDetails">
-                    <h1 className="QuestionNumber">Question {questionNr}</h1>
-                    <ChoicesAnswerComponent/>
+                    <h1 className="QuestionNumber">Question 1</h1>
+                    <ChoicesAnswerComponent percentage={58}/>
                 </div>
                 <div className="QuestionDetails">
-                    <h1 className="QuestionNumber">Question {questionNr}</h1>
-                    <ChoicesAnswerComponent/>
+                    <h1 className="QuestionNumber">Question 2</h1>
+                    <ChoicesAnswerComponent percentage={23}/>
                 </div>
                 <div className="QuestionDetails">
-                    <h1 className="QuestionNumber">Question {questionNr}</h1>
-                    <ChoicesAnswerComponent/>
+                    <h1 className="QuestionNumber">Question 3</h1>
+                    <ChoicesAnswerComponent percentage={69}/>
                 </div>
             </div>
         </div>

@@ -29,6 +29,10 @@ h1 {
     align-items: center;
 }
 
+.FormItem {
+    padding-top: 40px;
+}
+
 
 .CSVButton {
     margin-top: 20px;
@@ -60,10 +64,18 @@ h1 {
 }
 
 .QuestionNumber {
-    font-size: 28px;
+    font-size: 35px;
 }
 
 .QuestionDetails {
     margin: 50px;
+    margin-top: 20px;
     margin-bottom: 0;
+}
+
+.ChoiceResult {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    font-size: 20px;
 }
