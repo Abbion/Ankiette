@@ -75,22 +75,30 @@ class FormRepository extends Repository
         } else return true;
     }
 
-    public function getAll(string $email)
-    {
+    public function getAllCreated(string $email) {
         $stmt = $this->database->connect()->prepare('
-                    SELECT DISTINCT id_forms,title,start_date,end_date,code from (
-            (SELECT forms.*,email
-                FROM forms
-                JOIN users u on u.id = forms.id_user)
-            UNION
-            (SELECT f.*,u2.email
-                FROM users_forms
-                JOIN forms f on f.id_forms = users_forms.id_forms
-                JOIN users u2 on u2.id = users_forms.id_users)
-        ) as wszystkie
-        WHERE email LIKE :input
-                ');
+            SELECT f.*
+            FROM forms f
+            JOIN users u on u.id = f.id_user
+            WHERE u.email LIKE :input
+        ');
 
+        return $this->getFormsByEmail($email, $stmt);
+    }
+
+    public function getAllAttended(string $email) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT f.*
+            FROM users_forms
+            JOIN forms f on f.id_forms = users_forms.id_forms
+            JOIN users u on u.id = users_forms.id_users
+            WHERE u.email LIKE :input
+        ');
+
+        return $this->getFormsByEmail($email, $stmt);
+    }
+
+    private function getFormsByEmail(string $email, $stmt) {
         $stmt->bindParam(':input', $email);
         $stmt->execute();
 
@@ -110,6 +118,23 @@ class FormRepository extends Repository
         }
 
         return $forms;
+    }
+
+    public function getAttendedPeopleCount(string $code) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT count(uf.id_users) counted
+            FROM users_forms uf 
+            JOIN forms f on uf.id_forms = f.id_forms
+            WHERE f.code = :code
+            GROUP BY uf.id_forms
+        ');
+
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+
+        $array = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return empty($array["counted"]) ? 0 : $array["counted"];
     }
 
     public function getCreatedCount(string $email)
