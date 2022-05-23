@@ -1,20 +1,45 @@
+import { useState } from 'react'
 import '../Css/QuestionEditor.css'
+import RedCross from '../Graphics/Icons/RedCross';
 
 const SingleChoiceQuestionEditor = () => {
+    const [answer, setAnswer] = useState([getAnserDiv(0), getAnserDiv(1)]);
+    const [nextID, setNextId] = useState(2);
+
+    function getAnserDiv(id)
+    {
+        return (     <div className="QuestionItem" id={id} key={id}>
+        <input type="radio" name="correct-answer" className="RadioButton"></input>
+        <input type="text" className="QuestionInput"></input>
+
+        {id > 1 ? <div className="DeleteAnswer" style={{paddingLeft: "0.5em", cursor: "pointer"}} onClick={(callback) => {removeAnswerAt(id)}}> 
+            <RedCross/> 
+            </div> : ''}
+        </div>);
+    }
+
+    function addAddAnswer(){
+        setAnswer(prevAnswers => [...prevAnswers, getAnserDiv(nextID)]);
+        setNextId(prevState => prevState + 1);
+        
+    }
+
+    function removeAnswerAt(id)
+    {
+        setAnswer((prevState) => prevState.filter((index) => {
+            return index.key != id;
+        }));
+    }
+
     return(
         <div className="QuestionEditorContainer">
             <input type="text" className="QuestionInput"></input>
             <div className="EditedQuestionsList">
-                <div className="QuestionItem">
-                    <input type="radio" name="correct-answer" className="RadioButton"></input>
-                    <input type="text" className="QuestionInput"></input>
-                </div>
-                <div className="QuestionItem">
-                    <input type="radio" name="correct-answer" className="RadioButton"></input>
-                    <input type="text" className="QuestionInput"></input>
-                </div>
+
+                {answer}
+            
             </div>
-            <button className="AddNewAnswerButton">Add an answer</button>
+            <button className="AddNewAnswerButton" onClick={addAddAnswer}>Add an answer</button>
         </div>
     )
 }

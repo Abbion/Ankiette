@@ -1,9 +1,9 @@
 .Card{
-    background-color: #f8f8f8e3;
+    background-color: #F2F2F2;
     height: fit-content;
-    width: 100%;
+    width: 90%;
 
-    padding: 32px;
+    padding: 10px 32px;
 
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@
 
     border-radius: 60px;
     backdrop-filter: blur(6px);
-    filter: drop-shadow(10px 10px 10px #000000bd);
+    filter: drop-shadow(4px 4px 10px #00000095);
 
     color: #000A16;
 }
@@ -28,7 +28,8 @@
 .Card > .QuestionHeader > .QuestionNumber{
     flex: 1;
 
-    font-family: 'Adam', 'sans-serif';
+    font-family: 'Roboto', 'sans-serif';
+    font-weight: 300;
     font-size: xx-large;
 }
 
@@ -47,24 +48,28 @@
 .Card > .QuestionTypeField > .QuestionTypeText{
     margin-right: 64px;
     
-    font-family: 'Adam', 'sans-serif';
+    font-family: 'Roboto', 'sans-serif';
+    font-weight: 300;
     font-size: xx-large;
 }
 
 .Card > .QuestionTypeField > .QuestionTypeSelector{
     width: 100%;
     flex: 1;
-    font-family: 'Adam', 'sans-serif';
+    font-family: 'Roboto', 'sans-serif';
+    font-weight: 300;
     font-size: x-large;
 }
 
 .Card > .QuestionContentText{
-    font-family: 'Adam', 'sans-serif';
+    font-family: 'Roboto', 'sans-serif';
+    font-weight: 300;
     font-size: x-large;
 }
 
 .Card > .QuestionEditor{
     width: 100%;
+    padding-bottom: 2em;
 }
 
 @media only screen and (max-width: 600px){
