@@ -109,6 +109,12 @@ class FormController extends AppController {
         $request = $this->getRequest('POST');
         $email = trim($request->email);
 
+        if(empty($email)) {
+            http_response_code(400);
+            echo json_encode("Bad request");
+            die();
+        }
+
         if(empty($this->userRepository->getUser($email))) {
             http_response_code(404);
             echo json_encode("No user of such email");
