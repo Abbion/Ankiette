@@ -2,10 +2,9 @@ import '../Css/BasicComponents.css';
 
 import ChoicesAnswerComponent from './ChoicesAnswerComponent';
 import FormMiniature from './FormMiniature';
-import Button from './Button';
-import { ReactSession } from 'react-client-session';
-import { useNavigate } from 'react-router-dom';
-import { useState}  from "react";
+/* import { ReactSession } from 'react-client-session';
+import { useNavigate } from 'react-router-dom'; */
+import { useState }  from "react";
 
 const ChosenReportDetailsComponent = () => {
     const [crdate, setCrdate] = useState('15-04-2022');
@@ -13,7 +12,6 @@ const ChosenReportDetailsComponent = () => {
     const [cldate, setCldate] = useState('18-05-2022');
     const [participateCount, setParticipateCount] = useState(28);
     const [finishCount, setfinishCount] = useState(23);
-    const [questionsCount, setQuestionsCount] = useState(5);
 
     return(
         <div className="ReportDetailsPanel">
@@ -23,26 +21,36 @@ const ChosenReportDetailsComponent = () => {
                     <div className="Footer"/>
                 </div>
                 <div className="FormDetails">
-                    <h1>Creation date: {crdate}</h1>
-                    <h1>Opened: {opdate}</h1>
-                    <h1>Closed: {cldate}</h1>
-                    <h1>Participants: {participateCount}</h1>
-                    <h1>Finished: {finishCount}</h1>
+                    <div className="BasicInfo">
+                        <h1>Creation date: {crdate}</h1>
+                        <h1>Opened: {opdate}</h1>
+                        <h1>Closed: {cldate}</h1>
+                        <h1>Participants: {participateCount}</h1>
+                        <h1>Finished: {finishCount}</h1>
+                    </div>
+                    <button className="CSVButton">Download detailed .csv</button>
                 </div>
-                <button className="CSVButton">Download detailed .csv</button>
             </div>
-            <div className="QuestionsInfo">
-                <div className="QuestionDetails">
-                    <h1 className="QuestionNumber">Question 1</h1>
-                    <ChoicesAnswerComponent percentage={58}/>
-                </div>
-                <div className="QuestionDetails">
-                    <h1 className="QuestionNumber">Question 2</h1>
-                    <ChoicesAnswerComponent percentage={23}/>
-                </div>
-                <div className="QuestionDetails">
-                    <h1 className="QuestionNumber">Question 3</h1>
-                    <ChoicesAnswerComponent percentage={69}/>
+            <div className="QuestionsBlock">
+                <div className="QuestionsInfo">
+                    <div className="QuestionDetails">
+                        <h1 className="QuestionNumber">Question 1</h1>
+                        <ChoicesAnswerComponent text={"Answer 1"} percentage={58}/>
+                        <ChoicesAnswerComponent text={"Answer 2"} percentage={42}/>
+                    </div>
+                    <div className="QuestionDetails">
+                        <h1 className="QuestionNumber">Question 2</h1>
+                        <ChoicesAnswerComponent text={"Answer 1"} percentage={23}/>
+                        <ChoicesAnswerComponent text={"Answer 2"} percentage={0}/>
+                        <ChoicesAnswerComponent text={"Answer 3"} percentage={67}/>
+                        <ChoicesAnswerComponent text={"Answer 4"} percentage={4}/>
+                    </div>
+                    <div className="QuestionDetails">
+                        <h1 className="QuestionNumber">Question 3</h1>
+                        <ChoicesAnswerComponent text={"Answer 1"} percentage={95}/>
+                        <ChoicesAnswerComponent text={"Answer 2"} percentage={43}/>
+                        <ChoicesAnswerComponent text={"Answer 3"} percentage={25}/>
+                    </div>
                 </div>
             </div>
         </div>

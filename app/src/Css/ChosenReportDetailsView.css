@@ -11,17 +11,20 @@ h1 {
 }
 
 .ReportDetailsPanel {
-    margin: 0 16.25%;
+    margin: 0;
     display: flex;
     overflow-y: hidden;
+    justify-content: center;
 }
 
 .FormInfo {
     flex: 1;
     display: flex;
     flex-direction: column;
+    position: inherit;
 
-    width: 250px;
+    width: 200px;
+    max-width: 300px;
     height: 630px;
     margin-left: 60px;
 
@@ -31,6 +34,7 @@ h1 {
 
 .FormItem {
     padding-top: 40px;
+    height: 350px;
 }
 
 
@@ -50,32 +54,80 @@ h1 {
     background: #50d752;
 }
 
-.QuestionsInfo {
-    display: flex;
-    flex-direction: column;
-
+.QuestionsBlock{
     width: 1000px;
     height: 800px;    
     margin: 60px;
+    position: relative;
 
     background: rgba(242, 242, 242, 0.95);
     box-shadow: 4px 4px 40px 10px rgba(0, 0, 0, 0.25);
     border-radius: 56px;
 }
 
+.QuestionsInfo{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+
+    right: 25px;
+    top: 20px;
+
+    width: 95%;
+    height: 95%;
+    
+    overflow-x: hidden;
+}
+
 .QuestionNumber {
     font-size: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .QuestionDetails {
     margin: 50px;
-    margin-top: 20px;
-    margin-bottom: 0;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
-.ChoiceResult {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    font-size: 20px;
+@media (max-width: 600px) {
+    .ReportDetailsPanel {
+        margin: 0;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    .FormInfo {
+        display: flex;
+        flex-direction: row;
+    
+        width: 600px;
+        height: 200px;
+        margin: 0px;
+    
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .FormItem {
+        padding-right: 50px;
+    }
+    
+    .QuestionsBlock{
+        width: 480px;
+        height: 560px;    
+        margin: 0px;
+        margin-bottom: 50px;
+        position: relative;
+    }
+    
+    .QuestionNumber {
+        font-size: 35px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 }
