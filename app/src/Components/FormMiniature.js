@@ -39,7 +39,7 @@ const FormMiniature = (props) =>
     const handleShare = (e) => {
         e.preventDefault();
         setShareButton("Link copied!");
-        navigator.clipboard.writeText('http://localhost:3000/form/' + props.code);
+        navigator.clipboard.writeText('http://localhost:3000/form/' + props.formCode);
     }
 
     function getMenu(){
