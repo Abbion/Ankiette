@@ -73,23 +73,25 @@ class FormController extends AppController {
             die();
         }
 
-        $questions = $this->questionRepository->getQuestions($code);
-        $json = [];
+        $title = $this->formRepository->getFormName($code);
 
-        foreach ($questions as $question) {
-            $json[] = $question->toJSON();
-        }
-
-        if(empty($json)) {
+        if(empty($title)) {
             http_response_code(404);
             echo json_encode("Form does not exist");
             die();
         }
 
+        $questions = $this->questionRepository->getQuestions($code);
+        $questionsJson = [];
+
+        foreach ($questions as $question) {
+            $questionsJson[] = $question->toJSON();
+        }
+
+        $json = ["title" => $title, "questions" => $questionsJson];
         http_response_code(200);
         echo json_encode($json);
     }
-
 
     private function generateCode(): string {
         $code = '';
