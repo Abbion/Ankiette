@@ -1,6 +1,5 @@
-import '../Css/TemplateView.css';
+import '../Css/PreLoginTemplateView.css';
 import LoginComponent from '../Components/LoginComponent';
-import Navbar from '../Components/Navbar';
 
 import { ReactSession } from 'react-client-session';
 import {Navigate} from 'react-router-dom';

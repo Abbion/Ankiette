@@ -1,4 +1,4 @@
-import '../Css/TemplateView.css';
+import '../Css/PreLoginTemplateView.css';
 import RegisterSuccessfulComponent from '../Components/RegisterSuccessfulComponent';
 
 const RegisterSuccessfulView = () =>

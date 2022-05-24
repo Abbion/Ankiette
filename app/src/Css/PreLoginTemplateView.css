@@ -13,6 +13,7 @@
     background-color: #F2F2F2;
     height: 200vh;
     width: 55vw;
+    min-height: 1000px;
 
     transform: rotate(-18.26deg) translate(0, -200px);
 
@@ -36,6 +37,7 @@
     background-color: transparent;
     height: 100vh;
     width: 50vw;
+    min-height: 560px;
 
     display: flex;
     justify-content: center;
@@ -57,7 +59,7 @@
 
     .RightSide{
         width: 100vw;
-        height: 90vh;
+        height: 100vh;
         min-height: 400px;
     }
 }

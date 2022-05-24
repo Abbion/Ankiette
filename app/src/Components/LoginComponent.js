@@ -1,7 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
 import '../Css/BasicComponents.css';
 import '../Css/LoginComponent.css';
+import React from 'react';
+import { useState } from 'react';
 import Logo from '../Graphics/Logo/Logo';
 
 import { ReactSession } from 'react-client-session';
@@ -77,8 +77,6 @@ const LoginContent = () => {
     setFocusedEmail(false);
     setFocusedPassword(false);
     setResponseError("");
-
-    // console.log(userLoginData);
   };
 
   const RecoverAccountHandler = () => {

@@ -1,4 +1,4 @@
-import '../Css/TemplateView.css';
+import '../Css/PreLoginTemplateView.css';
 import AccountRecoveryComponent from '../Components/AccountRecoveryComponent';
 
 import { ReactSession } from 'react-client-session';

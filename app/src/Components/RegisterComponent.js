@@ -8,6 +8,7 @@ import '../Css/RegisterComponent.css';
 
 import {useNavigate} from 'react-router-dom';
 import { ReactSession } from 'react-client-session';
+import Logo from '../Graphics/Logo/Logo';
 
 const RegisterComponent = () => {
   const navigate = useNavigate();
@@ -118,9 +119,13 @@ const RegisterComponent = () => {
 
   return (
     <div className="RegisterInputPanel">
+      <div className="Logo">
+        <Logo />
+        <p className="LogoName">ANKIETTE</p>
+      </div>
       <div className="TabName">
-        <h1>Registration</h1>
-        <p className="ResponseError">{responseError}</p>
+          <h1>Registration</h1>
+          <p className="ResponseError">{responseError}</p>
       </div>
       <form
         className="RegisterInputs"
