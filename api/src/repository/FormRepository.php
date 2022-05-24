@@ -191,4 +191,17 @@ class FormRepository extends Repository
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getFormName(string $code) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT title FROM forms
+            WHERE code = :code
+        ');
+
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+        $title = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $title["title"];
+    }
+
 }
