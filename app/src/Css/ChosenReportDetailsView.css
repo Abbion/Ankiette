@@ -23,10 +23,10 @@ h1 {
     flex-direction: column;
     position: inherit;
 
-    width: 200px;
+    width: 30vw;
     max-width: 300px;
     height: 80vh;
-    margin-left: 60px;
+    margin-left: 0px;
 
     justify-content: center;
     align-items: center;
@@ -54,7 +54,7 @@ h1 {
 }
 
 .QuestionsBlock{
-    width: 1000px;
+    width: 50vw;
     height: 75vh;    
     margin: 50px;
     position: relative;
