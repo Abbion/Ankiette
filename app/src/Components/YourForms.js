@@ -4,6 +4,8 @@ import FormMiniature from './FormMiniature'
 import { useState, useEffect } from "react";
 import { ReactSession } from 'react-client-session';
 
+import Loading from '../Graphics/Icons/loading__.gif';
+
 
 const YourFormsContent = () =>
 {
@@ -16,6 +18,8 @@ const YourFormsContent = () =>
 
     let [responseForms, setResponseForms] = useState([]);
     let [shownForms, setShownForms] = useState([]);
+
+    const [isLoading, setLoading] = useState(true)
 
     let responseStatus = 0;
     useEffect(() => {
@@ -41,6 +45,7 @@ const YourFormsContent = () =>
         }).then(data => {
             setResponseForms(data);
             setShownForms(data);
+            setLoading(false);
         })
         
     }, []);
@@ -100,57 +105,98 @@ const YourFormsContent = () =>
 
     let key = 0;
 
-    return  (<div className="YourFromsContent">
+    return  (
+         isLoading ?
+             <div className="YourFromsContent">
 
-        <div className="FormsInfoAndFilters">
-            <h1>Your forms</h1>
-            
-            <div className="OrderBy">
-                <div className="FormsInfoText">Order by</div>
-                <select className="Select" onChange={orderByHandler} defaultValue={'DEFAULT'}>
-                    <option disabled value="DEFAULT" hidden></option>
-                    <option value="name">name</option>
-                    <option value="date">date</option>
-                    <option value="participants">participants</option>
-                </select>
-            </div>
+                 <div className="FormsInfoAndFilters">
+                     <h1>Your forms</h1>
 
-            <div className="Search">
-                <div className="FormsInfoText">Search</div>
-                <input type="text" className="Input" onKeyUp={searchHandler}/>
-            </div>
+                     <div className="OrderBy">
+                         <div className="FormsInfoText">Order by</div>
+                         <select className="Select" onChange={orderByHandler} defaultValue={'DEFAULT'}>
+                             <option disabled value="DEFAULT" hidden></option>
+                             <option value="name">name</option>
+                             <option value="date">date</option>
+                             <option value="participants">participants</option>
+                         </select>
+                     </div>
 
-            <div className="Filter">
-                <div className="FormsInfoText">Search</div>
-                <select className="Select" onChange={searchByHandler}>
-                    <option value="all">all</option>
-                    <option value="open">open</option>
-                    <option value="closed">closed</option>
-                    <option value="participated">participated</option>
-                    <option value="created">created</option>
-                </select>
-            </div>
-         </div>
-        
-        <div className="SeparationLine">
+                     <div className="Search">
+                         <div className="FormsInfoText">Search</div>
+                         <input type="text" className="Input" onKeyUp={searchHandler}/>
+                     </div>
 
-        </div>
-         <div className="Forms">
-             <div className="FormsGrid">
-                 {
-                     shownForms.map(form => {
-                         key += 1;
-                         return <FormMiniature key={form.code + key} name={form.title} formCode={form.code} isAttended={form.isAttended}/>
-                     })
-                 }
-            </div>
-         </div>
-        
-        <div className="Footer">
-            
-        </div>
-    </div>
-    )
+                     <div className="Filter">
+                         <div className="FormsInfoText">Search</div>
+                         <select className="Select" onChange={searchByHandler}>
+                             <option value="all">all</option>
+                             <option value="open">open</option>
+                             <option value="closed">closed</option>
+                             <option value="participated">participated</option>
+                             <option value="created">created</option>
+                         </select>
+                     </div>
+                 </div>
+
+                 <div className="SeparationLine">
+
+                 </div>
+                 <img src={Loading} className={"Loading"}></img>
+             </div>
+             :
+                <div className="YourFromsContent">
+
+                    <div className="FormsInfoAndFilters">
+                        <h1>Your forms</h1>
+
+                        <div className="OrderBy">
+                            <div className="FormsInfoText">Order by</div>
+                            <select className="Select" onChange={orderByHandler} defaultValue={'DEFAULT'}>
+                                <option disabled value="DEFAULT" hidden></option>
+                                <option value="name">name</option>
+                                <option value="date">date</option>
+                                <option value="participants">participants</option>
+                            </select>
+                        </div>
+
+                        <div className="Search">
+                            <div className="FormsInfoText">Search</div>
+                            <input type="text" className="Input" onKeyUp={searchHandler}/>
+                        </div>
+
+                        <div className="Filter">
+                            <div className="FormsInfoText">Search</div>
+                            <select className="Select" onChange={searchByHandler}>
+                                <option value="all">all</option>
+                                <option value="open">open</option>
+                                <option value="closed">closed</option>
+                                <option value="participated">participated</option>
+                                <option value="created">created</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="SeparationLine">
+
+                    </div>
+                    <div className="Forms">
+                        <div className="FormsGrid">
+                            {
+                                shownForms.map(form => {
+                                    key += 1;
+                                    return <FormMiniature key={form.code + key} name={form.title} formCode={form.code}
+                                                          isAttended={form.isAttended}/>
+                                })
+                            }
+                        </div>
+                    </div>
+
+                    <div className="Footer">
+
+                    </div>
+                </div>
+        )
 }
 
 export default YourFormsContent

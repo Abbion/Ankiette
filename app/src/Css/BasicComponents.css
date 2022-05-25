@@ -91,3 +91,10 @@
     margin-top: 10px;
     display: block;
 }
+
+.Loading {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-top: 15%;
+}

@@ -5,6 +5,8 @@ import QuestionEditingCard from './QuestionEditingCard';
 
 import {useNavigate} from 'react-router-dom';
 
+import Loading from '../Graphics/Icons/loading__.gif';
+
 const AddQuestionComponent = (props) =>
 {
     const navigate = useNavigate();
@@ -14,6 +16,8 @@ const AddQuestionComponent = (props) =>
     const [questionId, setQuestionId] = useState(0);
     const [questionNumbers, setQuestionNumber] = useState([1]);
     const [removeIndex, setRemoveIndes] = useState(-1);
+
+    const [isLoading, setIsLoading] = useState(false);
 
     function onAddQuestionClicked(){
         setQuestionArr(prevState => [...prevState,
@@ -41,6 +45,8 @@ const AddQuestionComponent = (props) =>
     }, [removeIndex])
 
     const submitHandler = () => {
+
+        setIsLoading(true);
 
         let query = {
             formCode: props.formCode,
@@ -154,7 +160,18 @@ const AddQuestionComponent = (props) =>
     }
 
 
-    return <div className = "AddQuestionComponent">
+    return (
+        isLoading ?
+            <div className = "AddQuestionComponent">
+                <div className="AddAndConfirm">
+                    <img src={Loading} className={"Loading"}/>
+                    <h1 className="ConfirmInfo">
+                        Your form is being created...
+                    </h1>
+                </div>
+            </div>
+            :
+        <div className = "AddQuestionComponent">
         <div className="AddAndConfirm">
             <h1 className="FormName">
                 {props.formName}
@@ -178,6 +195,7 @@ const AddQuestionComponent = (props) =>
             </button>
         </div>
     </div>
+    )
 }
 
 export default AddQuestionComponent

@@ -6,6 +6,9 @@ import {useNavigate} from 'react-router-dom';
 
 const UserProfileComponent = () => {
     const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(false);
+
     let responseStatus = 0;
     const requestData = {
         email: ReactSession.get("email")
@@ -140,6 +143,8 @@ const UserProfileComponent = () => {
     }, [name, surname, password, newPassword]);
 
     const previewPicture = (e) => {
+
+        setIsLoading(true);
         if(e.target.files.length > 0) {
             const previewImg = document.querySelector('.ProfilePicture');
             let src = URL.createObjectURL(e.target.files[0]);
@@ -148,6 +153,7 @@ const UserProfileComponent = () => {
 
         const form = document.querySelector("#updatePicture");
         form.submit();
+
     }
 
     return (
