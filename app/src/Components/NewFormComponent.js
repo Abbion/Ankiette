@@ -64,7 +64,7 @@ const NewFormComponent = () => {
             .then(data => {
                 if(responseStatus === 200) {
                     console.log(data);
-                    navigate('/home');
+                    navigate('/editForm/' + data.code);
                 } else setResponseError(data);
                 return data;
             })

@@ -10,7 +10,7 @@ const SingleChoiceQuestionEditor = () => {
     {
         return (     <div className="QuestionItem" id={id} key={id}>
         <input type="radio" name="correct-answer" className="RadioButton"></input>
-        <input type="text" className="QuestionInput"></input>
+        <input type="text" className="QuestionInput singleAnswer"></input>
 
         {id > 1 ? <div className="DeleteAnswer" style={{paddingLeft: "0.5em", cursor: "pointer"}} onClick={(callback) => {removeAnswerAt(id)}}> 
             <RedCross/> 
@@ -33,7 +33,7 @@ const SingleChoiceQuestionEditor = () => {
 
     return(
         <div className="QuestionEditorContainer">
-            <input type="text" className="QuestionInput"></input>
+            <input type="text" className="QuestionInput singleQuestionInput"></input>
             <div className="EditedQuestionsList">
 
                 {answer}

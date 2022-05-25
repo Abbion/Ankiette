@@ -48,7 +48,7 @@ function App() {
                     </Route>
 
                     <Route exact path='/' element={<PrivateRoute/>}>
-                        <Route exact path='/editForm' element={<CreateFormView/>}/>
+                        <Route exact path='/editForm/:formCode' element={<CreateFormView/>}/>
                     </Route>
                         <Route exact path='/reportDetails' element={<ChosenReportDetailsView/>}/>
                     <Route exact path='/' element={<PrivateRoute/>}>
