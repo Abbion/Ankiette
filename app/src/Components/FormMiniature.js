@@ -43,22 +43,24 @@ const FormMiniature = (props) =>
     }
 
     function getMenu(){
-        if(clicked){
-            return(
-            <div className="Menu">
-                <button className="Button" style={{backgroundColor: '#77E178'}} onClick={handleShare} value={shareButton}>
-                    {shareButton}
-                </button>
-                
-                <button className="Button" style={{border: '1px solid #787878'}}>
-                    Show Report
-                </button>
-                
-                <button className="Button" style={{backgroundColor: '#FF5341'}}>
-                    Delete    
-                </button>
-            </div>
-            );
+        if(props.isAttended !== true) {
+            if(clicked){
+                return(
+                    <div className="Menu">
+                        <button className="Button" style={{backgroundColor: '#77E178'}} onClick={handleShare} value={shareButton}>
+                            {shareButton}
+                        </button>
+
+                        <button className="Button" style={{border: '1px solid #787878'}}>
+                            Show Report
+                        </button>
+
+                        <button className="Button" style={{backgroundColor: '#FF5341'}}>
+                            Delete
+                        </button>
+                    </div>
+                );
+            }
         }
     }
 

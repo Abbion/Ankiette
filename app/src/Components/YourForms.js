@@ -11,6 +11,9 @@ const YourFormsContent = () =>
     const [order, setOrder] = useState("");
     const [searchBy, setSearchBy] = useState("");
 
+    let [createdForms, setCreatedForms] = useState([]);
+    let [attendedForms, setAttendedForms] = useState([]);
+
     let [responseForms, setResponseForms] = useState([]);
     let [shownForms, setShownForms] = useState([]);
 
@@ -27,11 +30,18 @@ const YourFormsContent = () =>
             return response.json();
         }).then(data => {
             if(responseStatus === 200) {
-                setResponseForms(data);
-                setShownForms(data);
-                return data;
+                data.attended.forEach(elem => {
+                    elem.isAttended = true
+                })
+                const tmp = data.created.concat(data.attended);
+                setCreatedForms(data.created);
+                setAttendedForms(data.attended);
+                return tmp;
             }
-        });
+        }).then(data => {
+            setResponseForms(data);
+            setShownForms(data);
+        })
         
     }, []);
 
@@ -45,6 +55,14 @@ const YourFormsContent = () =>
             case 'date' :
                 setShownForms(shownForms.sort((a, b) => new Date(a.startDate) - new Date(b.startDate)));
                 setOrder("date");
+                break;
+            case 'participants' :
+                console.log("participants selected");
+                shownForms.forEach(elem => {
+                    console.log(elem.attended);
+                })
+                setShownForms(shownForms.sort((a, b) => (b.attended - a.attended)));
+                setOrder("participants");
                 break;
         }
     }
@@ -65,7 +83,12 @@ const YourFormsContent = () =>
                 setSearchBy("closed");
                 break;
             case 'created' :
+                setShownForms(responseForms.filter(form => form.attended !== undefined));
                 setSearchBy("created");
+                break;
+            case 'participated' :
+                setShownForms(responseForms.filter(form => form.isAttended === true));
+                setSearchBy("participated");
                 break;
         }
     }
@@ -74,6 +97,8 @@ const YourFormsContent = () =>
         e.preventDefault();
         setShownForms(responseForms.filter(form => form.title.toLowerCase().includes(e.target.value)));
     }
+
+    let key = 0;
 
     return  (<div className="YourFromsContent">
 
@@ -114,7 +139,8 @@ const YourFormsContent = () =>
              <div className="FormsGrid">
                  {
                      shownForms.map(form => {
-                         return <FormMiniature key={form.code} name={form.title} formCode={form.code}/>
+                         key += 1;
+                         return <FormMiniature key={form.code + key} name={form.title} formCode={form.code} isAttended={form.isAttended}/>
                      })
                  }
             </div>
