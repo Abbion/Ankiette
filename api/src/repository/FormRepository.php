@@ -41,7 +41,8 @@ class FormRepository extends Repository
         } else return false;
     }
 
-    public function addAttendance(string $code, User $user) {
+    public function addAttendance(string $code, User $user)
+    {
 
         $stmt = $this->database->connect()->prepare('
             INSERT INTO users_forms(id_forms, id_users, attended_at) 
@@ -55,7 +56,8 @@ class FormRepository extends Repository
         ]);
     }
 
-    public function existsAndOwner(string $email, string $code): bool {
+    public function existsAndOwner(string $email, string $code): bool
+    {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM forms f 
             JOIN users u ON u.id = f.id_user 
@@ -68,26 +70,35 @@ class FormRepository extends Repository
 
         $form = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($form == false) {
+        if ($form == false) {
             return false;
         } else return true;
     }
-    
-    public function getAll(string $email) {
-        $stmt = $this->database->connect()->prepare('
-                    SELECT DISTINCT id_forms,title,start_date,end_date,code from (
-            (SELECT forms.*,email
-                FROM forms
-                JOIN users u on u.id = forms.id_user)
-            UNION
-            (SELECT f.*,u2.email
-                FROM users_forms
-                JOIN forms f on f.id_forms = users_forms.id_forms
-                JOIN users u2 on u2.id = users_forms.id_users)
-        ) as wszystkie
-        WHERE email LIKE :input
-                ');
 
+    public function getAllCreated(string $email) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT f.*
+            FROM forms f
+            JOIN users u on u.id = f.id_user
+            WHERE u.email LIKE :input
+        ');
+
+        return $this->getFormsByEmail($email, $stmt);
+    }
+
+    public function getAllAttended(string $email) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT f.*
+            FROM users_forms
+            JOIN forms f on f.id_forms = users_forms.id_forms
+            JOIN users u on u.id = users_forms.id_users
+            WHERE u.email LIKE :input
+        ');
+
+        return $this->getFormsByEmail($email, $stmt);
+    }
+
+    private function getFormsByEmail(string $email, $stmt) {
         $stmt->bindParam(':input', $email);
         $stmt->execute();
 
@@ -96,10 +107,10 @@ class FormRepository extends Repository
 
         foreach ($formsArray as $value) {
             $forms[] = new Form(
-                 $value['title'],
-                 $value['start_date'],
-                 $value['end_date'],
-                 $value['code']);
+                $value['title'],
+                $value['start_date'],
+                $value['end_date'],
+                $value['code']);
         }
 
         if (!$formsArray) {
@@ -109,7 +120,25 @@ class FormRepository extends Repository
         return $forms;
     }
 
-    public function getCreatedCount(string $email) {
+    public function getAttendedPeopleCount(string $code) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT count(uf.id_users) counted
+            FROM users_forms uf 
+            JOIN forms f on uf.id_forms = f.id_forms
+            WHERE f.code = :code
+            GROUP BY uf.id_forms
+        ');
+
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+
+        $array = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return empty($array["counted"]) ? 0 : $array["counted"];
+    }
+
+    public function getCreatedCount(string $email)
+    {
 
         $stmt = $this->database->connect()->prepare('
             SELECT count(f.code) count FROM forms f 
@@ -123,12 +152,13 @@ class FormRepository extends Repository
 
         $form = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($form == false) {
+        if ($form == false) {
             return 0;
         } else return $form["count"];
     }
 
-    public function getAttendedCount(string $email) {
+    public function getAttendedCount(string $email)
+    {
         $stmt = $this->database->connect()->prepare('
             SELECT count(attended_at) count FROM users_forms uf 
             JOIN users u ON u.id = uf.id_users
@@ -141,9 +171,37 @@ class FormRepository extends Repository
 
         $form = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($form == false) {
+        if ($form == false) {
             return 0;
         } else return $form["count"];
+    }
+
+    public function removeForm(string $code)
+    {
+
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM forms
+            WHERE code = :code
+            RETURNING code;
+        ');
+
+
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getFormName(string $code) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT title FROM forms
+            WHERE code = :code
+        ');
+
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+        $title = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $title["title"];
     }
 
 }

@@ -73,19 +73,22 @@ class FormController extends AppController {
             die();
         }
 
-        $questions = $this->questionRepository->getQuestions($code);
-        $json = [];
+        $title = $this->formRepository->getFormName($code);
 
-        foreach ($questions as $question) {
-            $json[] = $question->toJSON();
-        }
-
-        if(empty($json)) {
+        if(empty($title)) {
             http_response_code(404);
             echo json_encode("Form does not exist");
             die();
         }
 
+        $questions = $this->questionRepository->getQuestions($code);
+        $questionsJson = [];
+
+        foreach ($questions as $question) {
+            $questionsJson[] = $question->toJSON();
+        }
+
+        $json = ["title" => $title, "questions" => $questionsJson];
         http_response_code(200);
         echo json_encode($json);
     }
@@ -105,37 +108,70 @@ class FormController extends AppController {
     }
 
     public function getAllForms(){
+        $request = $this->getRequest('POST');
+        $email = trim($request->email);
 
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Headers: Content-Type');
-        header('Content-type: application/json');
-
-        $postData = file_get_contents("php://input");
-
-        if(!$this->isPost() || empty($postData)) {
+        if(empty($email)) {
             http_response_code(400);
             echo json_encode("Bad request");
             die();
         }
 
-        $request = json_decode($postData);
-        $email = trim($request->email);
-
-        $allForms = $this->formRepository->getAll($email);
-        $allEncodedForms = [];
-
-        if($allForms == NULL){
+        if(empty($this->userRepository->getUser($email))) {
             http_response_code(404);
-            echo json_encode("No forms found for the given email address");
+            echo json_encode("No user of such email");
             die();
         }
 
-        foreach ($allForms as $form) {
-            array_push($allEncodedForms, $form->toJson());
+        $allCreatedForms = $this->formRepository->getAllCreated($email);
+        $allAttendedForms = $this->formRepository->getAllAttended($email);
+
+        $allEncodedCreatedForms = [];
+        $allEncodedAttendedForms = [];
+
+        if(!empty($allCreatedForms)) {
+            foreach ($allCreatedForms as $form) {
+                $json = $form->toJson();
+                $json["attended"] = $this->formRepository->getAttendedPeopleCount($form->getCode());
+
+                $allEncodedCreatedForms[] = $json;
+            }
         }
 
+        if(!empty($allAttendedForms)) {
+            foreach ($allAttendedForms as $form) {
+                $allEncodedAttendedForms[] = $form->toJson();
+            }
+        }
+
+        $allEncodedForms = ["created" => $allEncodedCreatedForms,
+            "attended" => $allEncodedAttendedForms];
+
         http_response_code(200);
-        echo json_encode($allEncodedForms, 0, 3);
-//        echo json_encode($all,0,3);
+        echo json_encode($allEncodedForms);
+    }
+
+    public function removeForm(){
+        $request = $this->getRequest('POST');
+
+        $code = trim($request->formCode);
+        $email = trim($request->email);
+
+
+        if(empty($code) || empty($email)) {
+            http_response_code(400);
+            echo json_encode("Bad request");
+            die();
+        }
+
+        if(!$this->formRepository->existsAndOwner($email, $code)){
+            http_response_code(401);
+            echo json_encode("Unauthorized!");
+            die();
+        }
+
+        $code = $this->formRepository->removeForm($code);
+        http_response_code(200);
+        echo json_encode($code);
     }
 }

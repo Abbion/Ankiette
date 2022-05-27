@@ -8,11 +8,12 @@ import HomeView from './Views/HomeView';
 import RegisterSuccessfulView from './Views/RegisterSuccessfulView';
 import AccountRecoveryView from './Views/AccountRecoveryView';
 import AccountView from './Views/AccountView';
-import NewFormComponent from "./Components/NewFormComponent";
 import NewFormView from "./Views/NewFormView";
 import ChosenReportDetailsView from './Views/ChosenReportDetailsView';
 import NavbarView from './Views/NavbarView';
+import CreateFormView from './Views/CreateNewFormView';
 
+import FormComponent from "./Components/FormComponent";
 
 const PrivateRoute = () => {
     const isAuthenticated = ReactSession.get("isAuthenticated");
@@ -31,7 +32,7 @@ function App() {
                     <Route exact path='/login' element={<LoginView/>} />
                     <Route exact path='/register' element={<RegisterView/>} />
                     <Route exact path='/recover' element={<AccountRecoveryView/>} />
-
+                    <Route path='/form/:formCode' element={<FormComponent/>}/>
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/registerSuccess' element={<RegisterSuccessfulView/>} />
                     </Route>
@@ -43,14 +44,16 @@ function App() {
                         <Route exact path='/account' element={<AccountView/>} />
                     </Route>
                     <Route exact path='/' element={<PrivateRoute/>}>
-                        <Route exact path='/newForm' element={<NewFormComponent/>}/>
                         <Route exact path='/newForm' element={<NewFormView/>}/>
                     </Route>
 
                     <Route exact path='/' element={<PrivateRoute/>}>
-                        <Route exact path='/reportDetails' element={<ChosenReportDetailsView/>}/>
+                        <Route exact path='/editForm' element={<CreateFormView/>}/>
                     </Route>
-
+                        <Route exact path='/reportDetails' element={<ChosenReportDetailsView/>}/>
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                    
+                    </Route>
                 </Routes>
                 
             </div>

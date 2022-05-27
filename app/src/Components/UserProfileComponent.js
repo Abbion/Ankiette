@@ -11,6 +11,9 @@ const UserProfileComponent = () => {
         email: ReactSession.get("email")
     }
 
+    const [formsCreated, setFormsCreates] = useState("");
+    const [formsTaken, setFormsTaken] = useState("");
+
     fetch("http://localhost:8080/getUserDetails", {
         method: "POST",
         headers: {
@@ -28,6 +31,8 @@ const UserProfileComponent = () => {
         }
     }).then(user => {
         ReactSession.set("picture", user.picture);
+        setFormsCreates(user.created);
+        setFormsTaken(user.attended);
     })
 
     let[name, setName] = useState("");
@@ -160,8 +165,8 @@ const UserProfileComponent = () => {
                 <h1 className="AccountDetailText">Name: {ReactSession.get('name')}</h1>
                 <h1 className="AccountDetailText">Surname: {ReactSession.get('surname')}</h1>
                 <h1 className="AccountDetailText">Email: {ReactSession.get('email')}</h1>
-                <h1 className="AccountDetailText">Forms created: </h1>
-                <h1 className="AccountDetailText">Forms taken: </h1>
+                <h1 className="AccountDetailText">Forms created: {formsCreated}</h1>
+                <h1 className="AccountDetailText">Forms taken: {formsTaken}</h1>
             </div>
             <form id="changeDetails" onSubmit={confirmChangesHandler}>
             <div className="ChangeDetailsPanel">
