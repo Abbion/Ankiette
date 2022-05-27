@@ -28,6 +28,7 @@ function App() {
         <BrowserRouter>
             <div className="App" style={{margin: 0}}>
                 <Routes>
+                    <Route path='/*' element={<LoginView/>}/>
                     <Route exact path='/' element={<LoginView/>} />
                     <Route exact path='/login' element={<LoginView/>} />
                     <Route exact path='/register' element={<RegisterView/>} />
@@ -43,17 +44,15 @@ function App() {
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/account' element={<AccountView/>} />
                     </Route>
+
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/newForm' element={<NewFormView/>}/>
                     </Route>
 
                     <Route exact path='/' element={<PrivateRoute/>}>
-                        <Route exact path='/editForm' element={<CreateFormView/>}/>
+                        <Route exact path='/editForm/:formCode' element={<CreateFormView/>}/>
                     </Route>
-                        <Route exact path='/reportDetails' element={<ChosenReportDetailsView/>}/>
-                    <Route exact path='/' element={<PrivateRoute/>}>
-                    
-                    </Route>
+
                 </Routes>
                 
             </div>

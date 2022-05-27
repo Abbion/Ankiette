@@ -27,7 +27,7 @@ const Navbar = () => {
 
     const accountHandler = (e) => {
         e.preventDefault();
-        //TODO: navigate to account
+        navigate('/account');
     }
 
     return(

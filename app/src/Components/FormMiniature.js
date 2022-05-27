@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import '../Css/BasicComponents.css'
 import '../Css/HomeView.css'
 
+import { ReactSession } from 'react-client-session';
+
 const FormMiniature = (props) =>
 {
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
@@ -42,23 +44,55 @@ const FormMiniature = (props) =>
         navigator.clipboard.writeText('http://localhost:3000/form/' + props.formCode);
     }
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+
+        const requestData = {
+            email: ReactSession.get("email"),
+            formCode: props.formCode
+        }
+        let responseStatus = 0;
+        fetch("http://localhost:8080/removeForm", {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        }).then(response => {
+            responseStatus = response.status;
+            return response.json();
+        }).then(data => {
+            if(responseStatus === 200) {
+                window.location.reload(false);
+            }
+        })
+    }
+
     function getMenu(){
         if(clicked){
-            return(
-            <div className="Menu">
-                <button className="Button" style={{backgroundColor: '#77E178'}} onClick={handleShare} value={shareButton}>
-                    {shareButton}
-                </button>
-                
-                <button className="Button" style={{border: '1px solid #787878'}}>
-                    Show Report
-                </button>
-                
-                <button className="Button" style={{backgroundColor: '#FF5341'}}>
-                    Delete    
-                </button>
-            </div>
-            );
+            if(props.isAttended) {
+                return (
+                    <div className="Menu">
+                        Not your form!
+                    </div>
+                )
+            }else {
+                return(
+                    <div className="Menu">
+                        <button className="Button" style={{backgroundColor: '#77E178'}} onClick={handleShare} value={shareButton}>
+                            {shareButton}
+                        </button>
+
+                        <button className="Button" style={{border: '1px solid #787878'}}>
+                            Show Report
+                        </button>
+
+                        <button className="Button" style={{backgroundColor: '#FF5341'}} onClick={handleDelete}>
+                            Delete
+                        </button>
+                    </div>
+                );
+            }
         }
     }
 

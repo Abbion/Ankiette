@@ -1,8 +1,12 @@
 import '../Css/QuestionEditor.css'
 
-const ShortAndLongAnswerQuestionTitleInput = () => {
+const ShortAndLongAnswerQuestionTitleInput = (props) => {
+
+    const additionalClass = props.which;
+    const basicClass = "QuestionInput";
+    const resultClass = basicClass + " " + additionalClass;
     return(
-        <input className="QuestionInput"></input>
+        <input className={resultClass}></input>
     )
 }
 

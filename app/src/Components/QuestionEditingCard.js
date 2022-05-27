@@ -3,7 +3,7 @@ import RedCross from '../Graphics/Icons/RedCross';
 import SingleChoiceQuestionEditor from './SingleChoiceQuestionEditor';
 import MultipleChoiceQuestionEditor from './MultipleChoiceQuestionEditor';
 import ShortAndLongAnswerQuestionTitleInput from './ShortAndLongAnswerQuestionTitleInput';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const QuestionEditingCard = (props) => {
     const [questionTypes] = useState([
@@ -24,7 +24,7 @@ const QuestionEditingCard = (props) => {
             value: "short-answer"
         },
         {
-            label: "Long-answer qestion (500 char.)",
+            label: "Long-answer question (500 char.)",
             value: "long-answer"
         }
     ]);
@@ -46,11 +46,13 @@ const QuestionEditingCard = (props) => {
     {
         switch(selectedQuestionType){
             case 1:
-                return (<SingleChoiceQuestionEditor />);
+                return (<SingleChoiceQuestionEditor/>);
             case 2:
                 return (<MultipleChoiceQuestionEditor/>);
-            case 3: case 4:
-                return (<ShortAndLongAnswerQuestionTitleInput/>);
+            case 3:
+                return (<ShortAndLongAnswerQuestionTitleInput which={"short"}/>);
+            case 4:
+                return (<ShortAndLongAnswerQuestionTitleInput which={"long"}/>);
             default:
                 return("");
         }
@@ -65,7 +67,7 @@ const QuestionEditingCard = (props) => {
                 </div>
             </div>
 
-            <div className="QuestionTypeField">
+            <div className="QuestionTypeField" id={props.id}>
                 <h1 className="QuestionTypeText">Select question type</h1>
                 <select className="QuestionTypeSelector" onChange={UpdateSelectedQuestionType}>
                     {questionTypes.map(type => (
