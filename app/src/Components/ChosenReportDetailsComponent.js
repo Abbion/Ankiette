@@ -2,22 +2,66 @@ import '../Css/BasicComponents.css';
 
 import ChoicesAnswerComponent from './ChoicesAnswerComponent';
 import FormMiniature from './FormMiniature';
-/* import { ReactSession } from 'react-client-session';
-import { useNavigate } from 'react-router-dom'; */
-import { useState }  from "react";
+import { ReactSession } from 'react-client-session';
+import { useState, useEffect }  from "react";
 
-const ChosenReportDetailsComponent = () => {
-    const [crdate, setCrdate] = useState('15-04-2022');
-    const [opdate, setOpdate] = useState('20-04-2022');
-    const [cldate, setCldate] = useState('18-05-2022');
-    const [participateCount, setParticipateCount] = useState(28);
-    const [finishCount, setfinishCount] = useState(23);
+import Loading from '../Graphics/Icons/loading__.gif';
+
+const ChosenReportDetailsComponent = (props) => {
+
+    const [isLoading, setLoading] = useState(true)
+
+    const [crdate, setCrdate] = useState('');
+    const [opdate, setOpdate] = useState('');
+    const [cldate, setCldate] = useState('');
+    const [formTitle, setFormTitle] = useState('');
+    const [participateCount, setParticipateCount] = useState("");
+
+    const [questions, setQuestions] = useState([]);
+
+
+    useEffect(() => {
+        let responseStatus = 0;
+        let requestData = {
+            email: ReactSession.get("email")
+        }
+
+        fetch("http://localhost:8080/getAllForms", {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        }).then(response => {
+            responseStatus = response.status;
+            return response.json();
+        }).then(data => {
+            if(responseStatus === 200) {
+                data.created.forEach(elem => {
+                    if(elem.title === formTitle) {
+                        setOpdate(elem.startDate);
+                        setCrdate(elem.startDate);
+                        setCldate(elem.endDate);
+                        setParticipateCount(elem.attended);
+                        setLoading(false);
+                    }
+                })
+            }
+        })
+
+    })
+
 
     return(
+        isLoading ?
+            <div className="ReportDetailsPanel">
+                <img src={Loading} className={"Loading"}></img>
+            </div>
+        :
         <div className="ReportDetailsPanel">
             <div className="FormInfo">
                 <div className="FormItem">
-                    <FormMiniature/>
+                    <FormMiniature name={formTitle} formCode={props.formCode} />
                     <div className="Footer"/>
                 </div>
                 <div className="FormDetails">
@@ -26,7 +70,6 @@ const ChosenReportDetailsComponent = () => {
                         <h1>Opened: {opdate}</h1>
                         <h1>Closed: {cldate}</h1>
                         <h1>Participants: {participateCount}</h1>
-                        <h1>Finished: {finishCount}</h1>
                     </div>
                     <button className="CSVButton">Download detailed .csv</button>
                 </div>
@@ -34,22 +77,12 @@ const ChosenReportDetailsComponent = () => {
             <div className="QuestionsBlock">
                 <div className="QuestionsInfo">
                     <div className="QuestionDetails">
+                        {
+
+                        }
                         <h1 className="QuestionNumber">Question 1</h1>
                         <ChoicesAnswerComponent text={"Answer 1"} percentage={58}/>
                         <ChoicesAnswerComponent text={"Answer 2"} percentage={42}/>
-                    </div>
-                    <div className="QuestionDetails">
-                        <h1 className="QuestionNumber">Question 2</h1>
-                        <ChoicesAnswerComponent text={"Answer 1"} percentage={23}/>
-                        <ChoicesAnswerComponent text={"Answer 2"} percentage={0}/>
-                        <ChoicesAnswerComponent text={"Answer 3"} percentage={67}/>
-                        <ChoicesAnswerComponent text={"Answer 4"} percentage={4}/>
-                    </div>
-                    <div className="QuestionDetails">
-                        <h1 className="QuestionNumber">Question 3</h1>
-                        <ChoicesAnswerComponent text={"Answer 1"} percentage={95}/>
-                        <ChoicesAnswerComponent text={"Answer 2"} percentage={43}/>
-                        <ChoicesAnswerComponent text={"Answer 3"} percentage={25}/>
                     </div>
                 </div>
             </div>

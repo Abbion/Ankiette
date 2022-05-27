@@ -53,6 +53,10 @@ function App() {
                         <Route exact path='/editForm/:formCode' element={<CreateFormView/>}/>
                     </Route>
 
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                        <Route exact path='/reports/:formCode' element={<ChosenReportDetailsView/>}/>
+                    </Route>
+
                 </Routes>
                 
             </div>

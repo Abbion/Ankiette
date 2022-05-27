@@ -151,6 +151,7 @@ class FormController extends AppController {
         echo json_encode($allEncodedForms);
     }
 
+
     public function removeForm(){
         $request = $this->getRequest('POST');
 
