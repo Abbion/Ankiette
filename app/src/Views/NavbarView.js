@@ -1,6 +1,6 @@
 import Navbar from '../Components/Navbar'
 import "../Css/NavbarView.css"
-import PreLoginTemplateView from './PreLoginTemplateView'
+import LoginView from './LoginView'
 
 const NavbarView = () =>
 {
@@ -9,7 +9,7 @@ const NavbarView = () =>
             <Navbar />
         </div>
         <div className="ContentView">
-            <PreLoginTemplateView />
+            <LoginView />
         </div>
     </div>
 }

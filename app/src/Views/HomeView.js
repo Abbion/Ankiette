@@ -1,5 +1,5 @@
 import '../Css/HomeView.css'
-import  YourForms from '../Components/YourForms'
+import YourForms from '../Components/YourForms'
 import Navbar from '../Components/Navbar'
 
 const HomeView = () =>

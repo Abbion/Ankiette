@@ -9,6 +9,8 @@ import RegisterSuccessfulView from './Views/RegisterSuccessfulView';
 import AccountRecoveryView from './Views/AccountRecoveryView';
 import AccountView from './Views/AccountView';
 import NewFormView from "./Views/NewFormView";
+import ChosenReportDetailsView from './Views/ChosenReportDetailsView';
+import NavbarView from './Views/NavbarView';
 import CreateFormView from './Views/CreateNewFormView';
 
 import FormComponent from "./Components/FormComponent";
@@ -48,10 +50,15 @@ function App() {
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/editForm' element={<CreateFormView/>}/>
                     </Route>
-
+                        <Route exact path='/reportDetails' element={<ChosenReportDetailsView/>}/>
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                    
+                    </Route>
                 </Routes>
+                
             </div>
         </BrowserRouter>
+        
     )
 }
 
