@@ -3,10 +3,14 @@ import '../Css/BasicComponents.css'
 import '../Css/HomeView.css'
 
 import { ReactSession } from 'react-client-session';
+import { useNavigate } from 'react-router-dom';
 
 const FormMiniature = (props) =>
 {
+    const navigate = useNavigate();
+
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
     React.useEffect(() => {
         function Resize() {
             setWindowWidth(window.innerWidth);
@@ -44,6 +48,11 @@ const FormMiniature = (props) =>
         navigator.clipboard.writeText('http://localhost:3000/form/' + props.formCode);
     }
 
+    const handleReport = (e) => {
+        console.log("report");
+        navigate("/reports/" + props.formCode)
+    }
+
     const handleDelete = (e) => {
         e.preventDefault();
 
@@ -63,6 +72,7 @@ const FormMiniature = (props) =>
             return response.json();
         }).then(data => {
             if(responseStatus === 200) {
+                navigate("/home");
                 window.location.reload(false);
             }
         })
@@ -83,7 +93,7 @@ const FormMiniature = (props) =>
                             {shareButton}
                         </button>
 
-                        <button className="Button" style={{border: '1px solid #787878'}}>
+                        <button className="Button" style={{border: '1px solid #787878'}} onClick={handleReport}>
                             Show Report
                         </button>
 

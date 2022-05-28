@@ -93,6 +93,33 @@ class FormController extends AppController {
         echo json_encode($json);
     }
 
+    public function getFormDetails() {
+        $request = $this->getRequest('POST');
+
+        $code = trim($request->code);
+
+        if(empty($code)) {
+            http_response_code(400);
+            echo json_encode("Bad request");
+            die();
+        }
+
+        $title = $this->formRepository->getFormName($code);
+
+        if(empty($title)) {
+            http_response_code(404);
+            echo json_encode("Form does not exist");
+            die();
+        }
+
+        $participants = $this->formRepository->getAttendedPeopleCount($code);
+        $dates = $this->formRepository->getFormDates($code);
+
+        $json = ["title" => $title, "participants" => $participants, "startDate" => $dates["start_date"], "endDate" => $dates["end_date"]];
+        http_response_code(200);
+        echo json_encode($json);
+    }
+
     private function generateCode(): string {
         $code = '';
 

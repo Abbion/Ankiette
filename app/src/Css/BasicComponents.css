@@ -98,3 +98,9 @@
     margin: auto;
     margin-top: 15%;
 }
+
+.ShortLongReportAnswer {
+    color: gray;
+    border-bottom: 1px solid grey;
+    margin-bottom: 15px;
+}
