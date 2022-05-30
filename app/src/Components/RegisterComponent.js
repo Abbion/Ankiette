@@ -40,7 +40,8 @@ const RegisterComponent = () => {
   };
 
   const inputPatterns = {
-    passwordPattern: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`,
+    // passwordPattern: `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$`,
+    passwordPattern: `.*`,
     confirmPasswordPattern: password,
   };
 
