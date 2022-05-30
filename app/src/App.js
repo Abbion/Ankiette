@@ -12,6 +12,7 @@ import NewFormView from "./Views/NewFormView";
 import ChosenReportDetailsView from './Views/ChosenReportDetailsView';
 import NavbarView from './Views/NavbarView';
 import CreateFormView from './Views/CreateNewFormView';
+import ReportsView from "./Views/ReportsView";
 
 import FormComponent from "./Components/FormComponent";
 
@@ -33,10 +34,15 @@ function App() {
                     <Route exact path='/login' element={<LoginView/>} />
                     <Route exact path='/register' element={<RegisterView/>} />
                     <Route exact path='/recover' element={<AccountRecoveryView/>} />
-                    <Route path='/form/:formCode' element={<FormComponent/>}/>
+
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                        <Route path='/form/:formCode' element={<FormComponent/>}/>
+                    </Route>
+
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/registerSuccess' element={<RegisterSuccessfulView/>} />
                     </Route>
+
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/home' element={<HomeView/>} />
                     </Route>
@@ -51,6 +57,14 @@ function App() {
 
                     <Route exact path='/' element={<PrivateRoute/>}>
                         <Route exact path='/editForm/:formCode' element={<CreateFormView/>}/>
+                    </Route>
+
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                        <Route exact path='/reports/' element={<ReportsView/>}/>
+                    </Route>
+
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                        <Route exact path='/reports/:formCode' element={<ChosenReportDetailsView/>}/>
                     </Route>
 
                 </Routes>

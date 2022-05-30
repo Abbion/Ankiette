@@ -204,4 +204,15 @@ class FormRepository extends Repository
         return $title["title"];
     }
 
+    public function getFormDates(string $code) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT start_date, end_date FROM forms
+            WHERE code = :code
+        ');
+
+        $stmt->bindParam(':code', $code);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

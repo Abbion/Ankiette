@@ -2,7 +2,7 @@ import '../Css/UserProfileComponent.css';
 import { useEffect, useState } from 'react';
 
 import { ReactSession } from 'react-client-session';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 const UserProfileComponent = () => {
     const navigate = useNavigate();
@@ -15,26 +15,29 @@ const UserProfileComponent = () => {
     const [formsCreated, setFormsCreates] = useState("");
     const [formsTaken, setFormsTaken] = useState("");
 
-    fetch("http://localhost:8080/getUserDetails", {
-        method: "POST",
-        headers: {
-            'Content-Type' : 'application/json',
-        },
-        body: JSON.stringify(requestData)
-    }).then(response => {
-        responseStatus =response.status;
-        return response.json();
-    }).then(data => {
-        if(responseStatus === 200) {
-            return data;
-        } else {
-            setResponseError(data);
-        }
-    }).then(user => {
-        ReactSession.set("picture", user.picture);
-        setFormsCreates(user.created);
-        setFormsTaken(user.attended);
-    })
+    useEffect(() => {
+        fetch("http://localhost:8080/getUserDetails", {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(requestData)
+        }).then(response => {
+            responseStatus =response.status;
+            return response.json();
+        }).then(data => {
+            if(responseStatus === 200) {
+                return data;
+            } else {
+                setResponseError(data);
+            }
+        }).then(user => {
+            ReactSession.set("picture", user.picture);
+            setFormsCreates(user.created);
+            setFormsTaken(user.attended);
+        })
+    }, [])
+
 
     let[name, setName] = useState("");
     let[surname, setSurname] = useState("");

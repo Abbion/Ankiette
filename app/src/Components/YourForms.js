@@ -62,10 +62,6 @@ const YourFormsContent = () =>
                 setOrder("date");
                 break;
             case 'participants' :
-                console.log("participants selected");
-                shownForms.forEach(elem => {
-                    console.log(elem.attended);
-                })
                 setShownForms(shownForms.sort((a, b) => (b.attended - a.attended)));
                 setOrder("participants");
                 break;

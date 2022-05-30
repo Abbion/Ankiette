@@ -22,7 +22,7 @@ const Navbar = () => {
 
     const reportsHandler = (e) => {
         e.preventDefault();
-        //TODO: navigate to reports
+        navigate('/reports');
     }
 
     const accountHandler = (e) => {
