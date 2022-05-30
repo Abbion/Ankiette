@@ -1,4 +1,4 @@
-import '../Css/TemplateView.css';
+import '../Css/PreLoginTemplateView.css';
 import RegisterComponent from '../Components/RegisterComponent';
 
 import { ReactSession } from 'react-client-session';
