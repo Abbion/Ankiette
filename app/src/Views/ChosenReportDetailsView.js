@@ -8,7 +8,7 @@ const ChosenReportDetailsView = () =>
 {
     let { formCode } = useParams();
 
-    return <div className = "ChosenReportDetailsView">
+    return <div className = "ChosenReportDetailsView" style={{width: "100%", height: "auto"}}>
         <Navbar/>
         <div>
             <ChosenReportDetailsComponent formCode={formCode}/>
