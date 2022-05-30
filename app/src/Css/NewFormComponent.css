@@ -4,7 +4,8 @@ body, root, .App, .Home {
 
 .NewFormPanel {
 
-    background-color: #f8f8f8e3;
+    background-color: #F2F2F2;
+    filter: drop-shadow(0 0 8px #00000080);
 
     margin: 4em auto 0px auto;
 
@@ -13,7 +14,6 @@ body, root, .App, .Home {
 
     border-radius: 60px;
     backdrop-filter: blur(6px);
-    filter: drop-shadow(10px 10px 10px #000000bd);
 
     color: #000A16;
 
@@ -154,7 +154,14 @@ body, root, .App, .Home {
         padding: 0em 1em;
     }
 
-    .NewFormName {
+
+
+    .Row:first-child {
+        display: block;
+
+    }
+
+    .Row:first-child input {
         width: 100%;
     }
 

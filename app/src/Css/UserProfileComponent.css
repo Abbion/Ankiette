@@ -1,6 +1,5 @@
 .ProfilePanel{
     overflow-y: auto;
-    background-color: #f8f8f8e3;
     width: 75vw;
     min-height: 550px;
     max-width: 1300px;
@@ -15,8 +14,8 @@
     flex-direction: row;
 
     border-radius: 60px;
-    backdrop-filter: blur(6px);
-    filter: drop-shadow(10px 10px 10px #000000bd);
+    background-color: #F2F2F2;
+    filter: drop-shadow(0 0 8px #00000080);
 
     color: #000A16;
 }
@@ -53,9 +52,13 @@
     object-fit: cover;
 }
 
-.ProfilePanel > .AccountInfoPanel > form > label:hover {
+.ProfilePanel > .AccountInfoPanel > form > label > img:hover {
     cursor: pointer;
     opacity: 90%;
+}
+
+.ProfilePanel > .AccountInfoPanel > form > label:hover {
+    background: #F2F2F2;
 }
 
 .ProfilePanel > .AccountInfoPanel > form > #picture {
