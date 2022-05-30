@@ -10,12 +10,18 @@ import FillLongAndShortAnswer from "../Components/FillLongAndShortAnswerQuestion
 import "../Css/FillForm.css";
 import "../Css/BasicComponents.css";
 
+import Loading from '../Graphics/Icons/loading__.gif';
+
 const FormComponent = (props) => {
 
     let { formCode } = useParams();
     const navigate = useNavigate();
 
     const [formBody, setFormBody] = useState([]);
+    const [errBody, setErrBody] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+    const [isFilled, setIsFilled] = useState(false);
+
     const requestData = {code: formCode, email: ReactSession.get("email")};
     let responseStatus = 0;
     let answersToReturn = [];
@@ -41,12 +47,11 @@ const FormComponent = (props) => {
             return response.json();
         }).then(data => {
             if(responseStatus === 200) {
-                console.log(data);
-                
                 setFormBody(data);
+                setIsLoading(false);
                 return data;
             } else {
-                console.log("Wrong URL! Form might be expired.");
+                setErrBody("Wrong URL! Form might be expired.")
             }
         });
     }, []);
@@ -70,9 +75,11 @@ const FormComponent = (props) => {
 
 
     const submitHandler = () => {
-        
+
+        setIsLoading(true);
+        setIsFilled(true);
+
         let allQuestionsNumber = document.querySelectorAll(".question-card").length;
-        console.log(allQuestionsNumber);
 
         let allAnswers = document.querySelectorAll(".answer-item");
 
@@ -122,9 +129,7 @@ const FormComponent = (props) => {
 
         }
         const jsonObj = JSON.stringify(addAnswersObject);
-        console.log(jsonObj)
 
-        
 
         let responseStatus = 0;
         fetch("http://localhost:8080/addAnswers", {
@@ -135,11 +140,10 @@ const FormComponent = (props) => {
             body: JSON.stringify(addAnswersObject)
         }).then(response => {
             responseStatus = response.status;
-            console.log(response);
             return response.json();
         }).then(data => {
-            alert("Dziekujemy za uzupelnienie ankiety");
-            
+            setIsLoading(false);
+            setIsFilled(false);
             navigate('/home');
         })
 
@@ -147,11 +151,19 @@ const FormComponent = (props) => {
 
 
   
-return <div className = "form-component">
+return ( isLoading ?
+    <div className = "form-component">
+        <img src={Loading} className={"Loading"}></img>
+        {isFilled ? <h1 style={{fontSize: '30px'}}>Thank you for filling form. We are saving your answers...</h1> :  <h1 style={{fontSize: '30px'}}>Loading form...</h1>}
+    </div>
+        :
+
+    <div className = "form-component">
     <div className="questions-container">
         <h1 className="form-name">
             <div className="user-img"></div>
             {formBody.title}
+            {errBody}
         </h1>
 
         {formBody.questions && 
@@ -166,17 +178,8 @@ return <div className = "form-component">
         </button>
         </div>
         }
-        
-        
-        
-
-        
-
-        
-
-        
-    
     </div>
     </div>
+)
 }
 export default FormComponent

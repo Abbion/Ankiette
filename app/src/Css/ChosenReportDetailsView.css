@@ -1,4 +1,4 @@
-h1 {
+.BasicInfo h1, .QuestionNumber {
     font-size: 15px;
     font-weight: 300;
 }
