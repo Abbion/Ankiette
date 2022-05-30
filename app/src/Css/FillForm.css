@@ -175,7 +175,7 @@
 .text-input {
     height: 150px;
     direction: ltr;  
-    line-height: 1rem;
+    line-height: 1em;
     padding-top: 15px;
     font-family: 'Adam', 'sans-serif';
     font-size: x-large;

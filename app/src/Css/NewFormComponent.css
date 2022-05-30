@@ -130,6 +130,10 @@ body, root, .App, .Home {
     opacity: 80%;
 }
 
+.Row > label:hover{
+    background-color: transparent;
+}
+
 @media (max-width: 600px) {
     .NewFormPanel {
         background-color: transparent;
