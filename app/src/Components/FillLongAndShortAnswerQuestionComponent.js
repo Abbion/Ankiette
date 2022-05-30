@@ -3,16 +3,23 @@ import React, { useState } from "react";
 
 const FillLongAndShortAnswer = (props) => {
     const [userAnswer, setUserAnswer] = useState("");
+    const questionId = props.id;
+    const isRequired =props.required;
+
+
 
     const changeHandler = (e) => {
+        
         setUserAnswer(e.target.value);
-        console.log(userAnswer);
+        // props.callback(questionId, userAnswer);
+
+
     }
 
     return (
         <div className="question-card">
             <div className="question-title">
-                <h1 className="question-number">Question {props.number}</h1>
+                <h1 className="question-number">Question {questionId+1}</h1>
             </div>
             <div className="question-content-container">
 
@@ -22,8 +29,12 @@ const FillLongAndShortAnswer = (props) => {
                     </h1>
                 </div>
            
-            <div className="answer-container">
-            <input value={userAnswer} className="answer" onChange={changeHandler}/>
+            <div className="answers-container">
+            {/* <input value={userAnswer} className="answer text-input" onChange={changeHandler}/> */}
+            <div className="answer-item">
+
+            <textarea value={userAnswer} className="answer text-input" name={questionId} onChange={changeHandler} required={isRequired}/>
+            </div>
             </div>
             </div>
         </div>

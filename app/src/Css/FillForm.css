@@ -5,6 +5,8 @@
     /* justify-content: center; */
     height: calc(100vh - 115px);
     overflow-x: hidden;
+    width: 100%;
+    min-width: 300px;
 }
 
 /* .question-title {
@@ -31,11 +33,13 @@
     
 }
 .form-name {
-    padding-left: 10%;
+    padding-left: 5%;
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     text-decoration: underline;
     text-decoration-thickness: 1px;
+    font-size: 48px;
+    /* line-height: 3rem; */
 
     align-self: flex-start;
 }
@@ -152,7 +156,7 @@
 }
 
 .answer-item {
-    width: 100%;
+    /* width: 50vw; */
 
     display: flex;
     flex-direction: row;
@@ -172,11 +176,18 @@
     width: 100%;
     display: inline-block;
     border: 1px black solid;
-    margin: 1rem;
+    margin: 1rem 0 1rem 0;
     line-height: 3rem;
     padding-left: 15px;
 
 
+}
+.text-input {
+    height: 150px;
+    direction: ltr;  
+    line-height: 1rem;
+    padding-top: 15px;
+    /* word-break: break-word; */
 }
 
 
@@ -188,6 +199,13 @@
 
     .questions-container{
         overflow-y:visible;
+    }
+    .question-text {
+        font-size:large;
+
+    }
+    .form-name {
+        font-size: x-large;
     }
 }
 

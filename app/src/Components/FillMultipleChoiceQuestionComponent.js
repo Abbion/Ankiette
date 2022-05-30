@@ -4,6 +4,10 @@ import "../Css/FillForm.css";
 
 const FillMultipleChoiceQuestion = (props) => {
     const [checked, setChecked] = useState([]);
+    const questionId = props.id;
+    const isRequired =props.required;
+
+
 
     const checkHandler = (e) => {
         let updatedCheckedList = [...checked];
@@ -14,14 +18,19 @@ const FillMultipleChoiceQuestion = (props) => {
         }
         setChecked(updatedCheckedList);
 
-        console.log(checked);
+        // console.log(checked);
+        // props.callback(questionId, checked);
+        // props.callback(questionId);
+        // console.log(questionId+1);
+
+
 
     }
 
     return (
         <div className="question-card">
             <div className="question-title">
-                <h1 className="question-number">Question {props.number}</h1>
+                <h1 className="question-number">Question {questionId+1}</h1>
             </div>
             <div className="question-content-container">
                 <div className="question-text-container">
@@ -34,7 +43,7 @@ const FillMultipleChoiceQuestion = (props) => {
                 {
                     React.Children.toArray(props.answers.map((ans, index) => (
                         <div key={index} className="answer-item">
-                            <input type="checkbox" className="radio-button" id={ans} value={ans} onChange={checkHandler} />
+                            <input type="checkbox" className="radio-button multiple-answer" name={questionId} id={index} value={ans} onChange={checkHandler} required={isRequired} />
                             <label htmlFor={ans} className="answer">{ans}</label>
                         </div>  
                     )))
