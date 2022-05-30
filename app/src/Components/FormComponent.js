@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import {useNavigate, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+
 import { ReactSession } from 'react-client-session';
 import FillSingleChoiceQuestion from "../Components/FillSingleChoiceQuestionComponent";
 import FillMultipleChoiceQuestion from "../Components/FillMultipleChoiceQuestionComponent";
@@ -11,6 +13,7 @@ import "../Css/BasicComponents.css";
 const FormComponent = (props) => {
 
     let { formCode } = useParams();
+    const navigate = useNavigate();
 
     const [formBody, setFormBody] = useState([]);
     const requestData = {code: formCode, email: ReactSession.get("email")};
@@ -41,7 +44,6 @@ const FormComponent = (props) => {
                 console.log(data);
                 
                 setFormBody(data);
-                // setFormBody(JSON.stringify(data));
                 return data;
             } else {
                 console.log("Wrong URL! Form might be expired.");
@@ -119,7 +121,6 @@ const FormComponent = (props) => {
             
 
         }
-    //    console.log(JSON.stringify(addAnswersObject));
         const jsonObj = JSON.stringify(addAnswersObject);
         console.log(jsonObj)
 
@@ -135,7 +136,6 @@ const FormComponent = (props) => {
         }).then(response => {
             responseStatus = response.status;
             console.log(response);
-            // console.log(responseStatus);
             return response.json();
         }).then(data => {
             alert("Dziekujemy za uzupelnienie ankiety");

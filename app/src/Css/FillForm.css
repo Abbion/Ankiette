@@ -2,22 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    height: calc(100vh - 115px);
+    height: 100vh;
     overflow-x: hidden;
     width: 100%;
     min-width: 300px;
 }
 
-/* .question-title {
-    font-weight: 300;
-    font-size: x-large;
-    width: 100%;
-
-    font-family: 'Adam', 'sans-serif';
-    font-size: xx-large;
-
-} */
 
 .questions-container {
     display: flex;
@@ -34,13 +24,12 @@
 }
 .form-name {
     padding-left: 5%;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
+    font-family: 'Adam', 'sans-serif';
+    font-weight: 700;
     text-decoration: underline;
+    text-underline-offset: 10px;
     text-decoration-thickness: 1px;
-    font-size: 48px;
-    /* line-height: 3rem; */
-
+    font-size: 48px;    
     align-self: flex-start;
 }
 
@@ -115,8 +104,8 @@
 .question-number {
     flex: 1;
 
-    font-family: 'Roboto', 'sans-serif';
-    font-weight: 300;
+    font-family: 'Adam', 'sans-serif';
+    font-weight:bolder;
     font-size: xx-large;
 
 
@@ -156,11 +145,10 @@
 }
 
 .answer-item {
-    /* width: 50vw; */
-
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-size: x-large;
 
 
 }
@@ -179,6 +167,8 @@
     margin: 1rem 0 1rem 0;
     line-height: 3rem;
     padding-left: 15px;
+    font-family: 'Adam', 'sans-serif';
+
 
 
 }
@@ -187,9 +177,18 @@
     direction: ltr;  
     line-height: 1rem;
     padding-top: 15px;
-    /* word-break: break-word; */
+    font-family: 'Adam', 'sans-serif';
+    font-size: x-large;
+
 }
 
+label:hover {
+    background-color: #dedede;
+
+}
+input:checked + label {
+    background-color: #dedede;
+  }
 
 
 @media only screen and (max-width: 600px){
@@ -200,27 +199,25 @@
     .questions-container{
         overflow-y:visible;
     }
-    .question-text {
+    .question-text, .text-input, .answer-item {
         font-size:large;
 
     }
+    
     .form-name {
         font-size: x-large;
     }
 }
 
-/* width */
 ::-webkit-scrollbar {
     width: 15px;
   }
   
-  /* Track */
   ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #787878;
     border-radius: 10px;
   }
   
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     border: 1px solid #787878;
 
