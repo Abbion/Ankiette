@@ -93,7 +93,7 @@ class FormRepository extends Repository
             JOIN forms f on f.id_forms = users_forms.id_forms
             JOIN users u on u.id = users_forms.id_users
             WHERE u.email LIKE :input
-            AND f.code != (SELECT fo.code FROM forms fo JOIN users us ON fo.id_user = us.id WHERE us.email LIKE :input)
+            AND f.code NOT IN (SELECT fo.code FROM forms fo JOIN users us ON fo.id_user = us.id WHERE us.email LIKE :input)
         ');
 
         return $this->getFormsByEmail($email, $stmt);
