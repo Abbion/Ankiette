@@ -81,7 +81,7 @@ class AnswersRepository extends Repository {
 
         if($array != false) {
             foreach ($array as $element) {
-                if($element['given_answer'] !== null) {
+                if($element['given_answer'] !== null && $element['given_answer'] != '') {
                     $givenAnswers[] = $element['given_answer'];
                 }
             }
