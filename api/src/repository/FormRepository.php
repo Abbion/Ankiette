@@ -88,7 +88,7 @@ class FormRepository extends Repository
 
     public function getAllAttended(string $email) {
         $stmt = $this->database->connect()->prepare('
-            SELECT f.*
+            SELECT distinct(f.*)
             FROM users_forms
             JOIN forms f on f.id_forms = users_forms.id_forms
             JOIN users u on u.id = users_forms.id_users
